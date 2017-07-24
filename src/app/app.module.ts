@@ -1,3 +1,7 @@
+//   materialize-css
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { MaterializeModule } from 'ng2-materialize'
+//  end materialize-css
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -10,6 +14,7 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './login/login.component';
 
 
 const appRoutes: Routes = [
@@ -18,6 +23,9 @@ const appRoutes: Routes = [
     path: 'users',
     component: UserListComponent,
     data: { title: 'Users List' }
+  },
+  { path: 'login',
+    component: LoginComponent
   },
   { path: '',
     redirectTo: '/users',
@@ -33,14 +41,17 @@ const appRoutes: Routes = [
     UsuarioComponent,
     PageNotFoundComponent,
     UserListComponent,
-    UserDetailComponent
+    UserDetailComponent,
+    LoginComponent
   ],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only
-    )
+    ),
+    MaterializeModule.forRoot()
     // other imports here
   ]
   ,
