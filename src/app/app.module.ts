@@ -1,61 +1,43 @@
-//   materialize-css
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { MaterializeModule } from 'ng2-materialize'
-//  end materialize-css
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule }   from '@angular/forms';
 
+//COMPONENTES
 import { AppComponent } from './app.component';
-
-import { UsuarioComponent } from './usuario/usuario.component';
+import { LoginComponent } from './login/login.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
-
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
+//SERVICES
+import  {CurrentUserService} from './shared/current-user.service';
+
+//ROUTING
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './login/login.component';
-
-
-const appRoutes: Routes = [
-  { path: 'users/:id',      component: UserDetailComponent },
-  {
-    path: 'users',
-    component: UserListComponent,
-    data: { title: 'Users List' }
-  },
-  { path: 'login',
-    component: LoginComponent
-  },
-  { path: '',
-    redirectTo: '/users',
-    pathMatch: 'full'
-  },
-  { path: '**', component: PageNotFoundComponent }
-];
-
+import{appRoutes} from './routes/routing';
+import { RegisterComponent } from './register/register.component'
 
 @NgModule({
   declarations: [
     AppComponent,
-    UsuarioComponent,
     PageNotFoundComponent,
     UserListComponent,
     UserDetailComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
-    BrowserAnimationsModule,
     BrowserModule,
+    FormsModule,
     RouterModule.forRoot(
       appRoutes,
-      { enableTracing: true } // <-- debugging purposes only
+      { enableTracing: false } // <-- debugging purposes only
     ),
-    MaterializeModule.forRoot()
     // other imports here
   ]
   ,
-  providers: [],
+  providers: [CurrentUserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

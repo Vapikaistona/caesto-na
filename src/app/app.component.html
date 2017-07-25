@@ -1,18 +1,12 @@
 <nav>
   <div class="nav-wrapper">
     <a routerLink="/" class="brand-logo">MiHDD</a>
-    <a  data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-    <ul id="nav-mobile" class="right  hide-on-med-and-down">
-      <li routerLinkActive="active"><a routerLink="users" >Users</a></li>
-      <li routerLinkActive="active"><a routerLink="login">Login</a></li>
-    </ul>
-    <ul class="side-nav" id="mobile-demo">
+    <ul id="nav-mobile" class="right">
       <li routerLinkActive="active"><a routerLink="users" >Users</a></li>
       <li routerLinkActive="active"><a routerLink="login">Login</a></li>
     </ul>
   </div>
 </nav>
-
 <div class="container">
   <router-outlet></router-outlet>
 </div>
