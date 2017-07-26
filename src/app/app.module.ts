@@ -2,21 +2,32 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule }   from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
 //COMPONENTES
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { UserListComponent } from './user-list/user-list.component';
-import { UserDetailComponent } from './user-detail/user-detail.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { SingInComponent } from './components/sing-in/sing-in.component'
+import { UserListComponent } from './components/user-list/user-list.component';
+import { UserDetailComponent } from './components/user-detail/user-detail.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 //SERVICES
 import  {CurrentUserService} from './shared/current-user.service';
-
+import { AuthenticationService } from './shared/authentication.service';
+import { UserService } from './shared/user.service';
+import {AuthGuard} from './shared/authentication/guard'
 //ROUTING
 import { RouterModule, Routes } from '@angular/router';
-import{appRoutes} from './routes/routing';
-import { RegisterComponent } from './register/register.component'
+import{routing} from './routes/routing';
+
+//MOCKS
+// used to create fake backend
+import { fakeBackendProvider } from './mocks/mocks';
+import { MockBackend, MockConnection } from '@angular/http/testing';
+import { BaseRequestOptions } from '@angular/http';
+
 
 @NgModule({
   declarations: [
@@ -25,19 +36,26 @@ import { RegisterComponent } from './register/register.component'
     UserListComponent,
     UserDetailComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    SingInComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(
-      appRoutes,
-      { enableTracing: false } // <-- debugging purposes only
-    ),
+    HttpModule,
+    routing,
     // other imports here
   ]
   ,
-  providers: [CurrentUserService],
+  providers: [
+    CurrentUserService,
+    AuthenticationService,
+    UserService,
+    fakeBackendProvider,
+    MockBackend,
+    BaseRequestOptions,
+    AuthGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

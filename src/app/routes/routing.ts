@@ -1,26 +1,25 @@
 /*USUARIOS*/
-import { UserListComponent } from '../user-list/user-list.component';
-import { UserDetailComponent } from '../user-detail/user-detail.component';
-
-import { PageNotFoundComponent } from '../page-not-found/page-not-found.component';
-
+import { UserListComponent } from '../components/user-list/user-list.component';
+import { UserDetailComponent } from '../components/user-detail/user-detail.component';
+import { SingInComponent } from '../components/sing-in/sing-in.component'
+import { PageNotFoundComponent } from '../components/page-not-found/page-not-found.component';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from '../login/login.component';
+import {AuthGuard} from '../shared/authentication/guard'
 
-
-export const appRoutes: Routes = [
+ const appRoutes: Routes = [
   {
     path: 'users/:id',
     component: UserDetailComponent
   },
   {
     path: 'users',
-    component: UserDetailComponent,
-    data: { title: 'Users List' }
+    component: UserListComponent,
+    data: { title: 'Users List' },
+    canActivate: [AuthGuard]
   },
   {
     path: 'login',
-    component: LoginComponent
+    component: SingInComponent
   },
   {
     path: '',
@@ -29,3 +28,7 @@ export const appRoutes: Routes = [
   },
   { path: '**', component: PageNotFoundComponent }
 ];
+export const routing = RouterModule.forRoot(
+  appRoutes,
+  { enableTracing: false } // <-- debugging purposes only
+)
