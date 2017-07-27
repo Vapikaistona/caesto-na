@@ -1,3 +1,28 @@
-<p>
-  user-list works!
-</p>
+<div class="jumbotron">
+  <h2>Users List</h2>
+  <table class="bordered highlight centered responsive-table">
+    <thead>
+      <tr>
+          <th>Name</th>
+          <th>Nick</th>
+          <th>LVL</th>
+          <th>Edit</th>
+          <th>Delete</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let user of userList">
+        <td>{{user.name}}</td>
+        <td>{{user.nick}}</td>
+        <td>{{user.lvl}}</td>
+        <td >
+          <button type="button" name="edit" class="btn waves-effect waves-light orange" (click)="editUser(user.id)">EDIT</button>
+        </td>
+        <td >
+          <button type="button" name="edit" class="btn waves-effect waves-light red" (click)="deleteUser(user.id)">DELETE</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

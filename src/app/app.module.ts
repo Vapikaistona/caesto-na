@@ -15,7 +15,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 
 //SERVICES
 import  {CurrentUserService} from './shared/current-user.service';
-import { AuthenticationService } from './shared/authentication.service';
+import { AuthenticationService } from './shared/authentication/authentication.service';
 import { UserService } from './shared/user.service';
 import {AuthGuard} from './shared/authentication/guard'
 //ROUTING
@@ -44,7 +44,6 @@ import { BaseRequestOptions } from '@angular/http';
     FormsModule,
     HttpModule,
     routing,
-    // other imports here
   ]
   ,
   providers: [

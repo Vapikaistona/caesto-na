@@ -8,7 +8,7 @@ import {AuthGuard} from '../shared/authentication/guard'
 
  const appRoutes: Routes = [
   {
-    path: 'users/:id',
+    path: 'user/:id',
     component: UserDetailComponent
   },
   {

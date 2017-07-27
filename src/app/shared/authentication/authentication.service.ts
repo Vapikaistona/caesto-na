@@ -3,7 +3,7 @@ import { Http, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map'
 
-import {CurrentUserService} from '../shared/current-user.service'
+import {CurrentUserService} from '../../shared/current-user.service'
 
 @Injectable()
 export class AuthenticationService {
@@ -37,4 +37,5 @@ export class AuthenticationService {
     getLogged(){
       return this.isLogged;
     }
+
 }
