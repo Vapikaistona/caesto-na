@@ -19,10 +19,10 @@ export class UserListComponent implements OnInit {
       this.userList = list;
     })
   }
-  editUser(id:number){
+  editUser(id:string){
     this.router.navigate(['/user',id]);
   }
-  deleteUser(id:number){
+  deleteUser(id:string){
     this.userService.delete(id).subscribe(()=>{
       this.userService.getAll().subscribe((list:Array<User>) =>{
         this.userList = list;

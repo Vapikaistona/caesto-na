@@ -11,22 +11,25 @@ import { RegisterComponent } from './components/register/register.component';
 import { SingInComponent } from './components/sing-in/sing-in.component'
 import { UserListComponent } from './components/user-list/user-list.component';
 import { UserDetailComponent } from './components/user-detail/user-detail.component';
+import { CardListComponent } from './components/card-list/card-list.component';
+import { CardDetailComponent } from './components/card-detail/card-detail.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 //SERVICES
 import  {CurrentUserService} from './shared/current-user.service';
 import { AuthenticationService } from './shared/authentication/authentication.service';
 import { UserService } from './shared/user.service';
-import {AuthGuard} from './shared/authentication/guard'
+import {AuthGuard,AdminGuard} from './shared/authentication/guard'
+
 //ROUTING
 import { RouterModule, Routes } from '@angular/router';
 import{routing} from './routes/routing';
 
 //MOCKS
-// used to create fake backend
 import { fakeBackendProvider } from './mocks/mocks';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { BaseRequestOptions } from '@angular/http';
+
 
 
 @NgModule({
@@ -37,7 +40,9 @@ import { BaseRequestOptions } from '@angular/http';
     UserDetailComponent,
     LoginComponent,
     RegisterComponent,
-    SingInComponent
+    SingInComponent,
+    CardListComponent,
+    CardDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -50,10 +55,11 @@ import { BaseRequestOptions } from '@angular/http';
     CurrentUserService,
     AuthenticationService,
     UserService,
-    fakeBackendProvider,
+    //fakeBackendProvider,
     MockBackend,
     BaseRequestOptions,
-    AuthGuard
+    AuthGuard,
+    AdminGuard
   ],
   bootstrap: [AppComponent]
 })

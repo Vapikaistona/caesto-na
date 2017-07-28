@@ -3,15 +3,37 @@ const express = require('express');
 const path = require('path');
 const http = require('http');
 const bodyParser = require('body-parser');
+var passport = require('passport')
+//  , LocalStrategy = require('passport-local').Strategy;
+var mongoose = require('mongoose');
 
 // Get our API routes
 const api = require('./server/routes/api');
 
 const app = express();
-
 // Parsers for POST data
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
+// Configuring Passport
+var passport = require('passport');
+var expressSession = require('express-session');
+// TODO - Why Do we need this key ?
+app.use(expressSession({secret: 'mySecretKey'}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+ // Using the flash middleware provided by connect-flash to store messages in session
+ // and displaying in templates
+var flash = require('connect-flash');
+app.use(flash());
+
+// Initialize Passport
+var initPassport = require('./server/passport/init');
+initPassport(passport);
+
+// mongoose
+mongoose.connect('mongodb://localhost/passport_local_mongoose_express4');
 
 // Point static path to dist
 app.use(express.static(path.join(__dirname, 'dist')));
@@ -19,6 +41,36 @@ app.use(express.static(path.join(__dirname, 'dist')));
 // Set our api routes
 app.use('/api', api);
 
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist/index.html'));
+});
+
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+    var err = new Error('Not Found');
+    err.status = 404;
+    next(err);
+});
+// development error handler
+// will print stacktrace
+if (app.get('env') === 'development') {
+    app.use(function(err, req, res, next) {
+        res.status(err.status || 500);
+        res.json({
+            message: err.message,
+            error: err
+        });
+    });
+}
+// production error handler
+// no stacktraces leaked to user
+app.use(function(err, req, res, next) {
+    res.status(err.status || 500);
+    res.json({
+        message: err.message,
+        error: {}
+    });
+});
 // Catch all other routes and return the index file
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist/index.html'));

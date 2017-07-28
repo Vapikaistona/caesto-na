@@ -2,6 +2,7 @@
   <div class="nav-wrapper">
     <a routerLink="/" class="brand-logo"> MiHDD</a>
     <ul id="nav-mobile" class="right">
+      <li routerLinkActive="active"><a routerLink="cards" >Cards</a></li>
       <li routerLinkActive="active"><a routerLink="users" >Users</a></li>
       <li [ngSwitch]="authentication.getLogged()" routerLinkActive="active">
         <a *ngSwitchCase="false" routerLink="login">Login</a>

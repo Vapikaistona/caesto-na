@@ -4,7 +4,7 @@
     <thead>
       <tr>
           <th>Name</th>
-          <th>Nick</th>
+          <th>Username</th>
           <th>LVL</th>
           <th>Edit</th>
           <th>Delete</th>
@@ -13,14 +13,14 @@
 
     <tbody>
       <tr *ngFor="let user of userList">
-        <td>{{user.name}}</td>
-        <td>{{user.nick}}</td>
+        <td>{{user.firstname+" "+ user.lastname}}</td>
+        <td>{{user.username}}</td>
         <td>{{user.lvl}}</td>
         <td >
-          <button type="button" name="edit" class="btn waves-effect waves-light orange" (click)="editUser(user.id)">EDIT</button>
+          <button type="button" name="edit" class="btn waves-effect waves-light orange" (click)="editUser(user._id)">EDIT</button>
         </td>
         <td >
-          <button type="button" name="edit" class="btn waves-effect waves-light red" (click)="deleteUser(user.id)">DELETE</button>
+          <button type="button" name="edit" class="btn waves-effect waves-light red" (click)="deleteUser(user._id)">DELETE</button>
         </td>
       </tr>
     </tbody>

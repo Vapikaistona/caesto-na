@@ -17,3 +17,20 @@ export class AuthGuard implements CanActivate {
         return false;
     }
 }
+@Injectable()
+export class AdminGuard implements CanActivate {
+
+    constructor(private router: Router) { }
+
+    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+      let user= JSON.parse(localStorage.getItem('currentUser'))
+        if (user) {
+            // logged in so return true
+            return (user.lvl == 3);
+        }
+
+        // not logged in so redirect to login page with the return url
+        this.router.navigate(['/login'], { queryParams: { returnUrl: state.url }});
+        return false;
+    }
+}
