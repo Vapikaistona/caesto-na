@@ -1,12 +1,13 @@
 
 import { Injectable } from '@angular/core';
-import { Http, Headers, RequestOptions, Response } from '@angular/http';
-
+import { Http,Headers,  RequestOptions, Response } from '@angular/http';
+import {HttpHeaders} from '@angular/common/http';
 import { User } from '../classes/user';
+import {CurrentUserService} from './current-user.service'
 
 @Injectable()
 export class UserService {
-    constructor(private http: Http) { }
+    constructor(private http: Http, private currentUser:CurrentUserService) { }
 
     getAll() {
         return this.http.get('/api/users', this.jwt()).map((response: Response) => response.json());
@@ -30,12 +31,20 @@ export class UserService {
 
     // private helper methods
 
+
+    private generateToken(){
+      let currentUser = this.currentUser.getUser();
+      if (currentUser && currentUser.token) {
+        return {headers: new HttpHeaders().set('Authorization', 'my-auth-token')}
+      }
+    }
     private jwt() {
         // create authorization header with jwt token
-        let currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        if (currentUser && currentUser.token) {
-            let headers = new Headers({ 'Authorization': 'Bearer ' + currentUser.token });
-            return new RequestOptions({ headers: headers });
+        let currentUser = this.currentUser.getUser();
+        var authHeader = new Headers();
+        if(currentUser) {
+          authHeader.append('Authorization', 'Bearer ' + currentUser.token);
         }
+        return new RequestOptions({ headers: authHeader });
     }
 }

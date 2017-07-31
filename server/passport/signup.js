@@ -1,6 +1,10 @@
 var LocalStrategy   = require('passport-local').Strategy;
 var User = require('../models/user');
 var bCrypt = require('bcrypt-nodejs');
+var createDirectmail = require("directmail"),
+    directmail = createDirectmail({debug:true});
+
+
 
 module.exports = function(passport){
 
@@ -42,6 +46,11 @@ module.exports = function(passport){
                                 throw err;
                             }
                             console.log('User Registration succesful');
+														directmail.send({
+														    from: "sender@example.com",
+														    recipients: [newUser.email],
+														    message: "Subject: User Registration succesful\r\n\r\nHello world!"
+														});
                             return done(null, newUser);
                         });
                     }

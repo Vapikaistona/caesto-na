@@ -1,7 +1,6 @@
 var LocalStrategy   = require('passport-local').Strategy;
 var User = require('../models/user');
 var bCrypt = require('bcrypt-nodejs');
-
 module.exports = function(passport){
 
 	passport.use('login', new LocalStrategy({
@@ -24,8 +23,7 @@ module.exports = function(passport){
                         console.log('Invalid Password');
                         return done(null, false); // redirect back to login page
                     }
-                    // User and password both match, return user from done method
-                    // which will be treated like success
+
                     return done(null, user);
                 }
             );

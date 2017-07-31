@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-
+import {CurrentUserService} from '../current-user.service'
 @Injectable()
 export class AuthGuard implements CanActivate {
 
-    constructor(private router: Router) { }
+    constructor(private router: Router, private currentUser: CurrentUserService) { }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        if (localStorage.getItem('currentUser')) {
+        if (this.currentUser.isLogged()) {
             // logged in so return true
             return true;
         }
@@ -20,10 +20,10 @@ export class AuthGuard implements CanActivate {
 @Injectable()
 export class AdminGuard implements CanActivate {
 
-    constructor(private router: Router) { }
+    constructor(private router: Router, private currentUser: CurrentUserService) { }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-      let user= JSON.parse(localStorage.getItem('currentUser'))
+      let user= this.currentUser.getUser();
         if (user) {
             // logged in so return true
             return (user.lvl == 3);

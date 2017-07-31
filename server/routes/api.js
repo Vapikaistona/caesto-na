@@ -3,24 +3,38 @@ var passport = require('passport');
 var User = require('../models/user');
 var router = express.Router();
 var bCrypt = require('bcrypt-nodejs');
-
+var config = require('../config');
+var jwt    = require('jsonwebtoken');
 var isAuthenticated = function (req, res, next) {
-	// if user is authenticated in the session, call the next() to call the next request handler
-	// Passport adds this method to request object. A middleware is allowed to add properties to
-	// request and response objects
 	if (req.isAuthenticated())
 		return next();
-	// if the user is not authenticated then redirect him to the login page
 	res.redirect('/');
 
 }
+var isTokenValid = function(req, res, next) {
+	var token;
+	if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer'){
+		 token = req.headers.authorization.split(' ')[1];
+	}
+  if (token) {
+    jwt.verify(token, config.secret, function(err, decoded) {
+      if (err) {
+        return res.json({ success: false, message: 'Failed to authenticate token.' });
+      } else {
+        req.decoded = decoded;
+        return  next();
+      }
+    });
+  } else {
+    return res.status(403).send({
+        success: false,
+        message: 'No token provided.'
+    });
 
-/* GET api listing. */
-router.get('/', (req, res) => {
-  res.send('api works');
-});
+  }
+};
 
-router.get('/users', (req, res) => {
+router.get('/users',isAuthenticated,isTokenValid, (req, res) => {
     User.find({},(err,userlist)=>{
       if (err){
         console.log("error "+ err);
@@ -32,7 +46,7 @@ router.get('/users', (req, res) => {
     });
 });
 
-router.get('/users/:id', (req, res) => {
+router.get('/users/:id',isAuthenticated,isTokenValid, (req, res) => {
   User.findById(req.params.id,(err,user)=>{
     if (err){
       console.log("error "+ err);
@@ -44,7 +58,7 @@ router.get('/users/:id', (req, res) => {
   });
 });
 
-router.put('/users/:id', (req, res) => {
+router.put('/users/:id',isAuthenticated,isTokenValid, (req, res) => {
   User.findOne({_id: req.params.id}, function(err, user){
   if (err) { return next(err); }
     let dummy = req.body;
@@ -73,7 +87,7 @@ var createHash = function(password){
     return bCrypt.hashSync(password, bCrypt.genSaltSync(10), null);
 }
 
-router.get('/users/:id', (req, res) => {
+router.get('/users/:id',isAuthenticated,isTokenValid, (req, res) => {
   User.findById(req.params.id,(err,user)=>{
     if (err){
       console.log("error "+ err);
@@ -85,7 +99,7 @@ router.get('/users/:id', (req, res) => {
   });
 });
 
-router.delete('/users/:id', (req, res) => {
+router.delete('/users/:id',isAuthenticated,isTokenValid, (req, res) => {
   User.findByIdAndRemove(req.params.id,(err,user)=>{
     if (err){
       console.log("error "+ err);
@@ -109,7 +123,7 @@ router.post('/users', passport.authenticate('signup'), passport.authenticate('lo
   );
 });
 
-router.get('/cards', (req, res) => {
+router.get('/cards',isAuthenticated,isTokenValid, (req, res) => {
   res.send('api cards called');
 });
 
@@ -120,7 +134,14 @@ router.post('/login', passport.authenticate('login'), function(req, res) {
           if (err){
             res.send(err);
           }
-          res.send(user)
+					// User and password both match, return user from done method
+					// which will be treated like success
+					var token = jwt.sign(user,config.secret, {
+						expiresIn: 60
+					});
+					var r = user.toObject();
+					r.token = token;
+          res.send(r)
       }
   );
 });
@@ -129,6 +150,5 @@ router.post('/logout', function(req, res) {
     req.logout();
     res.send('logout ok');
 });
-
 
 module.exports = router;

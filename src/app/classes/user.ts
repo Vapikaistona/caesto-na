@@ -9,6 +9,7 @@ export class User {
     public age: number,
     public lvl: number,
     public _id?:string,
-    public password?:string
+    public password?:string,
+    public token?:string
   ){}
 }
