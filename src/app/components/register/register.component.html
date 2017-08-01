@@ -1,6 +1,7 @@
 <div class="jumbotron">
   <h2>Register</h2>
-  <form #form="ngForm" (ngSubmit)="submitForm(form)" class="col s12">
+  <p class="red-text" *ngIf="registerMsg !==''" >{{registerMsg}}</p>
+  <form #form="ngForm" (ngSubmit)="submitForm(form)" class="col s12" *ngIf="!registerOk">
     <div class="row">
       <div class="form-group col s4">
         <label for="first_name">First Name</label>

@@ -17,9 +17,10 @@ export class UserDetailComponent implements OnInit {
               private router:Router) { }
 
   ngOnInit() {
-    //TODO: utilizar servicio de fetch user data.
     this.route.params.subscribe(params => {
-       this.userService.getById(params['id']).subscribe(user =>{
+      let id = params['id'];
+      if (!id) id = this.currentUser.getUser()._id
+       this.userService.getById(id).subscribe(user =>{
          this.user = user;
        })
     });

@@ -23,7 +23,10 @@ module.exports = function(passport){
                         console.log('Invalid Password');
                         return done(null, false); // redirect back to login page
                     }
-
+										if (!user.confirmed){
+                        console.log('User not confirmed');
+                        return done(null, false,'User not confirmed'); // redirect back to login page
+                    }
                     return done(null, user);
                 }
             );

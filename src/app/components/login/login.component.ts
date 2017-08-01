@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
     model: any = {};
     loading = false;
     returnUrl: string;
+    failedMessage: string ='';
 
     constructor(
         private route: ActivatedRoute,
@@ -35,11 +36,18 @@ export class LoginComponent implements OnInit {
         this.authenticationService.login(this.model.username, this.model.password)
             .subscribe(
                 data => {
+                  if (!data.username){
+                    this.failedMessage = data.message;
+                    this.model.password = '';
+                    this.loading = false;
+                  }else{
+                    this.failedMessage = 'Login Succesful'
                     this.router.navigate([this.returnUrl]);
+                  }
                 },
                 error => {
-                  console.log(error)
-                    this.loading = false;
+                  this.model.username = this.model.password = '';
+                  this.loading = false;
                 });
     }
 }

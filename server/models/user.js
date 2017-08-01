@@ -9,5 +9,6 @@ module.exports = mongoose.model('User',{
   gender: String,
   email: String,
   age: Number,
-  lvl: Number
+  lvl: Number,
+  confirmed: Boolean
 });

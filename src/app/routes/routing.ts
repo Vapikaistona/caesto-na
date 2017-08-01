@@ -11,7 +11,12 @@ import {AuthGuard,AdminGuard} from '../shared/authentication/guard'
  const appRoutes: Routes = [
   {
     path: 'user/:id',
-    component: UserDetailComponent
+    component: UserDetailComponent,
+    canActivate: [AuthGuard]
+  },{
+    path: 'user',
+    component: UserDetailComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'users',

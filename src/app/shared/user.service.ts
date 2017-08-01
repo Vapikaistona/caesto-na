@@ -31,13 +31,6 @@ export class UserService {
 
     // private helper methods
 
-
-    private generateToken(){
-      let currentUser = this.currentUser.getUser();
-      if (currentUser && currentUser.token) {
-        return {headers: new HttpHeaders().set('Authorization', 'my-auth-token')}
-      }
-    }
     private jwt() {
         // create authorization header with jwt token
         let currentUser = this.currentUser.getUser();

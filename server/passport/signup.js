@@ -19,12 +19,12 @@ module.exports = function(passport){
                     // In case of any error, return using the done method
                     if (err){
                         console.log('Error in SignUp: '+err);
-                        return done(err);
+                        return done({message:'Error in SignUp: '+err});
                     }
                     // already exists
                     if (user) {
                         console.log('User already exists with username: '+username);
-                        return done(null, false);
+                        return done(null,false,{message:'User already exists with username: '+username});
                     } else {
                         // if there is no user with that email
                         // create the user
@@ -39,6 +39,7 @@ module.exports = function(passport){
                         newUser.gender = req.param('gender');
                         newUser.age = req.param('age');
                         newUser.lvl = req.param('lvl');
+												newUser.confirmed = false;
                         // save the user
                         newUser.save(function(err) {
                             if (err){
@@ -46,11 +47,11 @@ module.exports = function(passport){
                                 throw err;
                             }
                             console.log('User Registration succesful');
-														directmail.send({
-														    from: "sender@example.com",
-														    recipients: [newUser.email],
-														    message: "Subject: User Registration succesful\r\n\r\nHello world!"
-														});
+														// directmail.send({
+														//     from: "sender@example.com",
+														//     recipients: [newUser.email],
+														//     message: "Subject: User Registration succesful\r\n\r\nHello world!"
+														// });
                             return done(null, newUser);
                         });
                     }

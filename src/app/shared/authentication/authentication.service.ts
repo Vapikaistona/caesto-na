@@ -13,12 +13,13 @@ export class AuthenticationService {
     login(username: string, password: string) {
         return this.http.post('/api/login', { username: username, password: password })
             .map((response: Response) => {
-                let user = response.json();
-                if (user) {
-                    this.currentUser.setUser(user);
+              let data = response.json();
+                if (data.username) {
+                    this.currentUser.setUser(data);
                     this.setLogged(true);
                 }
-            }
+                return data;
+              }
           );
     }
 
@@ -35,6 +36,10 @@ export class AuthenticationService {
     }
     getLogged(){
       return this.isLogged;
+    }
+    isAdmin(){
+      if (this.currentUser.isLogged()){ return this.currentUser.getUser().lvl == 3; }
+      return false;
     }
 
 }

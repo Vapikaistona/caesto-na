@@ -5,6 +5,7 @@ var router = express.Router();
 var bCrypt = require('bcrypt-nodejs');
 var config = require('../config');
 var jwt    = require('jsonwebtoken');
+
 var isAuthenticated = function (req, res, next) {
 	if (req.isAuthenticated())
 		return next();
@@ -18,7 +19,7 @@ var isTokenValid = function(req, res, next) {
 	}
   if (token) {
     jwt.verify(token, config.secret, function(err, decoded) {
-      if (err) {
+			if(!(req.params.id == decoded._doc._id || decoded._doc.lvl==3)|| err) {
         return res.json({ success: false, message: 'Failed to authenticate token.' });
       } else {
         req.decoded = decoded;
@@ -111,31 +112,41 @@ router.delete('/users/:id',isAuthenticated,isTokenValid, (req, res) => {
   });
 });
 
-router.post('/users', passport.authenticate('signup'), passport.authenticate('login'), function(req, res) {
-  User.findOne({ 'username' :  req.body.username },
-      function(err, user) {
-          // In case of any error, return using the done method
-          if (err){
-            res.send(err);
-          }
-          res.send(user)
-      }
-  );
+router.post('/users', function(req, res, next) {
+  passport.authenticate('signup', function(err, user, info) {
+    if (err) { return res.json({user:false, message:err}); }
+		else if (!user) { return res.json({user:false, message:'User already exists with that username'}); }
+		else { return res.json({user:true});}
+  })(req, res, next);
 });
 
 router.get('/cards',isAuthenticated,isTokenValid, (req, res) => {
   res.send('api cards called');
 });
 
-router.post('/login', passport.authenticate('login'), function(req, res) {
+router.post('/login', function(req, res, next) {
+  passport.authenticate('login', function(err, user, info) {
+    if (err) { return res.json({user:false, message:err}); }
+		else if (!user) {
+			if (info) {
+				return res.json({user:false, message:info});
+			}else {
+				return res.json({user:false, message:'Username or password invalid'});
+			}
+		}
+		else {
+			req.login(user, function(error) {
+	      if (error) return next(error);
+	      return next();
+      });
+		}
+  })(req, res, next);
+}, function(req, res) {
   User.findOne({ 'username' :  req.body.username },
       function(err, user) {
-          // In case of any error, return using the done method
           if (err){
             res.send(err);
           }
-					// User and password both match, return user from done method
-					// which will be treated like success
 					var token = jwt.sign(user,config.secret, {
 						expiresIn: 60
 					});

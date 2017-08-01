@@ -10,6 +10,7 @@ export class User {
     public lvl: number,
     public _id?:string,
     public password?:string,
-    public token?:string
+    public token?:string,
+    public confirmed?:boolean
   ){}
 }

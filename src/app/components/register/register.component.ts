@@ -13,7 +13,8 @@ import {UserService} from '../../shared/user.service'
 export class RegisterComponent implements OnInit {
 
   public user:User;
-  private registerError:string ="";
+  private registerMsg:string ="";
+  private registerOk:boolean=false;
   constructor(private userService:UserService,
               private route: ActivatedRoute,
               private router: Router,
@@ -24,19 +25,22 @@ export class RegisterComponent implements OnInit {
      this.user={username:"",firstname:"",lastname:"",lastname2:"",gender:"",age:0,lvl:1,email:""};
   }
   submitForm(form:any){
-    console.log(this.user);
     this.userService.create(this.user)
-      .subscribe(() =>
-        this.authenticationService.login(this.user.username, this.user.password).subscribe(
-          data => {
-            console.log("register success, redirecting to /");
-              this.router.navigate(["/"]);
-          },
-          error => {
-            console.log(error)
-              this.registerError = error;
+      .subscribe(
+        data =>{
+          if (data.user){
+            this.registerOk = true;
+            this.registerMsg ="Registration OK";
           }
-    ));
+          else{
+            this.registerOk = false;
+            this.registerMsg = data.message;
+          }
+        },
+        error =>{
+          this.registerOk = false;
+          this.registerMsg = error.message;
+        }
+      );
   }
-
 }
