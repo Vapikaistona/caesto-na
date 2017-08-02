@@ -8,7 +8,8 @@ var passport = require('passport')
 var mongoose = require('mongoose');
 
 // Get our API routes
-const api = require('./server/routes/api');
+const apiUser = require('./server/routes/api-user');
+const apiCard = require('./server/routes/api-card');
 
 const app = express();
 // Parsers for POST data
@@ -39,7 +40,8 @@ mongoose.connect('mongodb://localhost/passport_local_mongoose_express4');
 app.use(express.static(path.join(__dirname, 'dist')));
 
 // Set our api routes
-app.use('/api', api);
+app.use('/api/user', apiUser);
+app.use('/api/cards', apiCard);
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist/index.html'));

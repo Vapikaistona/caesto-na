@@ -1,8 +1,7 @@
 /*USUARIOS*/
 import { UserListComponent } from '../components/user-list/user-list.component';
 import { UserDetailComponent } from '../components/user-detail/user-detail.component';
-import { CardListComponent } from '../components/card-list/card-list.component';
-import { CardDetailComponent } from '../components/card-detail/card-detail.component';
+import { CardOverviewComponent } from '../components/card-overview/card-overview.component';
 import { SingInComponent } from '../components/sing-in/sing-in.component'
 import { PageNotFoundComponent } from '../components/page-not-found/page-not-found.component';
 import { RouterModule, Routes } from '@angular/router';
@@ -25,7 +24,7 @@ import {AuthGuard,AdminGuard} from '../shared/authentication/guard'
   },
   {
     path: 'cards',
-    component: CardListComponent,
+    component: CardOverviewComponent,
     canActivate: [AuthGuard]
   },
   {

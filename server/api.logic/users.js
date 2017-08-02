@@ -1,18 +1,17 @@
-var express = require('express');
 var passport = require('passport');
 var User = require('../models/user');
-var router = express.Router();
 var bCrypt = require('bcrypt-nodejs');
 var config = require('../config');
 var jwt    = require('jsonwebtoken');
+var users={};
 
-var isAuthenticated = function (req, res, next) {
+users.isAuthenticated = function (req, res, next) {
 	if (req.isAuthenticated())
 		return next();
 	res.redirect('/');
 
 }
-var isTokenValid = function(req, res, next) {
+users.isTokenValid = function(req, res, next) {
 	var token;
 	if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer'){
 		 token = req.headers.authorization.split(' ')[1];
@@ -35,7 +34,7 @@ var isTokenValid = function(req, res, next) {
   }
 };
 
-router.get('/users',isAuthenticated,isTokenValid, (req, res) => {
+users.getAll =  (req, res) => {
     User.find({},(err,userlist)=>{
       if (err){
         console.log("error "+ err);
@@ -45,9 +44,8 @@ router.get('/users',isAuthenticated,isTokenValid, (req, res) => {
         res.send(userlist);
       }
     });
-});
-
-router.get('/users/:id',isAuthenticated,isTokenValid, (req, res) => {
+};
+users.getOne =  (req, res) => {
   User.findById(req.params.id,(err,user)=>{
     if (err){
       console.log("error "+ err);
@@ -57,14 +55,22 @@ router.get('/users/:id',isAuthenticated,isTokenValid, (req, res) => {
       res.send(user);
     }
   });
-});
+};
 
-router.put('/users/:id',isAuthenticated,isTokenValid, (req, res) => {
+users.update = (req, res) => {
   User.findOne({_id: req.params.id}, function(err, user){
   if (err) { return next(err); }
     let dummy = req.body;
-    user.username = dummy.username;
-    user.password = createHash(dummy.password);
+    if (req.decoded._doc.lvl=3){
+      user.username = dummy.username;
+    }else {
+      user.username = req.decoded._doc.username;
+    }
+    if (req.params.psw =="true"){
+      user.password = createHash(dummy.password);
+    }else {
+      user.password = dummy.password;
+    }
     user.email = dummy.email;
     user.firstname = dummy.firstname;
     user.lastname = dummy.lastname;
@@ -82,25 +88,13 @@ router.put('/users/:id',isAuthenticated,isTokenValid, (req, res) => {
       }
     });
   });
-});
+};
 
 var createHash = function(password){
     return bCrypt.hashSync(password, bCrypt.genSaltSync(10), null);
 }
 
-router.get('/users/:id',isAuthenticated,isTokenValid, (req, res) => {
-  User.findById(req.params.id,(err,user)=>{
-    if (err){
-      console.log("error "+ err);
-      res.send(JSON.err)
-    }
-    else {
-      res.send(user);
-    }
-  });
-});
-
-router.delete('/users/:id',isAuthenticated,isTokenValid, (req, res) => {
+users.delete = (req, res) => {
   User.findByIdAndRemove(req.params.id,(err,user)=>{
     if (err){
       console.log("error "+ err);
@@ -110,21 +104,17 @@ router.delete('/users/:id',isAuthenticated,isTokenValid, (req, res) => {
       res.send(user);
     }
   });
-});
+};
 
-router.post('/users', function(req, res, next) {
+users.signup =  function(req, res, next) {
   passport.authenticate('signup', function(err, user, info) {
     if (err) { return res.json({user:false, message:err}); }
 		else if (!user) { return res.json({user:false, message:'User already exists with that username'}); }
 		else { return res.json({user:true});}
   })(req, res, next);
-});
+};
 
-router.get('/cards',isAuthenticated,isTokenValid, (req, res) => {
-  res.send('api cards called');
-});
-
-router.post('/login', function(req, res, next) {
+users.authenticate =  function(req, res, next) {
   passport.authenticate('login', function(err, user, info) {
     if (err) { return res.json({user:false, message:err}); }
 		else if (!user) {
@@ -140,8 +130,10 @@ router.post('/login', function(req, res, next) {
 	      return next();
       });
 		}
-  })(req, res, next);
-}, function(req, res) {
+  })(req, res, next)
+}
+
+users.login =  function(req, res) {
   User.findOne({ 'username' :  req.body.username },
       function(err, user) {
           if (err){
@@ -155,11 +147,11 @@ router.post('/login', function(req, res, next) {
           res.send(r)
       }
   );
-});
+};
 
-router.post('/logout', function(req, res) {
+users.logout = function(req, res) {
     req.logout();
     res.send('logout ok');
-});
+};
 
-module.exports = router;
+module.exports = users;

@@ -11,7 +11,7 @@ export class AuthenticationService {
     constructor(private http: Http, private currentUser:CurrentUserService) { }
 
     login(username: string, password: string) {
-        return this.http.post('/api/login', { username: username, password: password })
+        return this.http.post('/api/user/login', { username: username, password: password })
             .map((response: Response) => {
               let data = response.json();
                 if (data.username) {
@@ -24,7 +24,7 @@ export class AuthenticationService {
     }
 
     logout() {
-        return this.http.post('/api/logout',{})
+        return this.http.post('/api/user/logout',{})
             .subscribe((response: Response) => {
                 this.currentUser.removeUser();
                 this.setLogged(false);

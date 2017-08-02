@@ -11,6 +11,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { SingInComponent } from './components/sing-in/sing-in.component'
 import { UserListComponent } from './components/user-list/user-list.component';
 import { UserDetailComponent } from './components/user-detail/user-detail.component';
+import { CardOverviewComponent } from './components/card-overview/card-overview.component';
 import { CardListComponent } from './components/card-list/card-list.component';
 import { CardDetailComponent } from './components/card-detail/card-detail.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
@@ -19,11 +20,12 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import  {CurrentUserService} from './shared/current-user.service';
 import { AuthenticationService } from './shared/authentication/authentication.service';
 import { UserService } from './shared/user.service';
+import { CardsService } from './shared/cards.service';
 import {AuthGuard,AdminGuard} from './shared/authentication/guard'
 
 //ROUTING
 import { RouterModule, Routes } from '@angular/router';
-import{routing} from './routes/routing';
+import { routing } from './routes/routing';
 
 //MOCKS
 import { fakeBackendProvider } from './mocks/mocks';
@@ -42,7 +44,8 @@ import { BaseRequestOptions } from '@angular/http';
     RegisterComponent,
     SingInComponent,
     CardListComponent,
-    CardDetailComponent
+    CardDetailComponent,
+    CardOverviewComponent
   ],
   imports: [
     BrowserModule,
@@ -55,6 +58,7 @@ import { BaseRequestOptions } from '@angular/http';
     CurrentUserService,
     AuthenticationService,
     UserService,
+    CardsService,
     //fakeBackendProvider,
     MockBackend,
     BaseRequestOptions,

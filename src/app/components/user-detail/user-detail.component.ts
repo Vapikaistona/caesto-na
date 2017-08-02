@@ -11,6 +11,7 @@ import  {CurrentUserService} from '../../shared/current-user.service';
 })
 export class UserDetailComponent implements OnInit {
   user:User;
+  update= {send:false,msg:"",success:false};
   constructor(private currentUser:CurrentUserService,
               private userService:UserService,
               private route:ActivatedRoute,
@@ -19,18 +20,28 @@ export class UserDetailComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       let id = params['id'];
-      if (!id) id = this.currentUser.getUser()._id
-       this.userService.getById(id).subscribe(user =>{
-         this.user = user;
-       })
+      if (this.currentUser.getUser()){
+        if (!id) id = this.currentUser.getUser()._id;
+        this.userService.getById(id).subscribe(user =>{
+          this.user = user;
+        })
+      }else{
+        this.router.navigate(['login']);
+      }
+
     });
   }
   submitForm(form: any): void{
-    this.userService.update(this.user).subscribe(
+    this.userService.update(this.user,form.form.controls.password.dirty).subscribe(
       user=>{
-        this.user = user;
-        this.router.navigate(['users']);
+        this.update= {send:true,msg:"User updated successfully",success:true};
+        if (this.currentUser.isAdmin()){
+          this.router.navigate(['users']);
+        }else{
+          this.user = user;
+        }
       },error =>{
+        this.update= {send:true,msg:"There has been an error updating the user",success:false};
         console.log("Error Updating User "+error)
       });
   }
