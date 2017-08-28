@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+
+import {TroopListComponent} from './troop-list/troop-list.component';
+import {CommanderListComponent} from './commander-list/commander-list.component';
 
 @Component({
   selector: 'card-list',
@@ -6,10 +9,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./card-list.component.css']
 })
 export class CardListComponent implements OnInit {
-
+  @Input () isCommander:boolean=false;
   constructor() { }
 
   ngOnInit() {
   }
-
 }

@@ -13,7 +13,12 @@ import { UserListComponent } from './components/user-list/user-list.component';
 import { UserDetailComponent } from './components/user-detail/user-detail.component';
 import { CardOverviewComponent } from './components/card-overview/card-overview.component';
 import { CardListComponent } from './components/card-list/card-list.component';
+import { TroopListComponent } from './components/card-list/troop-list/troop-list.component';
+import { CommanderListComponent } from './components/card-list/commander-list/commander-list.component';
 import { CardDetailComponent } from './components/card-detail/card-detail.component';
+import { TroopDetailComponent } from './components/card-detail/troop-detail/troop-detail.component';
+import { CommanderDetailComponent } from './components/card-detail/commander-detail/commander-detail.component';
+
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 //SERVICES
@@ -34,6 +39,7 @@ import { BaseRequestOptions } from '@angular/http';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +51,11 @@ import { BaseRequestOptions } from '@angular/http';
     SingInComponent,
     CardListComponent,
     CardDetailComponent,
-    CardOverviewComponent
+    CardOverviewComponent,
+    CommanderDetailComponent,
+    TroopDetailComponent,
+    CommanderListComponent,
+    TroopListComponent
   ],
   imports: [
     BrowserModule,

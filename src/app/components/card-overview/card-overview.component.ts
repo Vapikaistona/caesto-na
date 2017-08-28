@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./card-overview.component.css']
 })
 export class CardOverviewComponent implements OnInit {
-
+  private showCommanders:boolean=false;
   constructor() { }
 
   ngOnInit() {
   }
-
+  setCardView(showCommanders:boolean){
+    this.showCommanders = showCommanders;
+  }
 }

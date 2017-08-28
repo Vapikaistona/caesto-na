@@ -1,0 +1,1 @@
+<a *ngFor="let commander of commanderList" (click)="commanderDetails(commander._id)"  class="collection-item" [class.active]="commander._id===currentCommanderActive">{{commander.cardname}}</a>

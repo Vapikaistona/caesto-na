@@ -13,9 +13,5 @@ router.post('/users', users.signup);
 router.post('/login', users.authenticate,users.login);
 router.post('/logout', users.logout);
 
-router.get('/cards',users.isAuthenticated,users.isTokenValid, (req, res) => {
-  res.send('api cards called');
-});
-
 
 module.exports = router;

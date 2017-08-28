@@ -1,8 +1,12 @@
+<div class="container">
+    <a class="waves-effect waves-light btn" [class.disabled]="!showCommanders" (click)="setCardView(false)">Troops</a>
+    <a class="waves-effect waves-light btn" [class.disabled]="showCommanders" (click)="setCardView(true)">Commanders</a>
+</div>
 <div class="row">
   <div class = "col m6">
-    <card-detail></card-detail>
+    <card-detail [isCommander]="showCommanders"></card-detail>
   </div>
   <div class = "col m6">
-    <card-list></card-list>
+    <card-list  [isCommander]="showCommanders"></card-list>
   </div>
 </div>

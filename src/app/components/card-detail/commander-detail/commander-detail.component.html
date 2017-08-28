@@ -1,0 +1,44 @@
+<form #form="ngForm" (ngSubmit)="submitFormCommander(form)" class="col s12">
+  <div class="row">
+    <div class="form-group col s6">
+      <label for="cardname">Commander Name</label>
+      <input id="cardname" type="text" class="validate form-control" name="cardname"  [(ngModel)]="commander.cardname" required>
+    </div>
+    <div class="form-group col s6">
+      <label for="race">Race</label>
+      <select id="race" name="race" [(ngModel)]="commander.race">
+        <option *ngFor="let race of races" [ngValue]="race._id">{{race.name}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col s4">
+      <label>Life: {{commander.life}}</label>
+      <p class="range-field">
+        <input type="range" id="life" min="1" max="20" name="life"  [(ngModel)]="commander.life" />
+      </p>
+    </div>
+    <div class="form-group col s4">
+      <label>Movement: {{commander.movement}}</label>
+      <p class="range-field">
+        <input type="range" id="movement" min="1" max="5" name="movement"  [(ngModel)]="commander.movement" />
+      </p>
+    </div>
+    <div class="form-group col s4">
+      <label>Resources: {{commander.resources}}</label>
+      <p class="range-field">
+        <input type="range" id="resources" min="1" max="5" name="resources"  [(ngModel)]="commander.resources" />
+      </p>
+    </div>
+  </div>
+   <div class="row">
+     <div class="form-group col s12">
+       <label for="habilities">Habilities</label>
+       <textarea id="habilities" class="materialize-textarea" name="habilities" [(ngModel)]="commander.habilities"></textarea>
+     </div>
+   </div>
+  <div class="form-group col right">
+    <button
+      [ngClass]="{disabled: !form.valid}" [disabled]="!form.valid" type="submit" class="btn btn-default right s4">Save</button>
+  </div>
+</form>

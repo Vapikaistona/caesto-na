@@ -18,12 +18,17 @@ users.isTokenValid = function(req, res, next) {
 	}
   if (token) {
     jwt.verify(token, config.secret, function(err, decoded) {
-			if(!(req.params.id == decoded._doc._id || decoded._doc.lvl==3)|| err) {
-        return res.json({ success: false, message: 'Failed to authenticate token.' });
-      } else {
-        req.decoded = decoded;
-        return  next();
-      }
+			if (!err){
+				if(!(req.params.id == decoded._doc._id || decoded._doc.lvl==3)|| err) {
+	        return res.json({ success: false, message: 'Failed to authenticate token.' });
+	      } else {
+	        req.decoded = decoded;
+	        return  next();
+	      }
+			}
+			else {
+				return res.json({ success: false, message: err.message });
+			}
     });
   } else {
     return res.status(403).send({
@@ -139,9 +144,7 @@ users.login =  function(req, res) {
           if (err){
             res.send(err);
           }
-					var token = jwt.sign(user,config.secret, {
-						expiresIn: 60
-					});
+					var token = jwt.sign(user,config.secret);
 					var r = user.toObject();
 					r.token = token;
           res.send(r)

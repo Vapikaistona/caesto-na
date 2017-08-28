@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
-import {Troop} from '../../classes/troop';
-import {Commander} from '../../classes/commander';
+
+import {TroopDetailComponent} from './troop-detail/troop-detail.component';
+import {CommanderDetailComponent} from './commander-detail/commander-detail.component'
 
 import {CardsService} from '../../shared/cards.service';
 declare var $:any;
@@ -12,10 +13,8 @@ declare var $:any;
   styleUrls: ['./card-detail.component.css']
 })
 export class CardDetailComponent implements OnInit {
-  private troop:Troop;
-  private commander:Commander;
   private races:any;
-  private isCommander:boolean =false;
+  @Input () isCommander:boolean;
   private op={msg:"", send:false, success:false};
   constructor(private cards:CardsService) { }
 
@@ -25,17 +24,7 @@ export class CardDetailComponent implements OnInit {
     },error =>{
       console.log("Error getting races: "+ error)
     });
-    this.troop = {cardname: "",race:"", habilities:"",cost: 0, attack:0, life: 1, movement: 1}
-    this.commander = {cardname: "",race:"", habilities:"",resources:0, life: 1, movement: 1}
   }
-  submitFormCommander(form:any){
-    this.cards.createCommander(this.commander).subscribe(data =>{
 
-    },error =>{
-      console.log(error);
-    });
-  }
-  submitFormTroop(form:any){
 
-  }
 }
