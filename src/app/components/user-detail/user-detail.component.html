@@ -1,4 +1,4 @@
-<div class="jumbotron">
+<div class="jumbotron container">
   <h2>User Details</h2>
   <p *ngIf="update.send" [ngClass]="{'green-text': update.success, 'red-text': !update.success}" >{{update.msg}} </p>
   <div class="preloader-wrapper big active center" *ngIf="!user">

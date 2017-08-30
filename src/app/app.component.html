@@ -1,5 +1,5 @@
 <nav>
-  <div class="nav-wrapper">
+  <div class="nav-wrapper lime darken-1">
     <a routerLink="/" class="brand-logo"> Caesto-Na</a>
     <ul id="nav-mobile" class="right">
       <li *ngIf="authentication.getLogged()" routerLinkActive="active"><a routerLink="cards" >Cards</a></li>
@@ -9,11 +9,11 @@
       </li>
       <li [ngSwitch]="authentication.getLogged()" routerLinkActive="active">
         <a *ngSwitchCase="false" routerLink="login">Login</a>
-        <a *ngSwitchCase="true" (click)="logout()">Logout</a>
+        <a *ngSwitchCase="true" class="red" (click)="logout()">Logout</a>
       </li>
     </ul>
   </div>
 </nav>
-<div class="container">
+<div class="">
   <router-outlet></router-outlet>
 </div>

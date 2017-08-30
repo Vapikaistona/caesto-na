@@ -26,6 +26,8 @@ import  {CurrentUserService} from './shared/current-user.service';
 import { AuthenticationService } from './shared/authentication/authentication.service';
 import { UserService } from './shared/user.service';
 import { CardsService } from './shared/cards.service';
+import { CommanderService } from './shared/commander.service';
+import { TroopService } from './shared/troop.service';
 import {AuthGuard,AdminGuard} from './shared/authentication/guard'
 
 //ROUTING
@@ -69,6 +71,8 @@ import { BaseRequestOptions } from '@angular/http';
     AuthenticationService,
     UserService,
     CardsService,
+    CommanderService,
+    TroopService,
     //fakeBackendProvider,
     MockBackend,
     BaseRequestOptions,

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import {Commander} from '../../../classes/commander';
 import {CardsService} from '../../../shared/cards.service'
+import {CommanderService} from '../../../shared/commander.service'
 
 @Component({
   selector: 'commander-list',
@@ -11,14 +12,21 @@ import {CardsService} from '../../../shared/cards.service'
 export class CommanderListComponent implements OnInit {
   private currentCommanderActive:string;
   private commanderList:Array<Commander>;
-  constructor(private cards:CardsService) { }
+  @Output() commanderCliked = new EventEmitter();
+
+  constructor(private cards:CardsService, private commanderService:CommanderService) {
+  }
 
   ngOnInit() {
-    this.cards.getAllCommanders().subscribe((list:Array<Commander>) =>{
-      this.commanderList = list;
-    })
+    this.commanderService.getCommanderList();
   }
-  commanderDetails(id:string){
-    this.currentCommanderActive = id;
+  commanderDetails(commander:Commander){
+    this.currentCommanderActive = commander._id;
+    this.commanderCliked.emit(commander);
+  }
+  delete(id:string){
+    this.cards.deleteCommander(id).subscribe((commander) =>{
+      this.commanderService.getCommanderList();
+    });
   }
 }

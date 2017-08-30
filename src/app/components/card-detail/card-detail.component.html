@@ -1,7 +1,7 @@
-<div class="jumbotron">
+<div class="">
   <p *ngIf="op.send"  [ngClass]="{'green-text': op.success, 'red-text': !op.success}">{{op.msg}}</p>
-  <div class="container" [ngSwitch]="isCommander">
-    <commander-detail  [races]="races" *ngSwitchCase="true"></commander-detail>
-    <troop-detail [races]="races" *ngSwitchCase="false"></troop-detail>
+  <div class="" [ngSwitch]="isCommander">
+    <commander-detail  [commander]="cardToShow" [races]="races" *ngSwitchCase="true"></commander-detail>
+    <troop-detail [troop]="cardToShow" [races]="races" *ngSwitchCase="false"></troop-detail>
   </div>
 </div>

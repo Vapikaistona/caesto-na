@@ -39,6 +39,6 @@
    </div>
   <div class="form-group col right">
     <button
-      [ngClass]="{disabled: !form.valid}" [disabled]="!form.valid" type="submit" class="btn btn-default right s4">Save</button>
+      [ngClass]="{disabled: !form.valid}" [disabled]="!form.valid" type="submit" class="btn btn-default right s4">{{commander._id?"save":"new"}}</button>
   </div>
 </form>

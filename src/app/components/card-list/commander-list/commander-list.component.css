@@ -1,3 +1,7 @@
-a{
+li{
   cursor: pointer;
+}
+.active{
+  color:white !important;
+  background-color: #2196F3 !important
 }

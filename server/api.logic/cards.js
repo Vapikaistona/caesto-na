@@ -13,7 +13,6 @@ cards.getAllTroops =  (req, res) => {
         res.send(JSON.err)
       }
       else {
-        console.log(trooplist);
         res.send(trooplist);
       }
     });
@@ -31,8 +30,42 @@ cards.getTroopById =  (req, res) => {
   });
 };
 
-cards.upsertTroop =  (req, res) => {
-    Troop.findOneAndUpdate({_id:req.body.id},req.body,{upsert:true,new:true,runValidators:true},(err,troop)=>{
+cards.insertTroop =  (req, res) => {
+    var troop = new Troop(req.body);
+    Troop.findOne({"cardname":troop.cardname},(err,troopF)=>{
+      if (err){
+        console.log("error "+ err);
+        res.send(JSON.err)
+      }
+      else {
+        if (troopF){
+          Troop.findOneAndUpdate({_id:troop.id},troop,(err,troop)=>{
+            if (err){
+              console.log("error "+ err);
+              res.send(JSON.err)
+            }
+            else {
+              res.send({ok:true});
+            }
+          });
+        }
+        else{
+          troop.save(function (err, troop) {
+            if (err) {
+              console.log("error "+ err);
+              res.send(JSON.err);
+            }
+            else {
+              res.send({ok:true});
+            }
+          });
+        }
+      }
+    });
+};
+
+cards.updateTroop =  (req, res) => {
+    Troop.findOneAndUpdate({_id:req.body.id},req.body,(err,troop)=>{
       if (err){
         console.log("error "+ err);
         res.send(JSON.err)
@@ -42,6 +75,7 @@ cards.upsertTroop =  (req, res) => {
       }
     });
 };
+
 
 cards.deleteTroop = (req, res) => {
   Troop.findByIdAndRemove(req.params.id,(err,troop)=>{
@@ -79,16 +113,37 @@ cards.getCommanderById =  (req, res) => {
   });
 };
 cards.insertCommander =  (req, res) => {
-    var commander = new Commander(req.body);
-    commander.save(function (err, commander) {
-      if (err) {
-        console.log("error "+ err);
-        res.send(JSON.err);
+  var commander = new Commander(req.body);
+  Commander.findOne({"cardname":commander.cardname},(err,commanderF)=>{
+    if (err){
+      console.log("error "+ err);
+      res.send(JSON.err)
+    }
+    else {
+      if (commanderF){
+        Commander.findOneAndUpdate({_id:commander.id},commander,(err,commander)=>{
+          if (err){
+            console.log("error "+ err);
+            res.send(JSON.err)
+          }
+          else {
+            res.send({ok:true});
+          }
+        });
       }
-      else {
-        res.send({ok:true});
+      else{
+        commander.save(function (err, commander) {
+          if (err) {
+            console.log("error "+ err);
+            res.send(JSON.err);
+          }
+          else {
+            res.send({ok:true});
+          }
+        });
       }
-    });
+    }
+  });
 };
 
 cards.updateCommander =  (req, res) => {

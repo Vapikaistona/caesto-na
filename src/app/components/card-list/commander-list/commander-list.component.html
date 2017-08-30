@@ -1,1 +1,1 @@
-<a *ngFor="let commander of commanderList" (click)="commanderDetails(commander._id)"  class="collection-item" [class.active]="commander._id===currentCommanderActive">{{commander.cardname}}</a>
+<li *ngFor="let commander of commanderService.commanderList" (click)="commanderDetails(commander)"  class="collection-item blue-text" [class.active]="commander._id===currentCommanderActive"><div>{{commander.cardname}}<a (click)="delete(commander._id)" class="secondary-content"><i class="material-icons red-text">delete</i></a></div></li>
