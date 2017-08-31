@@ -1,8 +1,6 @@
 <div class="jumbotron">
   <div class="container" [ngSwitch]="isCommander">
-    <ul class="collection">
-      <commander-list (commanderCliked)="commanderCliked($event)" *ngSwitchCase="true"></commander-list>
-      <troop-list (troopCliked)="troopCliked($event)" *ngSwitchCase="false"></troop-list>
-    </ul>
+      <commander-list *ngSwitchCase="true"></commander-list>
+      <troop-list *ngSwitchCase="false"></troop-list>
   </div>
 </div>

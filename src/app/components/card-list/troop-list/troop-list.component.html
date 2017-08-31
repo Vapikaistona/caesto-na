@@ -1,1 +1,5 @@
-<li *ngFor="let troop of troopService.troopList" (click)="troopDetails(troop)"  class="collection-item blue-text" [class.active]="troop._id===currentTroopActive"><div>{{troop.cardname}}<a (click)="delete(troop._id)" class="secondary-content"><i class="material-icons red-text">delete</i></a></div></li>
+<input type="text" name="cardname" [(ngModel)]="troopService.troopFilter.cardname" placeholder="Search" style="text-align: right">
+<ul class="collection">
+  <li *ngFor="let troop of troopService.troopList | troopFilter:troopService.troopFilter" (click)="troopDetails(troop)"  class="collection-item blue-text" [class.active]="troop._id===troopService.troop._id"><div>{{troop.cardname}}<a (click)="delete(troop._id)" class="secondary-content"><i class="material-icons red-text">delete</i></a></div></li>
+  <li *ngIf="troopService.troopList.length==0" class="collection-item blue-text"><div>No element found</div></li>
+</ul>

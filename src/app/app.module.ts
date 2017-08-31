@@ -30,6 +30,10 @@ import { CommanderService } from './shared/commander.service';
 import { TroopService } from './shared/troop.service';
 import {AuthGuard,AdminGuard} from './shared/authentication/guard'
 
+//PIPES
+import {CommanderFilterPipe} from './shared/pipes/commanderFilter'
+import {TroopFilterPipe} from './shared/pipes/troopFilter'
+
 //ROUTING
 import { RouterModule, Routes } from '@angular/router';
 import { routing } from './routes/routing';
@@ -57,7 +61,9 @@ import { BaseRequestOptions } from '@angular/http';
     CommanderDetailComponent,
     TroopDetailComponent,
     CommanderListComponent,
-    TroopListComponent
+    TroopListComponent,
+    CommanderFilterPipe,
+    TroopFilterPipe
   ],
   imports: [
     BrowserModule,

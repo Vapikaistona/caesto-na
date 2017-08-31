@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {CommanderService} from '../../shared/commander.service';
+import {TroopService} from '../../shared/troop.service';
 
 @Component({
   selector: 'app-card-overview',
@@ -8,21 +10,21 @@ import { Component, OnInit } from '@angular/core';
 export class CardOverviewComponent implements OnInit {
   private showCommanders:boolean=false;
   private card:any;
-  constructor() { }
+  constructor(private commanderService:CommanderService, private troopService:TroopService) { }
 
   ngOnInit() {
   }
+
   setCardView(showCommanders:boolean){
     this.showCommanders = showCommanders;
   }
-  showDetails(card:any){
-    this.card = card;
-  }
+
   newCard(){
     if (this.showCommanders){
-      this.card = {cardname: "",race:"", habilities:"",resources:0, life: 1, movement: 1}
+      this.commanderService.commander = {cardname: "",race:"", habilities:"",resources:0, life: 1, movement: 1}
     }else{
-      this.card = {cardname: "",race:"", habilities:"",cost: 0, attack:0, life: 1, movement: 1}
+       this.troopService.troop = {cardname: "",race:"", habilities:"",cost: 0, attack:0, life: 1, movement: 1}
     }
   }
+  
 }

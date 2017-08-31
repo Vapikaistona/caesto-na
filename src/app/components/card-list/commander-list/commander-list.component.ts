@@ -12,7 +12,6 @@ import {CommanderService} from '../../../shared/commander.service'
 export class CommanderListComponent implements OnInit {
   private currentCommanderActive:string;
   private commanderList:Array<Commander>;
-  @Output() commanderCliked = new EventEmitter();
 
   constructor(private cards:CardsService, private commanderService:CommanderService) {
   }
@@ -20,10 +19,11 @@ export class CommanderListComponent implements OnInit {
   ngOnInit() {
     this.commanderService.getCommanderList();
   }
+  
   commanderDetails(commander:Commander){
-    this.currentCommanderActive = commander._id;
-    this.commanderCliked.emit(commander);
+    this.commanderService.setCommander(commander);
   }
+
   delete(id:string){
     this.cards.deleteCommander(id).subscribe((commander) =>{
       this.commanderService.getCommanderList();

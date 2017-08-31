@@ -6,8 +6,13 @@ import {CardsService} from './cards.service'
 export class TroopService {
   public troop:Troop;
   public troopList:Array<Troop>;
+  public troopFilter:Troop;
 
-  constructor(private cards:CardsService) { }
+  constructor(private cards:CardsService) {
+    this.troop = {cardname: "",race:"", habilities:"",cost: 0, attack:0, life: 1, movement: 1}
+    this.troopFilter = {cardname: ""}
+    this.troopList = [];
+  }
 
   setTroop(troop:Troop){
       this.troop = troop;

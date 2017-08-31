@@ -1,1 +1,5 @@
-<li *ngFor="let commander of commanderService.commanderList" (click)="commanderDetails(commander)"  class="collection-item blue-text" [class.active]="commander._id===currentCommanderActive"><div>{{commander.cardname}}<a (click)="delete(commander._id)" class="secondary-content"><i class="material-icons red-text">delete</i></a></div></li>
+<input type="text" name="cardname" [(ngModel)]="commanderService.commanderFilter.cardname" placeholder="Search" style="text-align: right">
+<ul class="collection">
+  <li *ngFor="let commander of commanderService.commanderList | commanderFilter:commanderService.commanderFilter " (click)="commanderDetails(commander)"  class="collection-item blue-text" [class.active]="commander._id===commanderService.commander._id"><div>{{commander.cardname}}<a (click)="delete(commander._id)" class="secondary-content"><i class="material-icons red-text">delete</i></a></div></li>
+  <li *ngIf="commanderService.commanderList.length==0" class="collection-item blue-text"><div>No element found</div></li>
+</ul>

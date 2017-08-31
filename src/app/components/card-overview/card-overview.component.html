@@ -1,16 +1,16 @@
 
 <div class="row">
   <div class = "container">
-    <a class="waves-effect waves-light btn blue " [class.disabled]="!showCommanders" (click)="setCardView(false)">Troops</a>
-    <a class="waves-effect waves-light btn blue " [class.disabled]="showCommanders" (click)="setCardView(true)">Commanders</a>
+    <a class="waves-effect waves-light btn blue " [class.darken-3]="!showCommanders" (click)="setCardView(false)">Troops</a>
+    <a class="waves-effect waves-light btn blue " [class.darken-3]="showCommanders" (click)="setCardView(true)">Commanders</a>
   </div>
 </div>
 <div class="row">
   <div class = "col s6">
-    <card-list (details)="showDetails($event)" [isCommander]="showCommanders"></card-list>
+    <a (click)="newCard()" class="btn-floating btn-small waves-effect waves-light green"><i class="material-icons">add</i></a>
+    <card-list [isCommander]="showCommanders"></card-list>
   </div>
   <div class = "col s6">
-    <a (click)="newCard()" class="btn-floating btn-small waves-effect waves-light green"><i class="material-icons">add</i></a>
-    <card-detail [cardToShow]="card" [isCommander]="showCommanders"></card-detail>
+    <card-detail  [isCommander]="showCommanders"></card-detail>
   </div>
 </div>

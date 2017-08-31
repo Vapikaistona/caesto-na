@@ -8,7 +8,6 @@ import {TroopService} from '../../../shared/troop.service'
   styleUrls: ['./troop-list.component.css']
 })
 export class TroopListComponent implements OnInit {
-  @Output() troopCliked = new EventEmitter();
   private currentTroopActive:string;
   private troopList:Array<Troop>;
   constructor(private cards:CardsService, private troopService:TroopService) { }
@@ -17,8 +16,8 @@ export class TroopListComponent implements OnInit {
     this.troopService.getTroopList();
   }
   troopDetails(troop:Troop){
+    this.troopService.setTroop(troop);
     this.currentTroopActive = troop._id;
-    this.troopCliked.emit(troop);
   }
   delete(id:string){
     this.cards.deleteTroop(id).subscribe((troop) =>{

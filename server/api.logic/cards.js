@@ -32,7 +32,7 @@ cards.getTroopById =  (req, res) => {
 
 cards.insertTroop =  (req, res) => {
     var troop = new Troop(req.body);
-    Troop.findOne({"cardname":troop.cardname},(err,troopF)=>{
+    Troop.findById(troop._id,(err,troopF)=>{
       if (err){
         console.log("error "+ err);
         res.send(JSON.err)

@@ -11,15 +11,9 @@ import {Troop} from '../../classes/troop';
 })
 export class CardListComponent implements OnInit {
   @Input () isCommander:boolean=false;
-  @Output() details = new EventEmitter();
   constructor() { }
 
   ngOnInit() {
   }
-  commanderCliked (commander:Commander){
-      this.details.emit(commander);
-  }
-  troopCliked (troop:Troop){
-      this.details.emit(troop);
-  }
+
 }

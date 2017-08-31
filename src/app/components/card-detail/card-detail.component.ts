@@ -15,7 +15,6 @@ declare var $:any;
 export class CardDetailComponent implements OnInit {
   private races:any;
   @Input () isCommander:boolean;
-  @Input () cardToShow:any;
   private op={msg:"", send:false, success:false};
   constructor(private cards:CardsService) { }
 

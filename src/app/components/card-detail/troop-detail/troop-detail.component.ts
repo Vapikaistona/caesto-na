@@ -8,15 +8,14 @@ import {TroopService} from '../../../shared/troop.service';
   styleUrls: ['./troop-detail.component.css']
 })
 export class TroopDetailComponent implements OnInit {
-  @Input () troop:Troop;
   @Input () races:any;
   constructor(private cards:CardsService, private troopService:TroopService) { }
 
   ngOnInit() {
-    this.troop = {cardname: "",race:"", habilities:"",cost: 0, attack:0, life: 1, movement: 1}
   }
+  
   submitFormTroop(form:any){
-    this.cards.createTroop(this.troop).subscribe(data =>{
+    this.cards.createTroop(this.troopService.troop).subscribe(data =>{
       this.troopService.getTroopList();
     },error =>{
       console.log(error);
