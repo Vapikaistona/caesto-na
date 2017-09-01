@@ -1,7 +1,7 @@
 <div class="">
   <p *ngIf="op.send"  [ngClass]="{'green-text': op.success, 'red-text': !op.success}">{{op.msg}}</p>
   <div class="" [ngSwitch]="isCommander">
-    <commander-detail [races]="races" *ngSwitchCase="true"></commander-detail>
-    <troop-detail [races]="races" *ngSwitchCase="false"></troop-detail>
+    <commander-detail *ngSwitchCase="true"></commander-detail>
+    <troop-detail  *ngSwitchCase="false"></troop-detail>
   </div>
 </div>

@@ -17,6 +17,9 @@ export class TroopService {
   setTroop(troop:Troop){
       this.troop = troop;
   }
+  clearTroop(){
+    this.troop = {cardname: "",race:"", habilities:"",cost: 0, attack:0, life: 1, movement: 1}
+  }
   getTroopList(){
     this.cards.getAllTroops().subscribe((list:Array<Troop>) =>{
       this.troopList = list;

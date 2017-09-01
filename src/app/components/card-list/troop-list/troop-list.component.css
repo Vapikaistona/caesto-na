@@ -10,3 +10,10 @@ ul{
   max-height: 400px;
   overflow: auto;
 }
+button{
+  padding-right: 3px;
+  padding-left: 3px;
+  top: -7px;
+  position: relative;
+  margin-right: 1px;
+}

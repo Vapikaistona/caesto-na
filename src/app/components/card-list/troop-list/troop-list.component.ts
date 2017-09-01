@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import {Troop} from '../../../classes/troop';
 import {CardsService} from '../../../shared/cards.service'
+import {RacesService} from '../../../shared/races.service'
 import {TroopService} from '../../../shared/troop.service'
 @Component({
   selector: 'troop-list',
@@ -10,7 +11,8 @@ import {TroopService} from '../../../shared/troop.service'
 export class TroopListComponent implements OnInit {
   private currentTroopActive:string;
   private troopList:Array<Troop>;
-  constructor(private cards:CardsService, private troopService:TroopService) { }
+  private raceList:Array<any>;
+  constructor(private cards:CardsService, private races:RacesService, private troopService:TroopService) { }
 
   ngOnInit() {
     this.troopService.getTroopList();
@@ -22,6 +24,10 @@ export class TroopListComponent implements OnInit {
   delete(id:string){
     this.cards.deleteTroop(id).subscribe((troop) =>{
       this.troopService.getTroopList();
+      this.troopService.clearTroop();
     });
+  }
+  getBgColor(race){
+    return this.races.getRaceColor(race);
   }
 }

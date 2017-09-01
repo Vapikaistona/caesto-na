@@ -37,6 +37,14 @@
        <textarea id="habilities" class="materialize-textarea" name="habilities" [(ngModel)]="commanderService.commander.habilities"></textarea>
      </div>
    </div>
+   <div class="row" *ngIf="commanderService.commander._id">
+     <div class="form-group col s6" *ngIf="commanderService.commander.modified_by">
+       <label>Modified {{commanderService.commander.modified}} by {{commanderService.commander.modified_by}}</label>
+     </div>
+     <div class="form-group col s6">
+       <label>Created {{commanderService.commander.created}} by {{commanderService.commander.created_by}}</label>
+     </div>
+   </div>
   <div class="form-group col right">
     <button
       [ngClass]="{disabled: !form.valid}" [disabled]="!form.valid" type="submit" class="btn btn-default right s4" [class.blue]="commanderService.commander._id" [class.green]="!commanderService.commander._id">{{commanderService.commander._id?"save":"new"}}</button>

@@ -26,6 +26,7 @@ import  {CurrentUserService} from './shared/current-user.service';
 import { AuthenticationService } from './shared/authentication/authentication.service';
 import { UserService } from './shared/user.service';
 import { CardsService } from './shared/cards.service';
+import { RacesService } from './shared/races.service';
 import { CommanderService } from './shared/commander.service';
 import { TroopService } from './shared/troop.service';
 import {AuthGuard,AdminGuard} from './shared/authentication/guard'
@@ -77,6 +78,7 @@ import { BaseRequestOptions } from '@angular/http';
     AuthenticationService,
     UserService,
     CardsService,
+    RacesService,
     CommanderService,
     TroopService,
     //fakeBackendProvider,

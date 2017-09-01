@@ -1,6 +1,7 @@
 import { Component, OnInit,Input } from '@angular/core';
 import {Commander} from '../../../classes/commander';
 import {CardsService} from '../../../shared/cards.service';
+import {RacesService} from '../../../shared/races.service';
 import {CommanderService} from '../../../shared/commander.service';
 @Component({
   selector: 'commander-detail',
@@ -8,11 +9,12 @@ import {CommanderService} from '../../../shared/commander.service';
   styleUrls: ['./commander-detail.component.css']
 })
 export class CommanderDetailComponent implements OnInit {
-  @Input () races:any;
+  private races:any;
 
-  constructor(private cards:CardsService, private commanderService:CommanderService) { }
+  constructor(private cards:CardsService, private commanderService:CommanderService, private racesService:RacesService) { }
 
   ngOnInit() {
+    this.races = this.racesService.getRacesList();
   }
 
   submitFormCommander(form:any){

@@ -1,5 +1,31 @@
-<input type="text" name="cardname" [(ngModel)]="troopService.troopFilter.cardname" placeholder="Search" style="text-align: right">
+<div class="row">
+  <input type="text" class="col s6" name="cardname" [(ngModel)]="troopService.troopFilter.cardname" placeholder="Search" style="text-align: right">
+  <input type="number" class="col s2" name="attack" [(ngModel)]="troopService.troopFilter.attack" placeholder="Attack" style="text-align: right">
+  <input type="number" class="col s2" name="life" [(ngModel)]="troopService.troopFilter.life" placeholder="Life" style="text-align: right">
+  <input type="number" class="col s2" name="cost" [(ngModel)]="troopService.troopFilter.cost" placeholder="Cost" style="text-align: right">
+</div>
+
 <ul class="collection">
-  <li *ngFor="let troop of troopService.troopList | troopFilter:troopService.troopFilter" (click)="troopDetails(troop)"  class="collection-item blue-text" [class.active]="troop._id===troopService.troop._id"><div>{{troop.cardname}}<a (click)="delete(troop._id)" class="secondary-content"><i class="material-icons red-text">delete</i></a></div></li>
-  <li *ngIf="troopService.troopList.length==0" class="collection-item blue-text"><div>No element found</div></li>
+
+  <li *ngFor="let troop of troopService.troopList | troopFilter:troopService.troopFilter" (click)="troopDetails(troop)"  class="collection-item" [class.active]="troop._id===troopService.troop._id" [ngClass]="getBgColor(troop.race)">
+    <div>{{troop.cardname}}
+      <a (click)="delete(troop._id)" class="secondary-content">
+        <i class="material-icons red-text">delete</i>
+      </a>
+      <button class="secondary-content amber btn btn-small right">
+        {{troop.cost}}
+      </button>
+      <button class="secondary-content green btn btn-small right">
+        {{troop.life}}
+      </button>
+      <button class="secondary-content  deep-orange darken-1 btn btn-small right">
+        {{troop.attack}}
+      </button>
+    </div>
+  </li>
+
+  <li *ngIf="troopService.troopList.length==0" class="collection-item blue-text">
+    <div>No element found</div>
+  </li>
+
 </ul>

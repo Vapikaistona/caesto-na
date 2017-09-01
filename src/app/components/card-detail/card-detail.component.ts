@@ -5,6 +5,8 @@ import {TroopDetailComponent} from './troop-detail/troop-detail.component';
 import {CommanderDetailComponent} from './commander-detail/commander-detail.component'
 
 import {CardsService} from '../../shared/cards.service';
+import {RacesService} from '../../shared/races.service'
+
 declare var $:any;
 
 @Component({
@@ -13,17 +15,11 @@ declare var $:any;
   styleUrls: ['./card-detail.component.css']
 })
 export class CardDetailComponent implements OnInit {
-  private races:any;
   @Input () isCommander:boolean;
   private op={msg:"", send:false, success:false};
-  constructor(private cards:CardsService) { }
+  constructor(private cards:CardsService, private racesService:RacesService) { }
 
   ngOnInit() {
-    this.cards.getRaces().subscribe(races =>{
-      this.races = races;
-    },error =>{
-      console.log("Error getting races: "+ error)
-    });
   }
 
 }
