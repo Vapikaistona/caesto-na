@@ -2,6 +2,7 @@
   <div class="nav-wrapper lime darken-1">
     <a routerLink="/" class="brand-logo"> Caesto-Na</a>
     <ul id="nav-mobile" class="right">
+      <li *ngIf="authentication.getLogged()" routerLinkActive="active"><a routerLink="decks" >Decks</a></li>
       <li *ngIf="authentication.getLogged()" routerLinkActive="active"><a routerLink="cards" >Cards</a></li>
       <li [ngSwitch]="authentication.isAdmin()" routerLinkActive="active">
         <a *ngSwitchCase="false" routerLink="user/">User</a>

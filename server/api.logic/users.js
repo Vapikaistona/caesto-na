@@ -15,10 +15,11 @@ users.isTokenValid = function(req, res, next) {
 	var token;
 	if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer'){
 		 token = req.headers.authorization.split(' ')[1];
-	}
+  }
   if (token) {
     jwt.verify(token, config.secret, function(err, decoded) {
 			if (!err){
+        //console.log(decoded)
 				if(!(req.params.id == decoded._doc._id || decoded._doc.lvl==3)|| err) {
 	        return res.json({ success: false, message: 'Failed to authenticate token.' });
 	      } else {

@@ -18,6 +18,9 @@ import { CommanderListComponent } from './components/card-list/commander-list/co
 import { CardDetailComponent } from './components/card-detail/card-detail.component';
 import { TroopDetailComponent } from './components/card-detail/troop-detail/troop-detail.component';
 import { CommanderDetailComponent } from './components/card-detail/commander-detail/commander-detail.component';
+import { DeckDetailComponent } from './components/deck-detail/deck-detail.component';
+import { DeckListComponent } from './components/deck-list/deck-list.component';
+import { DeckOverviewComponent } from './components/deck-overview/deck-overview.component';
 
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
@@ -30,7 +33,6 @@ import { RacesService } from './shared/races.service';
 import { CommanderService } from './shared/commander.service';
 import { TroopService } from './shared/troop.service';
 import {AuthGuard,AdminGuard} from './shared/authentication/guard'
-
 //PIPES
 import {CommanderFilterPipe} from './shared/pipes/commanderFilter'
 import {TroopFilterPipe} from './shared/pipes/troopFilter'
@@ -43,7 +45,6 @@ import { routing } from './routes/routing';
 import { fakeBackendProvider } from './mocks/mocks';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { BaseRequestOptions } from '@angular/http';
-
 
 
 
@@ -64,7 +65,10 @@ import { BaseRequestOptions } from '@angular/http';
     CommanderListComponent,
     TroopListComponent,
     CommanderFilterPipe,
-    TroopFilterPipe
+    TroopFilterPipe,
+    DeckDetailComponent,
+    DeckOverviewComponent,
+    DeckListComponent
   ],
   imports: [
     BrowserModule,

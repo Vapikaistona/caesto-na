@@ -2,6 +2,7 @@
 import { UserListComponent } from '../components/user-list/user-list.component';
 import { UserDetailComponent } from '../components/user-detail/user-detail.component';
 import { CardOverviewComponent } from '../components/card-overview/card-overview.component';
+import {DeckOverviewComponent} from '../components/deck-overview/deck-overview.component'
 import { SingInComponent } from '../components/sing-in/sing-in.component'
 import { PageNotFoundComponent } from '../components/page-not-found/page-not-found.component';
 import { RouterModule, Routes } from '@angular/router';
@@ -25,6 +26,11 @@ import {AuthGuard,AdminGuard} from '../shared/authentication/guard'
   {
     path: 'cards',
     component: CardOverviewComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'decks',
+    component: DeckOverviewComponent,
     canActivate: [AuthGuard]
   },
   {
