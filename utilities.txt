@@ -1,0 +1,8 @@
+////////////////////////////////////
+            MONGODB
+////////////////////////////////////
+  UPDATE:
+    db.users.update({username:"3333"},{$set:{lvl:3}})
+    db.cardtypes.insert({active:true, name:"Creature"});
+    db.cardtypes.insert({active:true, name:"Structure"});
+    db.cardtypes.insert({active:true, name:"Action"});

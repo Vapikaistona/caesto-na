@@ -34,4 +34,8 @@ export class CommanderListComponent implements OnInit {
   getBgColor(race){
     return this.races.getRaceColor(race);
   }
+
+    newCard(){
+      this.commanderService.commander = {cardname: "",race:"", habilities:"",resources:0, life: 1, movement: 1}
+    }
 }

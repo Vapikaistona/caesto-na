@@ -21,6 +21,9 @@ import { CommanderDetailComponent } from './components/card-detail/commander-det
 import { DeckDetailComponent } from './components/deck-detail/deck-detail.component';
 import { DeckListComponent } from './components/deck-list/deck-list.component';
 import { DeckOverviewComponent } from './components/deck-overview/deck-overview.component';
+import { SearchTroopComponent } from './components/search/search-troop/search-troop.component';
+import { SearchCommanderComponent } from './components/search/search-commander/search-commander.component';
+import { SearchDeckComponent } from './components/search/search-deck/search-deck.component';
 
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
@@ -32,6 +35,8 @@ import { CardsService } from './shared/cards.service';
 import { RacesService } from './shared/races.service';
 import { CommanderService } from './shared/commander.service';
 import { TroopService } from './shared/troop.service';
+import { DecksService } from './shared/decks.service';
+import { TypesService } from './shared/types.service';
 import {AuthGuard,AdminGuard} from './shared/authentication/guard'
 //PIPES
 import {CommanderFilterPipe} from './shared/pipes/commanderFilter'
@@ -68,7 +73,10 @@ import { BaseRequestOptions } from '@angular/http';
     TroopFilterPipe,
     DeckDetailComponent,
     DeckOverviewComponent,
-    DeckListComponent
+    DeckListComponent,
+    SearchTroopComponent,
+    SearchCommanderComponent,
+    SearchDeckComponent
   ],
   imports: [
     BrowserModule,
@@ -85,6 +93,8 @@ import { BaseRequestOptions } from '@angular/http';
     RacesService,
     CommanderService,
     TroopService,
+    DecksService,
+    TypesService,
     //fakeBackendProvider,
     MockBackend,
     BaseRequestOptions,

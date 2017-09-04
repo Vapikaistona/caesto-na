@@ -19,6 +19,9 @@ export class CommanderService {
   clearCommander(){
     this.commander = {cardname: "",race:"", habilities:"",resources:0, life: 1, movement: 1}
   }
+  clearFilter(){
+    this.commanderFilter = {cardname: ""}
+  }
   getCommanderList(){
     this.cards.getAllCommanders().subscribe((list:Array<Commander>) =>{
       this.commanderList = list;

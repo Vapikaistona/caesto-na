@@ -3,7 +3,7 @@ import {CardsService} from './cards.service'
 
 @Injectable()
 export class RacesService {
-  private races:Array<any> = [];
+  public races:Array<any> = [];
   constructor(private cards:CardsService) {
   }
 
@@ -11,23 +11,24 @@ export class RacesService {
     if(this.races.length ==0){
       this.cards.getRaces().subscribe(races =>{
         this.races = races;
-        return this.races;
       },error =>{
         console.log("Error getting races: "+ error)
       });
     }
-    else return this.races;
   }
   getRace(id){
-    if(this.races.length ==0){
-      this.cards.getRaces().subscribe(races =>{
-        this.races = races;
-        return this.races.find(x => x._id ===id).name
-      },error =>{
-        console.log("Error getting races: "+ error)
-      });
+    if (id){
+      if(this.races.length ==0){
+        this.cards.getRaces().subscribe(races =>{
+          this.races = races;
+          return this.races.find(x => x._id ===id).name
+        },error =>{
+          console.log("Error getting races: "+ error)
+        });
+      }
+      else return this.races.find(x => x._id ===id).name;
     }
-    else return this.races.find(x => x._id ===id).name;
+    else return '';
   }
   getRaceColor(race){
     let aux = this.getRace(race);
@@ -38,7 +39,6 @@ export class RacesService {
       case "Eruditos": return "blue lighten-3";
       case "Engendros": return "grey lighten-1";
       case "Humanos": return "";
+    }
   }
-}
-
 }

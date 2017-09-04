@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 
 module.exports = mongoose.model('Troop',{
   cardname: String,
+  type: String,
   race: String,
   habilities: String,
   created_by:String,

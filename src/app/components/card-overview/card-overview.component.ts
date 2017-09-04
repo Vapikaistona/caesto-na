@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {CommanderService} from '../../shared/commander.service';
 import {TroopService} from '../../shared/troop.service';
 import {RacesService} from '../../shared/races.service';
+import {TypesService} from '../../shared/types.service';
 
 @Component({
   selector: 'app-card-overview',
@@ -11,21 +12,15 @@ import {RacesService} from '../../shared/races.service';
 export class CardOverviewComponent implements OnInit {
   private showCommanders:boolean=false;
   private card:any;
-  constructor(private commanderService:CommanderService, private troopService:TroopService, private racesService:RacesService) { }
+  constructor(private commanderService:CommanderService, private troopService:TroopService, private racesService:RacesService, private typesService:TypesService) { }
 
   ngOnInit() {
+    this.racesService.getRacesList();
+    this.typesService.getTypesList();
   }
 
   setCardView(showCommanders:boolean){
     this.showCommanders = showCommanders;
-  }
-
-  newCard(){
-    if (this.showCommanders){
-      this.commanderService.commander = {cardname: "",race:"", habilities:"",resources:0, life: 1, movement: 1}
-    }else{
-       this.troopService.troop = {cardname: "",race:"", habilities:"",cost: 0, attack:0, life: 1, movement: 1}
-    }
   }
 
 }

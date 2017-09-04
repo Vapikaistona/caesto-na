@@ -18,3 +18,7 @@ button{
   position: relative;
   margin-right: 1px;
 }
+.btn-floating {
+    top: 20px;
+    left: -20px;
+  }

@@ -17,6 +17,6 @@ router.put('/commanders/:id', users.isAuthenticated, users.isTokenValid, cards.u
 router.delete('/commanders/:id', users.isAuthenticated, users.isTokenValid, cards.deleteCommander);
 
 router.get('/races', users.isAuthenticated, users.isTokenValid, cards.getAllRaces);
-
+router.get('/types', users.isAuthenticated, users.isTokenValid, cards.getCardTypes);
 
 module.exports = router;

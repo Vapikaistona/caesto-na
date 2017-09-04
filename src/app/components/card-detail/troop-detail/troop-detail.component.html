@@ -7,32 +7,44 @@
     <div class="form-group col s6">
       <label for="race">Race</label>
       <select id="race" name="race" [(ngModel)]="troopService.troop.race">
-        <option *ngFor="let race of races" [ngValue]="race._id">{{race.name}}</option>
+        <option *ngFor="let race of racesService.races" [ngValue]="race._id">{{race.name}}</option>
       </select>
     </div>
   </div>
   <div class="row">
     <div class="form-group col s6">
-      <label>Life: {{troopService.troop.life}}</label>
+      <label for="race">Type</label>
+      <select id="type" name="type" [(ngModel)]="troopService.troop.type">
+        <option *ngFor="let type of typesService.types" [ngValue]="type._id">{{type.name}}</option>
+      </select>
+    </div>
+    <div class="form-group col s6" *ngIf="typesService.getType(troopService.troop.type)=='Action'">
+      <label>Cost: {{troopService.troop.cost}}</label>
       <p class="range-field">
-        <input type="range" id="life" min="1" max="10" name="life"  [(ngModel)]="troopService.troop.life" />
+        <input type="range" id="cost" min="0" max="15" name="cost"  [(ngModel)]="troopService.troop.cost" />
       </p>
     </div>
-    <div class="form-group col s6">
+    <div class="form-group col s6" *ngIf="typesService.getType(troopService.troop.type)!='Action'">
       <label>Attack: {{troopService.troop.attack}}</label>
       <p class="range-field">
         <input type="range" id="attack" min="0" max="8" name="attack"  [(ngModel)]="troopService.troop.attack" />
       </p>
     </div>
   </div>
-  <div class="row">
-    <div class="form-group col s6">
+  <div class="row" *ngIf="typesService.getType(troopService.troop.type)!=='Action'">
+    <div class="form-group col s4">
+      <label>Life: {{troopService.troop.life}}</label>
+      <p class="range-field">
+        <input  type="range" id="life" min="0" max="10" name="life"  [(ngModel)]="troopService.troop.life" />
+      </p>
+    </div>
+    <div class="form-group col s4">
       <label>Movement: {{troopService.troop.movement}}</label>
       <p class="range-field">
         <input type="range" id="movement" min="0" max="5" name="movement"  [(ngModel)]="troopService.troop.movement" />
       </p>
     </div>
-    <div class="form-group col s6">
+    <div class="form-group col s4">
       <label>Cost: {{troopService.troop.cost}}</label>
       <p class="range-field">
         <input type="range" id="cost" min="0" max="15" name="cost"  [(ngModel)]="troopService.troop.cost" />

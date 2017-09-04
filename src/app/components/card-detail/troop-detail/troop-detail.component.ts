@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import {Troop} from '../../../classes/troop';
 import {CardsService} from '../../../shared/cards.service';
 import {RacesService} from '../../../shared/races.service';
+import {TypesService} from '../../../shared/types.service';
 import {TroopService} from '../../../shared/troop.service';
 @Component({
   selector: 'troop-detail',
@@ -9,11 +10,12 @@ import {TroopService} from '../../../shared/troop.service';
   styleUrls: ['./troop-detail.component.css']
 })
 export class TroopDetailComponent implements OnInit {
-  private races:any;
-  constructor(private cards:CardsService, private troopService:TroopService, private racesService:RacesService) { }
+
+  constructor(private cards:CardsService, private troopService:TroopService, private racesService:RacesService, private typesService:TypesService) { }
 
   ngOnInit() {
-    this.races = this.racesService.getRacesList();
+    this.racesService.getRacesList();
+    this.typesService.getTypesList();
   }
 
   submitFormTroop(form:any){

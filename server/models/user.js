@@ -10,5 +10,6 @@ module.exports = mongoose.model('User',{
   email: String,
   age: Number,
   lvl: Number,
-  confirmed: Boolean
+  confirmed: Boolean,
+  decks:[]
 });

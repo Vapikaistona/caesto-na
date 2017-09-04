@@ -1,6 +1,12 @@
 <div class="jumbotron">
   <div class="container" [ngSwitch]="isCommander">
-      <commander-list *ngSwitchCase="true"></commander-list>
-      <troop-list *ngSwitchCase="false"></troop-list>
+    <div *ngSwitchCase="true">
+      <search-commander></search-commander>
+      <commander-list></commander-list>
+    </div>
+    <div *ngSwitchCase="false">
+      <search-troop></search-troop>
+      <troop-list ></troop-list>
+    </div>
   </div>
 </div>

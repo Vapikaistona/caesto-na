@@ -1,6 +1,7 @@
 export class Troop {
   constructor(
     public cardname: string,
+    public type?: string,
     public race?:string,
     public habilities?:string,
     public cost?: number,

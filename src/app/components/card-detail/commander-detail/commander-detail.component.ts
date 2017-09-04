@@ -9,12 +9,11 @@ import {CommanderService} from '../../../shared/commander.service';
   styleUrls: ['./commander-detail.component.css']
 })
 export class CommanderDetailComponent implements OnInit {
-  private races:any;
 
   constructor(private cards:CardsService, private commanderService:CommanderService, private racesService:RacesService) { }
 
   ngOnInit() {
-    this.races = this.racesService.getRacesList();
+    this.racesService.getRacesList();
   }
 
   submitFormCommander(form:any){

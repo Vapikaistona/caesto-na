@@ -7,7 +7,7 @@
     <div class="form-group col s6">
       <label for="race">Race</label>
       <select id="race" name="race" [(ngModel)]="commanderService.commander.race">
-        <option *ngFor="let race of races" [ngValue]="race._id">{{race.name}}</option>
+        <option *ngFor="let race of racesService.races" [ngValue]="race._id">{{race.name}}</option>
       </select>
     </div>
   </div>

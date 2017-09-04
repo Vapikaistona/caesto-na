@@ -2,6 +2,7 @@ var passport = require('passport');
 var Troop = require('../models/troop');
 var Commander = require('../models/commander');
 var Race = require('../models/race');
+var CardType = require('../models/cardType');
 var dateFormat = require('dateformat');
 
 var cards={};
@@ -189,6 +190,18 @@ cards.getAllRaces =  (req, res) => {
       }
       else {
         res.send(raceslist);
+      }
+    });
+};
+
+cards.getCardTypes =  (req, res) => {
+    CardType.find({},(err,cardTypeList)=>{
+      if (err){
+        console.log("error "+ err);
+        res.send(JSON.err)
+      }
+      else {
+        res.send(cardTypeList);
       }
     });
 };

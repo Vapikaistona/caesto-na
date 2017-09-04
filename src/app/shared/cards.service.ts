@@ -13,7 +13,9 @@ export class CardsService {
   getRaces(){
     return this.http.get('/api/cards/races', this.jwt()).map((response: Response) => response.json());
   }
-
+  getTypes(){
+    return this.http.get('/api/cards/types', this.jwt()).map((response: Response) => response.json());
+  }
   getAllTroops() {
       return this.http.get('/api/cards/troops', this.jwt()).map((response: Response) => response.json());
   }

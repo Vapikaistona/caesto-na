@@ -10,6 +10,7 @@ var mongoose = require('mongoose');
 // Get our API routes
 const apiUser = require('./server/routes/api-user');
 const apiCard = require('./server/routes/api-card');
+const apiDeck = require('./server/routes/api-deck');
 
 const app = express();
 // Parsers for POST data
@@ -42,6 +43,7 @@ app.use(express.static(path.join(__dirname, 'dist')));
 // Set our api routes
 app.use('/api/user', apiUser);
 app.use('/api/cards', apiCard);
+app.use('/api/decks', apiDeck);
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist/index.html'));
