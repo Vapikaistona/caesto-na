@@ -2,11 +2,11 @@
   <div class="container" [ngSwitch]="isCommander">
     <div *ngSwitchCase="true">
       <search-commander></search-commander>
-      <commander-list></commander-list>
+      <commander-list [deckEdition]="deckEdition"></commander-list>
     </div>
     <div *ngSwitchCase="false">
       <search-troop></search-troop>
-      <troop-list ></troop-list>
+      <troop-list [deckEdition]="deckEdition"></troop-list>
     </div>
   </div>
 </div>

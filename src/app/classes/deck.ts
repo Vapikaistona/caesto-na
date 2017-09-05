@@ -1,4 +1,3 @@
-import {User} from './user';
 import {Commander} from './commander';
 
 export class Deck {

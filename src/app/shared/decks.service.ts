@@ -1,47 +1,112 @@
 import { Injectable } from '@angular/core';
 import { Http,Headers,  RequestOptions, Response } from '@angular/http';
 import { Deck } from '../classes/deck';
-
+import { Commander } from '../classes/commander';
+import { Troop } from '../classes/troop';
 import {CurrentUserService} from './current-user.service'
+import {CommanderService} from './commander.service'
+import {TroopService} from './troop.service'
 @Injectable()
 export class DecksService {
-
-  constructor(private http: Http, private currentUser:CurrentUserService) { }
-
-
-
-  // router.get('/decks', users.isAuthenticated, users.isTokenValid, decks.getAllDecks);
-  // router.get('/decks/:id', users.isAuthenticated, users.isTokenValid, decks.getOwnedDecks);
-  // router.get('/deck/:id', users.isAuthenticated, users.isTokenValid, decks.getDeckById);
-  // router.post('/deck', users.isAuthenticated, users.isTokenValid, decks.insertDeck);
-  // router.put('/deck/:id', users.isAuthenticated, users.isTokenValid, decks.updateDeck);
-  // router.delete('/deck/:id', users.isAuthenticated, users.isTokenValid, decks.deleteDeck);
+  public deckList:Array<Deck>=[];
+  public deck:Deck={name:"",race:"",commander:{cardname:"",race:""},troops:[]};
+  public deckFilter:Deck={name:"",race:""};
+  public edit:boolean=false;
+  constructor(private http: Http, private currentUser:CurrentUserService, private troopService:TroopService, private commanderService:CommanderService) { }
 
   getAllDecks() {
-      return this.http.get('/api/decks/decks', this.jwt()).map((response: Response) => response.json());
+    this.http.get('/api/decks/decks', this.jwt()).map((response: Response) => response.json()).subscribe(data=>{
+        this.deckList = data;
+    },error =>{
+      console.log(error);
+    });
   }
   getOwnedDecks(id: string) {
-      return this.http.get('/api/decks/decks/'+ id, this.jwt()).map((response: Response) => response.json());
+    this.http.get('/api/decks/decks/'+ id, this.jwt()).map((response: Response) => response.json()).subscribe(data=>{
+        this.deckList = data;
+    },error =>{
+      console.log(error);
+    });
   }
   getDeckById(id: string){
-    return this.http.get('/api/decks/deck/' + id, this.jwt()).map((response: Response) => response.json());
+    this.http.get('/api/decks/deck/' + id, this.jwt()).map((response: Response) => response.json()).subscribe(data=>{
+        this.deck = data;
+    },error =>{
+      console.log(error);
+    });
+  }
+  setDeck(deck:Deck){
+    this.deck = deck;
+  }
+  clearCommander(){
+    if(this.edit){
+      this.deck.commander={cardname:"", race:""}
+      this.deck.race = "";
+      this.commanderService.commanderFilter.race = "";
+      this.troopService.troopFilter.race = "";
+    }
+  }
+  setCommander(commander:Commander){
+    this.deck.commander = commander;
+    this.deck.race = commander.race;
+    this.commanderService.commanderFilter.race = commander.race;
+    this.troopService.troopFilter.race = commander.race;
+  }
+  addTroop(troop:Troop){
+    let index=this.deck.troops.findIndex(x=> x._id ==troop._id)
+    if (index>=0){
+      this.deck.troops[index].number++;
+    }else{
+      var newTroop = {...troop, number:1};
+      this.deck.troops.push(newTroop);
+    }
+  }
+  removeTroop(troop:Troop){
+    if(this.edit){
+      let index=this.deck.troops.findIndex(x=> x._id ==troop._id)
+      if (index>=0){
+        this.deck.troops[index].number--;
+        if(this.deck.troops[index].number<=0){
+          this.deck.troops.splice(index, 1);
+        }
+      }
+    }
+  }
+  clearDeck(){
+    this.deck={name:"",race:"",commander:{cardname:"",race:""},troops:[]};
+  }
+  clearFilter(){
+    this.deckFilter = {name:"",race:""}
+  }
+  insertDeck() {
+    let deckToInsert = {...this.deck};
+    deckToInsert.troops = [];
+    this.deck.troops.forEach((x)=>{
+      deckToInsert.troops.push({number:x.number,_id:x._id});
+    });
+    this.http.post('/api/decks/deck', deckToInsert, this.jwt()).map((response: Response) => response.json()).subscribe(data=>{
+        this.getAllDecks();
+    },error =>{
+      console.log(error);
+    });
   }
 
-  insertDeck(deck: Deck) {
-      return this.http.post('/api/decks/deck', deck, this.jwt()).map((response: Response) => response.json());
-  }
-
-  updateDeck(deck: Deck) {
-      return this.http.put('/api/decks/deck/' + deck._id, deck, this.jwt()).map((response: Response) => response.json());
+  updateDeck() {
+    this.http.put('/api/decks/deck/' + this.deck._id, this.deck, this.jwt()).map((response: Response) => response.json()).subscribe(data=>{
+        this.getAllDecks();
+    },error =>{
+      console.log(error);
+    });
   }
 
   deleteDeck(id: string) {
-      return this.http.delete('/api/decks/deck/' + id, this.jwt()).map((response: Response) => response.json());
+    this.http.delete('/api/decks/deck/' + id, this.jwt()).map((response: Response) => response.json()).subscribe(data=>{
+        this.getAllDecks();
+    },error =>{
+      console.log(error);
+    });
   }
-
-
   // private helper methods
-
   private jwt() {
       // create authorization header with jwt token
       let currentUser = this.currentUser.getUser();

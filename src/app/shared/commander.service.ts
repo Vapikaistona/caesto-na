@@ -9,7 +9,7 @@ export class CommanderService {
 
   constructor(private cards:CardsService) {
     this.commander = {cardname: "",race:"", habilities:"",resources:0, life: 1, movement: 1}
-    this.commanderFilter = {cardname: ""};
+    this.commanderFilter = {cardname: "",race:""};
     this.commanderList= [];
   }
 
@@ -20,7 +20,7 @@ export class CommanderService {
     this.commander = {cardname: "",race:"", habilities:"",resources:0, life: 1, movement: 1}
   }
   clearFilter(){
-    this.commanderFilter = {cardname: ""}
+    this.commanderFilter = {cardname: "",race:""}
   }
   getCommanderList(){
     this.cards.getAllCommanders().subscribe((list:Array<Commander>) =>{

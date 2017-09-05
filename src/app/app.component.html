@@ -1,13 +1,29 @@
 <nav>
   <div class="nav-wrapper lime darken-1">
-    <a routerLink="/" class="brand-logo"> Caesto-Na</a>
-    <ul id="nav-mobile" class="right">
+    <a routerLink="/" class="app-title"> Caesto-Na</a>
+    <div class="hide-on-med-and-up left">
+      <a class='dropdown-button btn-flat' href='#' data-activates='dropdown1'><i class="material-icons">menu</i></a>
+    </div>
+    <ul id='dropdown1' class='dropdown-content lime darken-1'>
       <li *ngIf="authentication.getLogged()" routerLinkActive="active"><a routerLink="decks" >Decks</a></li>
       <li *ngIf="authentication.getLogged()" routerLinkActive="active"><a routerLink="cards" >Cards</a></li>
-      <li [ngSwitch]="authentication.isAdmin()" routerLinkActive="active">
+      <li *ngIf="authentication.getLogged()" [ngSwitch]="authentication.isAdmin()" routerLinkActive="active">
         <a *ngSwitchCase="false" routerLink="user/">User</a>
         <a *ngSwitchCase="true" routerLink="users" >Users</a>
       </li>
+      <li *ngIf="!authentication.getLogged()"><a routerLink="login">Login</a></li>
+    </ul>
+    <div class="hide-on-small-only">
+      <ul id="nav-left" class="left">
+        <li *ngIf="authentication.getLogged()" routerLinkActive="active"><a routerLink="decks" >Decks</a></li>
+        <li *ngIf="authentication.getLogged()" routerLinkActive="active"><a routerLink="cards" >Cards</a></li>
+        <li *ngIf="authentication.getLogged()" [ngSwitch]="authentication.isAdmin()" routerLinkActive="active">
+          <a *ngSwitchCase="false" routerLink="user/">User</a>
+          <a *ngSwitchCase="true" routerLink="users" >Users</a>
+        </li>
+      </ul>
+    </div>
+    <ul id="nav-right" class="right">
       <li [ngSwitch]="authentication.getLogged()" routerLinkActive="active">
         <a *ngSwitchCase="false" routerLink="login">Login</a>
         <a *ngSwitchCase="true" class="red" (click)="logout()">Logout</a>

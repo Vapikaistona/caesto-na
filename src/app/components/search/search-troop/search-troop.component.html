@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row min-width-290">
   <input type="text" class="col s10" name="cardname" [(ngModel)]="troopService.troopFilter.cardname" placeholder="Search" style="text-align: right">
   <button type="button" class="col s2 waves-effect waves-blue btn-flat" [ngClass]="{'blue':advancedSearch}" (click)="toggleAvancedSearch()" name="button"><i class="material-icons">{{advancedSearch?'keyboard_arrow_up':'keyboard_arrow_down'}}</i></button>
 </div>

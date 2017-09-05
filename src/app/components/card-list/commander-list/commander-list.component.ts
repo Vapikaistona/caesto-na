@@ -1,9 +1,10 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import {Commander} from '../../../classes/commander';
 import {CardsService} from '../../../shared/cards.service';
 import {RacesService} from '../../../shared/races.service'
 import {CommanderService} from '../../../shared/commander.service'
+import {DecksService} from '../../../shared/decks.service'
 
 @Component({
   selector: 'commander-list',
@@ -13,16 +14,21 @@ import {CommanderService} from '../../../shared/commander.service'
 export class CommanderListComponent implements OnInit {
   private currentCommanderActive:string;
   private commanderList:Array<Commander>;
+  @Input() deckEdition:boolean;
 
-  constructor(private cards:CardsService, private races:RacesService, private commanderService:CommanderService) {
+  constructor(private cards:CardsService, private races:RacesService, private commanderService:CommanderService, private decks:DecksService) {
   }
 
   ngOnInit() {
     this.commanderService.getCommanderList();
   }
 
-  commanderDetails(commander:Commander){
-    this.commanderService.setCommander(commander);
+  commanderClicked(commander:Commander){
+    if(this.deckEdition){
+      this.decks.setCommander(commander);
+    }else{
+      this.commanderService.setCommander(commander);
+    }
   }
 
   delete(id:string){

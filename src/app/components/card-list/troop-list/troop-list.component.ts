@@ -1,9 +1,10 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {Troop} from '../../../classes/troop';
 import {CardsService} from '../../../shared/cards.service'
 import {RacesService} from '../../../shared/races.service'
 import {TypesService} from '../../../shared/types.service'
 import {TroopService} from '../../../shared/troop.service'
+import {DecksService} from '../../../shared/decks.service'
 
 @Component({
   selector: 'troop-list',
@@ -14,14 +15,19 @@ export class TroopListComponent implements OnInit {
   private currentTroopActive:string;
   private troopList:Array<Troop>;
   private raceList:Array<any>;
-  constructor(private cards:CardsService, private races:RacesService, private types:TypesService, private troopService:TroopService) { }
+  @Input() deckEdition:boolean;
+  constructor(private cards:CardsService, private races:RacesService, private types:TypesService, private troopService:TroopService, private decks:DecksService) { }
 
   ngOnInit() {
     this.troopService.getTroopList();
   }
-  troopDetails(troop:Troop){
-    this.troopService.setTroop(troop);
-    this.currentTroopActive = troop._id;
+  troopClicked(troop:Troop){
+    if(this.deckEdition){
+      this.decks.addTroop(troop);
+    }else{
+      this.troopService.setTroop(troop);
+      this.currentTroopActive = troop._id;
+    }
   }
   delete(id:string){
     this.cards.deleteTroop(id).subscribe((troop) =>{

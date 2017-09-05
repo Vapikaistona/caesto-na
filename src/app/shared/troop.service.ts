@@ -10,7 +10,7 @@ export class TroopService {
 
   constructor(private cards:CardsService) {
     this.troop = {cardname: "",race:"", habilities:"",cost: 0, attack:0, life: 1, movement: 1}
-    this.troopFilter = {cardname: ""}
+    this.troopFilter = {cardname: "",race:"",type:""}
     this.troopList = [];
   }
 
@@ -21,7 +21,7 @@ export class TroopService {
     this.troop = {cardname: "",race:"", habilities:"",cost: 0, attack:0, life: 1, movement: 1}
   }
   clearFilter(){
-    this.troopFilter = {cardname: ""}
+    this.troopFilter = {cardname: "",race:"",type:""}
   }
   getTroopList(){
     this.cards.getAllTroops().subscribe((list:Array<Troop>) =>{

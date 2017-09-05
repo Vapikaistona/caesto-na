@@ -1,3 +1,78 @@
-<p>
-  deck-detail works!
-</p>
+<h2>{{decks.edit?'Edit':'Details'}}</h2>
+<p class="red-text" *ngIf="msg !==''" >{{msg}}</p>
+<form #form="ngForm" class="col s12">
+  <div class="row">
+    <div class="form-group col s6">
+      <label for="name">Deck Name</label>
+      <input  id="name" type="text" class="validate form-control" name="name" [disabled]="!decks.edit" [(ngModel)]="decks.deck.name" required>
+    </div>
+    <div class="form-group col s6">
+      <label for="race">Race</label>
+      <select id="race" name="race" [(ngModel)]="decks.deck.race" [disabled]="!decks.edit">
+        <option *ngFor="let race of racesService.races" [ngValue]="race._id">{{race.name}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+     <div class="form-group col s12">
+       <label for="description">Description</label>
+       <input type="text"  id="description" class="materialize-textarea" name="description" [disabled]="!decks.edit" [(ngModel)]="decks.deck.description">
+     </div>
+   </div>
+   <div class="row">
+     <ul class="collection">
+       <li  *ngIf="decks.deck.commander._id" (click)="decks.clearCommander()" class="collection-item" [ngClass]="getBgColor(decks.deck.commander.race)">
+         <div>{{decks.deck.commander.cardname| truncate}}
+           <button class="secondary-content amber btn btn-small right" (click)="nothing()">
+             {{decks.deck.commander.resources}}
+           </button>
+           <button class="secondary-content green btn btn-small right" (click)="nothing()">
+             {{decks.deck.commander.life}}
+           </button>
+         </div>
+       </li>
+       <li *ngIf="!decks.deck.commander._id" class="collection-item blue-text">
+         <div>No element found</div>
+       </li>
+     </ul>
+   </div>
+   <div class="row">
+     <ul class="collection">
+       <li *ngFor="let troop of decks.deck.troops" (click)="decks.removeTroop(troop)"  class="collection-item" [ngClass]="getBgColor(troop.race)">
+         <div>{{troop.cardname | truncate}}
+           <button class="secondary-content light-grey btn btn-small right" (click)="nothing()">
+             {{'x'+troop.number}}
+           </button>
+           <button class="secondary-content amber btn btn-small right" (click)="nothing()" >
+             {{troop.cost}}
+           </button>
+           <button class="secondary-content green btn btn-small right" *ngIf="types.getType(troop.type)!='Action'" (click)="nothing()">
+             {{troop.life}}
+           </button>
+           <button class="secondary-content  deep-orange darken-1 btn btn-small right" *ngIf="types.getType(troop.type)!='Action'" (click)="nothing()">
+             {{troop.attack}}
+           </button>
+         </div>
+       </li>
+       <li *ngIf="decks.deck.troops.length==0" class="collection-item blue-text">
+         <div>No element found</div>
+       </li>
+     </ul>
+   </div>
+   <div class="row" *ngIf="decks.deck._id">
+     <div class="form-group col s6" *ngIf="decks.deck.modified_by">
+       <label>Modified {{decks.deck.modified}} by {{decks.deck.modified_by}}</label>
+     </div>
+     <div class="form-group col s6">
+       <label>Created {{decks.deck.created}} by {{decks.deck.created_by}}</label>
+     </div>
+   </div>
+  <div class="form-group right" *ngIf="decks.edit">
+    <button
+      class="btn btn-default left red" [class.blue]="decks.deck._id" (click)="cancelDeckEdition()">Cancel</button>
+    <button
+      [ngClass]="{disabled: !form.valid}" [disabled]="!form.valid" (click)="submitFormDeck()" class="btn btn-default right" [class.blue]="decks.deck._id" [class.green]="!decks.deck._id">{{decks.deck._id?"save":"new"}}</button>
+
+  </div>
+  <a *ngIf="!decks.edit" (click)="editDeck()" class="btn-floating btn-small waves-effect waves-light right orange"><i class="material-icons">edit</i></a>
+</form>

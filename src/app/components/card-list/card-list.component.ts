@@ -13,7 +13,9 @@ import {Troop} from '../../classes/troop';
   styleUrls: ['./card-list.component.css']
 })
 export class CardListComponent implements OnInit {
-  @Input () isCommander:boolean=false;
+  @Input () isCommander:boolean;
+  @Input () deckEdition:boolean=false;
+
   constructor() { }
 
   ngOnInit() {

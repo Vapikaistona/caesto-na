@@ -41,7 +41,7 @@ import {AuthGuard,AdminGuard} from './shared/authentication/guard'
 //PIPES
 import {CommanderFilterPipe} from './shared/pipes/commanderFilter'
 import {TroopFilterPipe} from './shared/pipes/troopFilter'
-
+import {TruncatePipe} from './shared/pipes/truncateFilter'
 //ROUTING
 import { RouterModule, Routes } from '@angular/router';
 import { routing } from './routes/routing';
@@ -71,6 +71,7 @@ import { BaseRequestOptions } from '@angular/http';
     TroopListComponent,
     CommanderFilterPipe,
     TroopFilterPipe,
+    TruncatePipe,
     DeckDetailComponent,
     DeckOverviewComponent,
     DeckListComponent,

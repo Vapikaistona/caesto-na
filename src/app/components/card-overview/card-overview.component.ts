@@ -18,9 +18,4 @@ export class CardOverviewComponent implements OnInit {
     this.racesService.getRacesList();
     this.typesService.getTypesList();
   }
-
-  setCardView(showCommanders:boolean){
-    this.showCommanders = showCommanders;
-  }
-
 }

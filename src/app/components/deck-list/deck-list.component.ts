@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./deck-list.component.css']
 })
 export class DeckListComponent implements OnInit {
-  @Input () showAll:boolean;
+  private showAll:boolean=false;
   constructor() { }
 
   ngOnInit() {

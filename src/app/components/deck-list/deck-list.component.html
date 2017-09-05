@@ -1,4 +1,9 @@
-
+<div class="row">
+  <div class = "container">
+    <a class="waves-effect waves-light btn blue " [class.darken-3]="!showAll" (click)="showAll=false">Own Decks</a>
+    <a class="waves-effect waves-light btn blue " [class.darken-3]="showAll" (click)="showAll=true">All Decks</a>
+  </div>
+</div>
 <div *ngIf="showAll">
   <p>
     Show All works!
