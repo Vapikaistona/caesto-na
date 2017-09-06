@@ -10,6 +10,7 @@ import {SearchDeckComponent} from '../search/search-deck/search-deck.component'
 })
 export class DeckListComponent implements OnInit {
   private showAll:boolean=true;
+  private fieldSorted:string='name';
   @Output() newDeckEdition = new EventEmitter();
   constructor(private decksService:DecksService, private races:RacesService, private user:CurrentUserService) { }
 
@@ -37,5 +38,8 @@ export class DeckListComponent implements OnInit {
   showAllDecks(){
     this.showAll = true;
     this.decksService.deckFilter.created_by = "";
+  }
+  changeSort(field){
+    this.fieldSorted = field;
   }
 }

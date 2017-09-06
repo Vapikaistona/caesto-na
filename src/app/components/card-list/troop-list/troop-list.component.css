@@ -21,3 +21,9 @@ button{
     top: 20px;
     left: -20px;
   }
+  button:focus{
+    background-color: transparent;
+  }
+.no-margin-bottom{
+  margin-bottom: 0px;
+}

@@ -6,8 +6,13 @@
   <div class="">
     <search-deck></search-deck>
     <a (click)="newDeck()" class="btn-floating btn-small waves-effect waves-light green"><i class="material-icons">add</i></a>
+    <div class="row">
+      <label class="col s2 offset-s2">Sort by</label>
+      <button class="col s4 waves-effect waves-light btn-flat" type="button" name="name" (click)="changeSort('name')">name</button>
+      <button class="col s4 waves-effect waves-light btn-flat" type="button" name="race" (click)="changeSort('race')">race</button>
+    </div>
     <ul class="collection">
-      <li *ngFor="let deck of decksService.deckList | deckFilter : decksService.deckFilter" (click)="deckClicked(deck)"  class="collection-item" [class.active]="deck._id===decksService.deck._id" [ngClass]="getBgColor(deck.race)">
+      <li *ngFor="let deck of decksService.deckList | deckFilter : decksService.deckFilter | sort : fieldSorted" (click)="deckClicked(deck)"  class="collection-item" [class.active]="deck._id===decksService.deck._id" [ngClass]="getBgColor(deck.race)">
         <div>{{deck.name}}
           <a (click)="delete(deck._id)" class="secondary-content">
             <i class="material-icons red-text">delete</i>

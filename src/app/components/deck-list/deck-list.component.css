@@ -21,3 +21,6 @@ li button{
     color:white !important;
     background-color: #2196F3 !important
   }
+  button:focus{
+    background-color: transparent;
+  }

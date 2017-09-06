@@ -43,6 +43,8 @@ import {CommanderFilterPipe} from './shared/pipes/commanderFilter'
 import {TroopFilterPipe} from './shared/pipes/troopFilter'
 import {DeckFilterPipe} from './shared/pipes/deckFilter'
 import {TruncatePipe} from './shared/pipes/truncateFilter'
+import {ArraySortPipe} from './shared/pipes/sort'
+
 //ROUTING
 import { RouterModule, Routes } from '@angular/router';
 import { routing } from './routes/routing';
@@ -74,6 +76,7 @@ import { BaseRequestOptions } from '@angular/http';
     TroopFilterPipe,
     DeckFilterPipe,
     TruncatePipe,
+    ArraySortPipe,
     DeckDetailComponent,
     DeckOverviewComponent,
     DeckListComponent,
