@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import {DecksService} from '../../shared/decks.service'
 import {RacesService} from '../../shared/races.service'
+import {CurrentUserService} from '../../shared/current-user.service'
 import {SearchDeckComponent} from '../search/search-deck/search-deck.component'
 @Component({
   selector: 'deck-list',
@@ -10,7 +11,7 @@ import {SearchDeckComponent} from '../search/search-deck/search-deck.component'
 export class DeckListComponent implements OnInit {
   private showAll:boolean=true;
   @Output() newDeckEdition = new EventEmitter();
-  constructor(private decksService:DecksService, private races:RacesService) { }
+  constructor(private decksService:DecksService, private races:RacesService, private user:CurrentUserService) { }
 
   ngOnInit() {
     this.decksService.getAllDecks();
@@ -28,5 +29,13 @@ export class DeckListComponent implements OnInit {
   }
   getBgColor(race){
     return this.races.getRaceColor(race);
+  }
+  showOwnDecks(){
+    this.decksService.deckFilter.created_by = this.user.getUser().username;
+    this.showAll = false;
+  }
+  showAllDecks(){
+    this.showAll = true;
+    this.decksService.deckFilter.created_by = "";
   }
 }
