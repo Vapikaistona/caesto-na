@@ -5,7 +5,7 @@ import {RacesService} from '../../shared/races.service';
 import {TypesService} from '../../shared/types.service';
 
 @Component({
-  selector: 'app-card-overview',
+  selector: 'card-overview',
   templateUrl: './card-overview.component.html',
   styleUrls: ['./card-overview.component.css']
 })

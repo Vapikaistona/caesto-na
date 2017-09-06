@@ -1,0 +1,23 @@
+li{
+  cursor: pointer;
+}
+ul{
+  max-height: 400px;
+  overflow: auto;
+}
+
+li button{
+  padding-right: 3px;
+  padding-left: 3px;
+  top: -7px;
+  position: relative;
+  margin-right: 1px;
+}
+.btn-floating {
+    top: 20px;
+    left: -20px;
+  }
+  .active{
+    color:white !important;
+    background-color: #2196F3 !important
+  }

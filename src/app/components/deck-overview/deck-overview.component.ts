@@ -13,11 +13,9 @@ export class DeckOverviewComponent implements OnInit {
   constructor(private decks:DecksService) { }
 
   ngOnInit() {
+    this.decks.edit=false;
   }
-
-  newDeck(){
-    this.decks.clearDeck();
-    this.decks.edit=true;
+  newDeckEdition(flag){
+    this.showCommanders = flag;
   }
-
 }

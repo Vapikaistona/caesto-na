@@ -10,7 +10,7 @@ import {TroopService} from '../../../shared/troop.service';
   styleUrls: ['./troop-detail.component.css']
 })
 export class TroopDetailComponent implements OnInit {
-
+  @Input() edit:boolean;
   constructor(private cards:CardsService, private troopService:TroopService, private racesService:RacesService, private typesService:TypesService) { }
 
   ngOnInit() {
@@ -20,6 +20,7 @@ export class TroopDetailComponent implements OnInit {
 
   submitFormTroop(form:any){
     this.cards.createTroop(this.troopService.troop).subscribe(data =>{
+      this.cards.edit=false;
       this.troopService.getTroopList();
     },error =>{
       console.log(error);

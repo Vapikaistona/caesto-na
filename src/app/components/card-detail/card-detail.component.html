@@ -1,7 +1,8 @@
 <div class="">
   <p *ngIf="op.send"  [ngClass]="{'green-text': op.success, 'red-text': !op.success}">{{op.msg}}</p>
   <div class="" [ngSwitch]="isCommander">
-    <commander-detail *ngSwitchCase="true"></commander-detail>
-    <troop-detail  *ngSwitchCase="false"></troop-detail>
+    <commander-detail *ngSwitchCase="true" [edit]="cards.edit"></commander-detail>
+    <troop-detail  *ngSwitchCase="false" [edit]="cards.edit"></troop-detail>
+    <a *ngIf="!cards.edit" (click)="cards.edit=true" class="btn-floating btn-small waves-effect waves-light right orange"><i class="material-icons">edit</i></a>
   </div>
 </div>

@@ -9,7 +9,7 @@ import {CommanderService} from '../../../shared/commander.service';
   styleUrls: ['./commander-detail.component.css']
 })
 export class CommanderDetailComponent implements OnInit {
-
+  @Input() edit:boolean;
   constructor(private cards:CardsService, private commanderService:CommanderService, private racesService:RacesService) { }
 
   ngOnInit() {
@@ -18,6 +18,7 @@ export class CommanderDetailComponent implements OnInit {
 
   submitFormCommander(form:any){
     this.cards.createCommander(this.commanderService.commander).subscribe(data =>{
+      this.cards.edit=false;
       this.commanderService.getCommanderList();
     },error =>{
       console.log(error);

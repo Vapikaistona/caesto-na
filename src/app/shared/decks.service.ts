@@ -8,7 +8,7 @@ import {CommanderService} from './commander.service'
 import {TroopService} from './troop.service'
 @Injectable()
 export class DecksService {
-  public deckList:Array<Deck>=[];
+  public deckList:Array<any>=[];
   public deck:Deck={name:"",race:"",commander:{cardname:"",race:""},troops:[]};
   public deckFilter:Deck={name:"",race:""};
   public edit:boolean=false;
@@ -55,7 +55,9 @@ export class DecksService {
   addTroop(troop:Troop){
     let index=this.deck.troops.findIndex(x=> x._id ==troop._id)
     if (index>=0){
-      this.deck.troops[index].number++;
+      if(this.deck.troops[index].number!=4){
+        this.deck.troops[index].number++;
+      }
     }else{
       var newTroop = {...troop, number:1};
       this.deck.troops.push(newTroop);
@@ -74,17 +76,19 @@ export class DecksService {
   }
   clearDeck(){
     this.deck={name:"",race:"",commander:{cardname:"",race:""},troops:[]};
+    this.commanderService.commanderFilter.race = "";
+    this.troopService.troopFilter.race = "";
+  }
+  editDeck(){
+    this.edit=true;
+    this.commanderService.commanderFilter.race = this.deck.race;
+    this.troopService.troopFilter.race = this.deck.race;
   }
   clearFilter(){
     this.deckFilter = {name:"",race:""}
   }
   insertDeck() {
-    let deckToInsert = {...this.deck};
-    deckToInsert.troops = [];
-    this.deck.troops.forEach((x)=>{
-      deckToInsert.troops.push({number:x.number,_id:x._id});
-    });
-    this.http.post('/api/decks/deck', deckToInsert, this.jwt()).map((response: Response) => response.json()).subscribe(data=>{
+    this.http.post('/api/decks/deck', this.deck, this.jwt()).map((response: Response) => response.json()).subscribe(data=>{
         this.getAllDecks();
     },error =>{
       console.log(error);

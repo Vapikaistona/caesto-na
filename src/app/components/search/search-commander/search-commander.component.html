@@ -1,20 +1,23 @@
-<div class="row min-width-290">
+<div class="row">
   <input type="text" class="col s10" name="cardname" [(ngModel)]="commanderService.commanderFilter.cardname" placeholder="Search" style="text-align: right">
-  <button type="button" class="col s2 waves-effect waves-blue btn-flat" [ngClass]="{'blue':advancedSearch}" (click)="toggleAvancedSearch()" name="button"><i class="material-icons">{{advancedSearch?'keyboard_arrow_up':'keyboard_arrow_down'}}</i></button>
+  <button type="button" class="col s2 waves-effect waves-blue btn-flat" [ngClass]="{'blue':advancedSearch || commanderService.commanderFilter.race!=''}" (click)="toggleAvancedSearch()" name="button"><i class="material-icons">{{advancedSearch || commanderService.commanderFilter.race!=''?'keyboard_arrow_up':'keyboard_arrow_down'}}</i></button>
 </div>
-<div *ngIf="advancedSearch">
+<div *ngIf="advancedSearch || commanderService.commanderFilter.race!=''">
   <div class="row">
     <input type="number" class="col s4" name="life" [(ngModel)]="commanderService.commanderFilter.life" placeholder="Life" style="text-align: right">
     <input type="number" class="col s4" name="movement" [(ngModel)]="commanderService.commanderFilter.movement" placeholder="Movement" style="text-align: right">
     <input type="number" class="col s4" name="resources" [(ngModel)]="commanderService.commanderFilter.resources" placeholder="Resources" style="text-align: right">
   </div>
-  <div class="row">
-    <div class="col s5">
+  <div class="row" *ngIf="!deckEdition">
+    <div class="col s5" >
       <select id="race" name="race" [(ngModel)]="commanderService.commanderFilter.race" placeholder="Race">
         <option value="" selected >All Races</option>
         <option *ngFor="let race of racesService.races" [ngValue]="race._id">{{race.name}}</option>
       </select>
     </div>
     <input type="text" class="col s7" name="cardname" [(ngModel)]="commanderService.commanderFilter.habilities" placeholder="Habilities" style="text-align: right">
+  </div>
+  <div class="row" *ngIf="deckEdition">
+    <input type="text" class="col s12" name="cardname" [(ngModel)]="commanderService.commanderFilter.habilities" placeholder="Habilities" style="text-align: right">
   </div>
 </div>

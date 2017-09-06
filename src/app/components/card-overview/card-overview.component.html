@@ -1,17 +1,17 @@
-
 <div class="row">
-  <div class = "col s12 m6">
+  <div class = "col s12 m6 white-board z-depth-1">
+    <div class="row"></div>
     <div class="row">
-      <a class="waves-effect waves-light btn blue col s6" [class.darken-3]="!showCommanders" (click)="showCommanders=false">Troops</a>
       <a class="waves-effect waves-light btn blue col s6" [class.darken-3]="showCommanders" (click)="showCommanders=true">Commanders</a>
+      <a class="waves-effect waves-light btn blue col s6" [class.darken-3]="!showCommanders" (click)="showCommanders=false">Troops</a>
+    </div>
+    <div class="row">
+      <card-list [deckEdition]="false" [isCommander]="showCommanders"></card-list>
     </div>
   </div>
-</div>
-<div class="row">
-  <div class = "col s12 m6">
-    <card-list [deckEdition]="false" [isCommander]="showCommanders"></card-list>
-  </div>
-  <div class = "col s12 m6">
+  <div class = "col s12 m6 white-board z-depth-1">
+    <div class="row"></div>
     <card-detail  [isCommander]="showCommanders"></card-detail>
+    <div class="row"></div>
   </div>
 </div>

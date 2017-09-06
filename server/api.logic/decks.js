@@ -91,15 +91,7 @@ decks.insertDeck =  (req, res) => {
                   res.send(JSON.err);
                 }
                 else {
-                  user.decks.push(deck._id);
-                  user.save((err)=>{
-                    if (err){
-                      console.log('error'+err)
-                      res.send(JSON.err);
-                    }
-                    else
-                      res.send({ok:true});
-                  });
+                  res.send({ok:true});
                 }
               })
             }

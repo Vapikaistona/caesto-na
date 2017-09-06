@@ -1,9 +1,6 @@
 select {
     display: block;
 }
-.collection{
-  min-width: 270px;
-}
 
 li{
   cursor: pointer;

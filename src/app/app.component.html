@@ -11,7 +11,7 @@
         <a *ngSwitchCase="false" routerLink="user/">User</a>
         <a *ngSwitchCase="true" routerLink="users" >Users</a>
       </li>
-      <li *ngIf="!authentication.getLogged()"><a routerLink="login">Login</a></li>
+      <li *ngIf="!authentication.getLogged()"><a routerLink="register">Register</a></li>
     </ul>
     <div class="hide-on-small-only">
       <ul id="nav-left" class="left">
@@ -21,6 +21,7 @@
           <a *ngSwitchCase="false" routerLink="user/">User</a>
           <a *ngSwitchCase="true" routerLink="users" >Users</a>
         </li>
+        <li *ngIf="!authentication.getLogged()"><a routerLink="register">Register</a></li>
       </ul>
     </div>
     <ul id="nav-right" class="right">

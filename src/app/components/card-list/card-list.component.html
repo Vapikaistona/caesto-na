@@ -1,11 +1,11 @@
-<div class="jumbotron">
+<div class="">
   <div class="container" [ngSwitch]="isCommander">
     <div *ngSwitchCase="true">
-      <search-commander></search-commander>
+      <search-commander [deckEdition]="deckEdition"></search-commander>
       <commander-list [deckEdition]="deckEdition"></commander-list>
     </div>
     <div *ngSwitchCase="false">
-      <search-troop></search-troop>
+      <search-troop [deckEdition]="deckEdition"></search-troop>
       <troop-list [deckEdition]="deckEdition"></troop-list>
     </div>
   </div>

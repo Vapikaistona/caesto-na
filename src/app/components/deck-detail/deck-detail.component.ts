@@ -17,7 +17,7 @@ export class DeckDetailComponent implements OnInit {
     this.decks.getAllDecks();
   }
   editDeck(){
-    this.decks.edit=true;
+    this.decks.editDeck();
   }
   cancelDeckEdition(){
     this.decks.edit=false;

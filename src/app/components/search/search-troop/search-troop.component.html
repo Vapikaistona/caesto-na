@@ -1,15 +1,15 @@
-<div class="row min-width-290">
+<div class="row">
   <input type="text" class="col s10" name="cardname" [(ngModel)]="troopService.troopFilter.cardname" placeholder="Search" style="text-align: right">
-  <button type="button" class="col s2 waves-effect waves-blue btn-flat" [ngClass]="{'blue':advancedSearch}" (click)="toggleAvancedSearch()" name="button"><i class="material-icons">{{advancedSearch?'keyboard_arrow_up':'keyboard_arrow_down'}}</i></button>
+  <button type="button" class="col s2 waves-effect waves-blue btn-flat" [ngClass]="{'blue':advancedSearch || troopService.troopFilter.race!=''}" (click)="toggleAvancedSearch()" name="button"><i class="material-icons">{{advancedSearch || troopService.troopFilter.race!=''?'keyboard_arrow_up':'keyboard_arrow_down'}}</i></button>
 </div>
-<div *ngIf="advancedSearch">
+<div *ngIf="advancedSearch || troopService.troopFilter.race!=''">
   <div class="row">
     <input type="number" class="col s3" name="life" [(ngModel)]="troopService.troopFilter.life" placeholder="Life" style="text-align: right">
     <input type="number" class="col s3" name="movement" [(ngModel)]="troopService.troopFilter.movement" placeholder="Movement" style="text-align: right">
     <input type="number" class="col s3" name="cost" [(ngModel)]="troopService.troopFilter.cost" placeholder="Cost" style="text-align: right">
     <input type="number" class="col s3" name="attack" [(ngModel)]="troopService.troopFilter.attack" placeholder="Attack" style="text-align: right">
   </div>
-  <div class="row">
+  <div class="row" *ngIf="!deckEdition">
     <div class="col s4">
       <select id="race" name="race" [(ngModel)]="troopService.troopFilter.race">
         <option value="" selected >All Races</option>
@@ -24,4 +24,13 @@
     </div>
     <input type="text" class="col s4" name="cardname" [(ngModel)]="troopService.troopFilter.habilities" placeholder="Habilities" style="text-align: right">
   </div>
+   <div class="row" *ngIf="deckEdition">
+     <div class="col s4">
+       <select id="type" name="type" [(ngModel)]="troopService.troopFilter.type">
+         <option value="" selected >All Types</option>
+         <option *ngFor="let type of typesService.types" [ngValue]="type._id">{{type.name}}</option>
+       </select>
+     </div>
+     <input type="text" class="col s8" name="cardname" [(ngModel)]="troopService.troopFilter.habilities" placeholder="Habilities" style="text-align: right">
+   </div>
 </div>

@@ -17,6 +17,7 @@ declare var $:any;
 export class CardDetailComponent implements OnInit {
   @Input () isCommander:boolean;
   private op={msg:"", send:false, success:false};
+  private edit:boolean=false;
   constructor(private cards:CardsService, private racesService:RacesService) { }
 
   ngOnInit() {

@@ -2,11 +2,11 @@
   <div class="row">
     <div class="form-group col s6">
       <label for="cardname">Troop Name</label>
-      <input id="cardname" type="text" class="validate form-control" name="cardname"  [(ngModel)]="troopService.troop.cardname" required>
+      <input id="cardname" type="text" class="validate form-control" name="cardname" [disabled]="!cards.edit" [(ngModel)]="troopService.troop.cardname" required>
     </div>
     <div class="form-group col s6">
       <label for="race">Race</label>
-      <select id="race" name="race" [(ngModel)]="troopService.troop.race">
+      <select id="race" name="race" [(ngModel)]="troopService.troop.race" [disabled]="!cards.edit">
         <option *ngFor="let race of racesService.races" [ngValue]="race._id">{{race.name}}</option>
       </select>
     </div>
@@ -14,20 +14,20 @@
   <div class="row">
     <div class="form-group col s6">
       <label for="race">Type</label>
-      <select id="type" name="type" [(ngModel)]="troopService.troop.type">
+      <select id="type" name="type" [(ngModel)]="troopService.troop.type" [disabled]="!cards.edit">
         <option *ngFor="let type of typesService.types" [ngValue]="type._id">{{type.name}}</option>
       </select>
     </div>
     <div class="form-group col s6" *ngIf="typesService.getType(troopService.troop.type)=='Action'">
       <label>Cost: {{troopService.troop.cost}}</label>
       <p class="range-field">
-        <input type="range" id="cost" min="0" max="15" name="cost"  [(ngModel)]="troopService.troop.cost" />
+        <input type="range" id="cost" min="0" max="15" name="cost" [disabled]="!cards.edit" [(ngModel)]="troopService.troop.cost" />
       </p>
     </div>
     <div class="form-group col s6" *ngIf="typesService.getType(troopService.troop.type)!='Action'">
       <label>Attack: {{troopService.troop.attack}}</label>
       <p class="range-field">
-        <input type="range" id="attack" min="0" max="8" name="attack"  [(ngModel)]="troopService.troop.attack" />
+        <input type="range" id="attack" min="0" max="8" name="attack" [disabled]="!cards.edit" [(ngModel)]="troopService.troop.attack" />
       </p>
     </div>
   </div>
@@ -35,26 +35,26 @@
     <div class="form-group col s4">
       <label>Life: {{troopService.troop.life}}</label>
       <p class="range-field">
-        <input  type="range" id="life" min="0" max="10" name="life"  [(ngModel)]="troopService.troop.life" />
+        <input  type="range" id="life" min="0" max="10" name="life" [disabled]="!cards.edit" [(ngModel)]="troopService.troop.life" />
       </p>
     </div>
     <div class="form-group col s4">
       <label>Movement: {{troopService.troop.movement}}</label>
       <p class="range-field">
-        <input type="range" id="movement" min="0" max="5" name="movement"  [(ngModel)]="troopService.troop.movement" />
+        <input type="range" id="movement" min="0" max="5" name="movement" [disabled]="!cards.edit" [(ngModel)]="troopService.troop.movement" />
       </p>
     </div>
     <div class="form-group col s4">
       <label>Cost: {{troopService.troop.cost}}</label>
       <p class="range-field">
-        <input type="range" id="cost" min="0" max="15" name="cost"  [(ngModel)]="troopService.troop.cost" />
+        <input type="range" id="cost" min="0" max="15" name="cost" [disabled]="!cards.edit" [(ngModel)]="troopService.troop.cost" />
       </p>
     </div>
   </div>
   <div class="row">
     <div class="form-group col s12">
       <label for="habilities">Habilities</label>
-      <textarea id="habilities" class="materialize-textarea" name="habilities" [(ngModel)]="troopService.troop.habilities"></textarea>
+      <textarea id="habilities" class="materialize-textarea" name="habilities" [disabled]="!cards.edit" [(ngModel)]="troopService.troop.habilities"></textarea>
     </div>
   </div>
   <div class="row" *ngIf="troopService.troop._id">
@@ -65,7 +65,9 @@
       <label>Created {{troopService.troop.created}} by {{troopService.troop.created_by}}</label>
     </div>
   </div>
-  <div class="form-group col right">
+  <div class="form-group col right"  *ngIf="cards.edit">
+    <button
+      class="btn btn-default left red" (click)="cards.edit=false">Cancel</button>
     <button
       [ngClass]="{disabled: !form.valid}" [disabled]="!form.valid" type="submit" class="btn btn-default right s4" [class.blue]="troopService.troop._id" [class.green]="!troopService.troop._id">{{troopService.troop._id?"save":"new"}}</button>
   </div>

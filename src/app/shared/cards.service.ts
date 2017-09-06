@@ -7,7 +7,7 @@ import {CurrentUserService} from './current-user.service'
 
 @Injectable()
 export class CardsService {
-
+  public edit:boolean=false;
   constructor(private http: Http, private currentUser:CurrentUserService) { }
 
   getRaces(){
