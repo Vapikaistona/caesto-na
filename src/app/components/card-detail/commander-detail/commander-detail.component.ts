@@ -24,4 +24,8 @@ export class CommanderDetailComponent implements OnInit {
       console.log(error);
     });
   }
+  cancelEdition(){
+    this.cards.edit=false;
+    this.commanderService.clearCommander();
+  }
 }

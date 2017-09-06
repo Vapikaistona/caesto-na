@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import {DecksService} from '../../shared/decks.service'
 import {RacesService} from '../../shared/races.service'
+import {SearchDeckComponent} from '../search/search-deck/search-deck.component'
 @Component({
   selector: 'deck-list',
   templateUrl: './deck-list.component.html',

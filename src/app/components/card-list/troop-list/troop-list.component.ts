@@ -40,6 +40,7 @@ export class TroopListComponent implements OnInit {
   }
 
     newCard(){
+      this.cards.edit=true;
       this.troopService.troop = {cardname: "",race:"", habilities:"",cost: 0, attack:0, life: 0, movement: 0}
     }
 }

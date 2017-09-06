@@ -26,4 +26,8 @@ export class TroopDetailComponent implements OnInit {
       console.log(error);
     });
   }
+  cancelEdition(){
+    this.cards.edit=false;
+    this.troopService.clearTroop();
+  }
 }

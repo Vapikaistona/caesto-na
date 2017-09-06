@@ -67,7 +67,7 @@
   </div>
   <div class="form-group col right"  *ngIf="cards.edit">
     <button
-      class="btn btn-default left red" (click)="cards.edit=false">Cancel</button>
+      class="btn btn-default left red" (click)="cancelEdition()">Cancel</button>
     <button
       [ngClass]="{disabled: !form.valid}" [disabled]="!form.valid" type="submit" class="btn btn-default right s4" [class.blue]="troopService.troop._id" [class.green]="!troopService.troop._id">{{troopService.troop._id?"save":"new"}}</button>
   </div>

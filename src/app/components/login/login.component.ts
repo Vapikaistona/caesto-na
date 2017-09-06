@@ -7,7 +7,7 @@ import { AuthenticationService } from '../../shared/authentication/authenticatio
 
 @Component({
     selector: 'login',
-    moduleId: module.id,
+    styleUrls: ['./login.component.css'],
     templateUrl: 'login.component.html'
 })
 

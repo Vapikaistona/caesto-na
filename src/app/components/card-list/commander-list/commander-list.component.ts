@@ -42,6 +42,7 @@ export class CommanderListComponent implements OnInit {
   }
 
     newCard(){
+      this.cards.edit=true;
       this.commanderService.commander = {cardname: "",race:"", habilities:"",resources:0, life: 1, movement: 1}
     }
 }

@@ -2,23 +2,26 @@
   <a class="waves-effect waves-light btn blue col s6" [class.darken-3]="showAll" (click)="showAll=true">All Decks</a>
   <a class="waves-effect waves-light btn blue disabled col s6" [class.darken-3]="!showAll" (click)="showAll=true" >Own Decks</a>
 </div>
-<div class="container" *ngIf="showAll">
-  <a (click)="newDeck()" class="btn-floating btn-small waves-effect waves-light green"><i class="material-icons">add</i></a>
-  <ul class="collection">
-    <li *ngFor="let deck of decksService.deckList" (click)="deckClicked(deck)"  class="collection-item" [class.active]="deck._id===decksService.deck._id" [ngClass]="getBgColor(deck.race)">
-      <div>{{deck.name}}
-        <a (click)="delete(deck._id)" class="secondary-content">
-          <i class="material-icons red-text">delete</i>
-        </a>
-      </div>
-    </li>
-    <li *ngIf="decksService.deckList.length==0" class="collection-item blue-text">
-      <div>No element found</div>
-    </li>
-  </ul>
-</div>
-<div *ngIf="!showAll">
-  <p>
-    Show Own works!
-  </p>
+<div class="row">
+  <div class="" *ngIf="showAll">
+    <search-deck></search-deck>
+    <a (click)="newDeck()" class="btn-floating btn-small waves-effect waves-light green"><i class="material-icons">add</i></a>
+    <ul class="collection">
+      <li *ngFor="let deck of decksService.deckList | deckFilter : decksService.deckFilter" (click)="deckClicked(deck)"  class="collection-item" [class.active]="deck._id===decksService.deck._id" [ngClass]="getBgColor(deck.race)">
+        <div>{{deck.name}}
+          <a (click)="delete(deck._id)" class="secondary-content">
+            <i class="material-icons red-text">delete</i>
+          </a>
+        </div>
+      </li>
+      <li *ngIf="decksService.deckList.length==0" class="collection-item blue-text">
+        <div>No element found</div>
+      </li>
+    </ul>
+  </div>
+  <div *ngIf="!showAll">
+    <p>
+      Show Own works!
+    </p>
+  </div>
 </div>

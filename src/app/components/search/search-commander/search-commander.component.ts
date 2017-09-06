@@ -14,7 +14,7 @@ export class SearchCommanderComponent implements OnInit {
   ngOnInit() {
   }
   toggleAvancedSearch(){
-    this.advancedSearch = !this.advancedSearch;
+    this.advancedSearch = !(this.advancedSearch || this.commanderService.commanderFilter.race!='');
     if (!this.advancedSearch){
       var race = this.commanderService.commanderFilter.race;
       this.commanderService.clearFilter();

@@ -22,6 +22,7 @@ export class DeckDetailComponent implements OnInit {
   cancelDeckEdition(){
     this.decks.edit=false;
     this.msg="";
+    this.decks.clearDeck();
   }
   getBgColor(race){
     return this.racesService.getRaceColor(race);

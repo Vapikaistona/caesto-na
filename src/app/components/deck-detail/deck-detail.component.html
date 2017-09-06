@@ -20,6 +20,7 @@
      </div>
    </div>
    <div class="row">
+     <label>Commander</label>
      <ul class="collection">
        <li  *ngIf="decks.deck.commander._id" (click)="decks.clearCommander()" class="collection-item" [ngClass]="getBgColor(decks.deck.commander.race)">
          <div>{{decks.deck.commander.cardname| truncate}}
@@ -37,6 +38,7 @@
      </ul>
    </div>
    <div class="row">
+     <label>Troops</label>
      <ul class="collection">
        <li *ngFor="let troop of decks.deck.troops" (click)="decks.removeTroop(troop)"  class="collection-item" [ngClass]="getBgColor(troop.race)">
          <div>{{troop.cardname | truncate}}

@@ -38,7 +38,7 @@ export class RacesService {
       case "Tecnópatas": return "orange lighten-3";
       case "Eruditos": return "blue lighten-3";
       case "Engendros": return "grey lighten-1";
-      case "Humanos": return "";
+      case "Humanos": return "pink lighten-4";
     }
   }
 }
