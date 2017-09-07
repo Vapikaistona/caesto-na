@@ -1,6 +1,13 @@
 <a *ngIf="!deckEdition" (click)="newCard()" class="btn-floating btn-small waves-effect waves-light green"><i class="material-icons">add</i></a>
+<div class="row sort-filter">
+  <i class="material-icons grey-text">sort</i>
+  <button class="right waves-effect waves-light btn-flat btn-sm " type="button" name="resources" (click)="changeSort('resources')">resources</button>
+  <button class="right waves-effect waves-light btn-flat btn-sm " type="button" name="life" (click)="changeSort('life')">life</button>
+  <button class="right waves-effect waves-light btn-flat btn-sm " type="button" name="race" (click)="changeSort('race')">race</button>
+  <button class="right waves-effect waves-light btn-flat btn-sm " type="button" name="name" (click)="changeSort('cardname')">name</button>
+</div>
 <ul class="collection">
-  <li *ngFor="let commander of commanderService.commanderList | commanderFilter:commanderService.commanderFilter " (click)="commanderClicked(commander)"  class="collection-item" [class.active]="commander._id===commanderService.commander._id" [ngClass]="getBgColor(commander.race)">
+  <li *ngFor="let commander of commanderService.commanderList | commanderFilter:commanderService.commanderFilter  | sort : fieldSorted " (click)="commanderClicked(commander)"  class="collection-item" [class.active]="commander._id===commanderService.commander._id" [ngClass]="getBgColor(commander.race)">
     <div>{{commander.cardname| truncate}}
       <a *ngIf="!deckEdition" (click)="delete(commander._id)" class="secondary-content">
         <i class="material-icons red-text">delete</i>

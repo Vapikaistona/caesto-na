@@ -14,6 +14,8 @@ import {DecksService} from '../../../shared/decks.service'
 export class CommanderListComponent implements OnInit {
   private currentCommanderActive:string;
   private commanderList:Array<Commander>;
+  private fieldSorted:string="cardname";
+
   @Input() deckEdition:boolean;
 
   constructor(private cards:CardsService, private races:RacesService, private commanderService:CommanderService, private decks:DecksService) {
@@ -40,9 +42,11 @@ export class CommanderListComponent implements OnInit {
   getBgColor(race){
     return this.races.getRaceColor(race);
   }
-
-    newCard(){
-      this.cards.edit=true;
-      this.commanderService.commander = {cardname: "",race:"", habilities:"",resources:0, life: 1, movement: 1}
-    }
+  changeSort(field){
+    this.fieldSorted = field;
+  }
+  newCard(){
+    this.cards.edit=true;
+    this.commanderService.commander = {cardname: "",race:"", habilities:"",resources:0, life: 1, movement: 1}
+  }
 }

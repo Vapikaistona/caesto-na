@@ -49,3 +49,13 @@ ul::-webkit-scrollbar {
 ul::-webkit-scrollbar-thumb {
 	background-color: #2196f3;
 }
+.sort-filter{
+  margin-bottom: 0px;
+  margin-left: 15px;
+}
+input {
+ margin: 0 0 0 0 !important;
+}
+.margin-bottom-20{
+  margin-bottom: 20px !important;
+}

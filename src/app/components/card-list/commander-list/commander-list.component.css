@@ -19,6 +19,9 @@ button{
   margin-right: 1px;
 }
 .btn-floating {
-    top: 20px;
-    left: -20px;
-  }
+  top: 60px;
+  left: -15px;
+}
+button:focus{
+  background-color: transparent;
+}
