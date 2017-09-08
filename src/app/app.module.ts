@@ -24,6 +24,8 @@ import { DeckOverviewComponent } from './components/deck-overview/deck-overview.
 import { SearchTroopComponent } from './components/search/search-troop/search-troop.component';
 import { SearchCommanderComponent } from './components/search/search-commander/search-commander.component';
 import { SearchDeckComponent } from './components/search/search-deck/search-deck.component';
+import { GameComponent } from './components/game/game.component';
+import { GameUsersComponent } from './components/game/game-users/game-users.component';
 
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
@@ -37,6 +39,7 @@ import { CommanderService } from './shared/commander.service';
 import { TroopService } from './shared/troop.service';
 import { DecksService } from './shared/decks.service';
 import { TypesService } from './shared/types.service';
+import { GameService } from './shared/game.service';
 import {AuthGuard,AdminGuard} from './shared/authentication/guard'
 //PIPES
 import {CommanderFilterPipe} from './shared/pipes/commanderFilter'
@@ -49,10 +52,14 @@ import {ArraySortPipe} from './shared/pipes/sort'
 import { RouterModule, Routes } from '@angular/router';
 import { routing } from './routes/routing';
 
+//SOCKET.IO
+//import {socketConfig} from './socket/config'
+
 //MOCKS
 import { fakeBackendProvider } from './mocks/mocks';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { BaseRequestOptions } from '@angular/http';
+
 
 
 
@@ -82,13 +89,16 @@ import { BaseRequestOptions } from '@angular/http';
     DeckListComponent,
     SearchTroopComponent,
     SearchCommanderComponent,
-    SearchDeckComponent
+    SearchDeckComponent,
+    GameComponent,
+    GameUsersComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     routing,
+
   ]
   ,
   providers: [
@@ -101,6 +111,7 @@ import { BaseRequestOptions } from '@angular/http';
     TroopService,
     DecksService,
     TypesService,
+    GameService,
     //fakeBackendProvider,
     MockBackend,
     BaseRequestOptions,

@@ -11,7 +11,7 @@ users.isAuthenticated = function (req, res, next) {
 	res.redirect('/');
 
 }
-users.isTokenValid = function(req, res, next) {
+users.canEditUser = function(req, res, next) {
 	var token;
 	if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer'){
 		 token = req.headers.authorization.split(' ')[1];
@@ -39,6 +39,30 @@ users.isTokenValid = function(req, res, next) {
 
   }
 };
+users.isTokenValid = function(req, res, next) {
+	var token;
+	if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer'){
+		 token = req.headers.authorization.split(' ')[1];
+  }
+  if (token) {
+    jwt.verify(token, config.secret, function(err, decoded) {
+			if (!err){
+	        req.decoded = decoded;
+	        return  next();
+			}
+			else {
+				return res.json({ success: false, message: err.message });
+			}
+    });
+  } else {
+    return res.status(403).send({
+        success: false,
+        message: 'No token provided.'
+    });
+
+  }
+};
+
 
 users.getAll =  (req, res) => {
     User.find({},(err,userlist)=>{

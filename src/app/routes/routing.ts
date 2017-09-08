@@ -5,7 +5,7 @@ import { CardOverviewComponent } from '../components/card-overview/card-overview
 import {DeckOverviewComponent} from '../components/deck-overview/deck-overview.component'
 import { LoginComponent } from '../components/login/login.component'
 import { RegisterComponent } from '../components/register/register.component'
-
+import { GameComponent } from '../components/game/game.component'
 import { PageNotFoundComponent } from '../components/page-not-found/page-not-found.component';
 import { RouterModule, Routes } from '@angular/router';
 import {AuthGuard,AdminGuard} from '../shared/authentication/guard'
@@ -33,6 +33,11 @@ import {AuthGuard,AdminGuard} from '../shared/authentication/guard'
   {
     path: 'decks',
     component: DeckOverviewComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'game',
+    component: GameComponent,
     canActivate: [AuthGuard]
   },
   {

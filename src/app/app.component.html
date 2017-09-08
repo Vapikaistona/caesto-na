@@ -5,6 +5,7 @@
       <a class='dropdown-button btn-flat' href='#' data-activates='dropdown1'><i class="material-icons">menu</i></a>
     </div>
     <ul id='dropdown1' class='dropdown-content lime darken-1'>
+      <li *ngIf="authentication.getLogged()" routerLinkActive="active"><a routerLink="game" >Game</a></li>
       <li *ngIf="authentication.getLogged()" routerLinkActive="active"><a routerLink="decks" >Decks</a></li>
       <li *ngIf="authentication.getLogged()" routerLinkActive="active"><a routerLink="cards" >Cards</a></li>
       <li *ngIf="authentication.getLogged()" [ngSwitch]="authentication.isAdmin()" routerLinkActive="active">
@@ -15,6 +16,7 @@
     </ul>
     <div class="hide-on-small-only">
       <ul id="nav-left" class="left">
+        <li *ngIf="authentication.getLogged()" routerLinkActive="active"><a routerLink="game" >Game</a></li>
         <li *ngIf="authentication.getLogged()" routerLinkActive="active"><a routerLink="decks" >Decks</a></li>
         <li *ngIf="authentication.getLogged()" routerLinkActive="active"><a routerLink="cards" >Cards</a></li>
         <li *ngIf="authentication.getLogged()" [ngSwitch]="authentication.isAdmin()" routerLinkActive="active">

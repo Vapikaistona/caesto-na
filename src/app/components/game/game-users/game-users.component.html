@@ -1,0 +1,23 @@
+
+<div class="white-board z-depth-1">
+    <div class="row">
+      <div class="">
+        <ul class="collection">
+          <label>Users:</label>
+          <li *ngFor="let user of game.userList" class="collection-item" [ngClass]="{disconnected:user.active==false, connected:user.active==true}">
+            <div>{{user.username}}
+              <a class="secondary-content" *ngIf="user.active">
+                <i class="material-icons green-text">check</i>
+              </a>
+              <a class="secondary-content" *ngIf="!user.active">
+                <i class="material-icons red-text">close</i>
+              </a>
+            </div>
+          </li>
+          <li *ngIf="game.userList.length==0" class="collection-item blue-text">
+            <div>No element found</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>

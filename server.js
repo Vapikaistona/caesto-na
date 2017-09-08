@@ -3,6 +3,8 @@ const express = require('express');
 const path = require('path');
 const http = require('http');
 const bodyParser = require('body-parser');
+
+
 var passport = require('passport')
 //  , LocalStrategy = require('passport-local').Strategy;
 var mongoose = require('mongoose');
@@ -90,6 +92,9 @@ app.set('port', port);
  * Create HTTP server.
  */
 const server = http.createServer(app);
+/*SOCKET.IO*/
+const game = require('./server/game.logic/game.connection');
+game.init(server);
 
 /**
  * Listen on provided port, on all network interfaces.

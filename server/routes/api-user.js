@@ -4,10 +4,10 @@ var users = require('../api.logic/users');
 
 
 
-router.get('/users', users.isAuthenticated, users.isTokenValid, users.getAll);
-router.get('/users/:id', users.isAuthenticated, users.isTokenValid, users.getOne);
-router.put('/users/:id/:psw', users.isAuthenticated, users.isTokenValid, users.update);
-router.delete('/users/:id',users.isAuthenticated,users.isTokenValid, users.delete);
+router.get('/users', users.isAuthenticated, users.canEditUser, users.getAll);
+router.get('/users/:id', users.isAuthenticated, users.canEditUser, users.getOne);
+router.put('/users/:id/:psw', users.isAuthenticated, users.canEditUser, users.update);
+router.delete('/users/:id',users.isAuthenticated,users.canEditUser, users.delete);
 
 router.post('/users', users.signup);
 router.post('/login', users.authenticate,users.login);
