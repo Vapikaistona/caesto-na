@@ -1,0 +1,26 @@
+<div class="white-board z-depth-1 center">
+  <div class="row"></div>
+  <div class="row">
+    <div *ngIf="game.waitForChallenge" class="preloader-wrapper active center">
+      <div class="spinner-layer spinner-red-only">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <h3>{{game.getChallengeDetails()}}</h3>
+  </div>
+  <div class="row" *ngIf="game.challenge">
+    <button [ngClass]="{disabled: !decks.deck._id}" [disabled]="!decks.deck._id" type="button" (click)="acceptChallenge()" name="button" class="btn btn-default right s4 green"> Accept</button>
+    <button type="button" (click)="declineChallenge()" name="button" class="btn btn-default right s4 red"> Decline</button>
+  </div>
+  <div class="row" *ngIf="game.challenge && !!msg">
+    <p class="red-text">{{msg}}</p>
+  </div>
+</div>

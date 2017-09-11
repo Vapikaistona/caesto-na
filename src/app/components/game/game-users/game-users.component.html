@@ -12,6 +12,12 @@
               <a class="secondary-content" *ngIf="!user.active">
                 <i class="material-icons red-text">close</i>
               </a>
+              <a class="secondary-content" *ngIf="(user.active && !!decks.deck._id) && !game.waitForChallenge" (click)="sendChallenge(user)">
+                <i class="material-icons">gamepad</i>
+              </a>
+              <a class="secondary-content" *ngIf="game.waitForChallenge" (click)="cancelChallenge(user)">
+                <i class="material-icons">clear</i>
+              </a>
             </div>
           </li>
           <li *ngIf="game.userList.length==0" class="collection-item blue-text">

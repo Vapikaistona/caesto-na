@@ -26,6 +26,7 @@ import { SearchCommanderComponent } from './components/search/search-commander/s
 import { SearchDeckComponent } from './components/search/search-deck/search-deck.component';
 import { GameComponent } from './components/game/game.component';
 import { GameUsersComponent } from './components/game/game-users/game-users.component';
+import { GameMsgComponent } from './components/game/game-msg/game-msg.component';
 
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
@@ -91,7 +92,8 @@ import { BaseRequestOptions } from '@angular/http';
     SearchCommanderComponent,
     SearchDeckComponent,
     GameComponent,
-    GameUsersComponent
+    GameUsersComponent,
+    GameMsgComponent
   ],
   imports: [
     BrowserModule,
