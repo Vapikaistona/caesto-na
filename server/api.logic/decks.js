@@ -64,17 +64,19 @@ decks.insertDeck =  (req, res) => {
       }
       else {
         if (deckF){
-          deck.modified_by =req.decoded._doc.username;
-          deck.modified =  dateFormat(now,"dd/mm/yyyy, HH:MM:ss");
-          Deck.findOneAndUpdate({_id:deck.id},deck,(err,deck)=>{
-            if (err){
-              console.log("error "+ err);
-              res.send(JSON.err)
-            }
-            else {
-              res.send({ok:true});
-            }
-          });
+          if (req.decoded._doc.username == deckF.created_by || req.decoded._doc.lvl == 3) {
+            deck.modified_by =req.decoded._doc.username;
+            deck.modified =  dateFormat(now,"dd/mm/yyyy, HH:MM:ss");
+            Deck.findOneAndUpdate({_id:deck.id},deck,(err,deck)=>{
+              if (err){
+                console.log("error "+ err);
+                res.send(JSON.err)
+              }
+              else {
+                res.send({ok:true});
+              }
+            });
+          }
         }
         else{
           deck.created_by = req.decoded._doc.username;

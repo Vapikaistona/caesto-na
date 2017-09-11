@@ -5,7 +5,8 @@ import {TroopDetailComponent} from './troop-detail/troop-detail.component';
 import {CommanderDetailComponent} from './commander-detail/commander-detail.component'
 
 import {CardsService} from '../../shared/cards.service';
-import {RacesService} from '../../shared/races.service'
+import {RacesService} from '../../shared/races.service';
+import {CurrentUserService} from '../../shared/current-user.service';
 
 declare var $:any;
 
@@ -18,7 +19,7 @@ export class CardDetailComponent implements OnInit {
   @Input () isCommander:boolean;
   private op={msg:"", send:false, success:false};
 
-  constructor(private cards:CardsService, private racesService:RacesService) { }
+  constructor(private cards:CardsService, private racesService:RacesService, private currentUser:CurrentUserService) { }
 
   ngOnInit() {
   }

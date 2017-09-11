@@ -39,6 +39,34 @@ users.canEditUser = function(req, res, next) {
 
   }
 };
+users.isAdmin = function(req, res, next) {
+	var token;
+	if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer'){
+		 token = req.headers.authorization.split(' ')[1];
+  }
+  if (token) {
+    jwt.verify(token, config.secret, function(err, decoded) {
+			if (!err){
+        //console.log(decoded)
+				if(!(decoded._doc.lvl==3)|| err) {
+	        return res.json({ success: false, message: 'Failed to authenticate token.' });
+	      } else {
+	        req.decoded = decoded;
+	        return  next();
+	      }
+			}
+			else {
+				return res.json({ success: false, message: err.message });
+			}
+    });
+  } else {
+    return res.status(403).send({
+        success: false,
+        message: 'No token provided.'
+    });
+
+  }
+};
 users.isTokenValid = function(req, res, next) {
 	var token;
 	if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer'){

@@ -1,4 +1,4 @@
-<a *ngIf="!deckEdition" (click)="newCard()" class="btn-floating btn-small waves-effect waves-light green"><i class="material-icons">add</i></a>
+<a *ngIf="!deckEdition && currentUser.isAdmin()" (click)="newCard()" class="btn-floating btn-small waves-effect waves-light green"><i class="material-icons">add</i></a>
 <div class="row sort-filter">
   <i class="material-icons grey-text">sort</i>
   <button class="right waves-effect waves-light btn-flat btn-sm " type="button" name="resources" (click)="changeSort('resources')">resources</button>
@@ -9,7 +9,7 @@
 <ul class="collection">
   <li *ngFor="let commander of commanderService.commanderList | commanderFilter:commanderService.commanderFilter  | sort : fieldSorted " (click)="commanderClicked(commander)"  class="collection-item" [class.active]="commander._id===commanderService.commander._id" [ngClass]="getBgColor(commander.race)">
     <div>{{commander.cardname| truncate}}
-      <a *ngIf="!deckEdition" (click)="delete(commander._id)" class="secondary-content">
+      <a *ngIf="!deckEdition && currentUser.isAdmin()" (click)="delete(commander._id)" class="secondary-content">
         <i class="material-icons red-text">delete</i>
       </a>
       <button class="secondary-content amber btn btn-small right">

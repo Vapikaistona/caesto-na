@@ -5,7 +5,7 @@ import {RacesService} from '../../../shared/races.service'
 import {TypesService} from '../../../shared/types.service'
 import {TroopService} from '../../../shared/troop.service'
 import {DecksService} from '../../../shared/decks.service'
-
+import {CurrentUserService} from '../../../shared/current-user.service';
 @Component({
   selector: 'troop-list',
   templateUrl: './troop-list.component.html',
@@ -17,7 +17,12 @@ export class TroopListComponent implements OnInit {
   private raceList:Array<any>;
   private fieldSorted:string="cardname";
   @Input() deckEdition:boolean;
-  constructor(private cards:CardsService, private races:RacesService, private types:TypesService, private troopService:TroopService, private decks:DecksService) { }
+  constructor(private cards:CardsService,
+              private races:RacesService,
+              private types:TypesService, 
+              private troopService:TroopService,
+              private decks:DecksService,
+              private currentUser:CurrentUserService) { }
 
   ngOnInit() {
     this.troopService.getTroopList();

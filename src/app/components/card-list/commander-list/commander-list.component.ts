@@ -5,6 +5,7 @@ import {CardsService} from '../../../shared/cards.service';
 import {RacesService} from '../../../shared/races.service'
 import {CommanderService} from '../../../shared/commander.service'
 import {DecksService} from '../../../shared/decks.service'
+import {CurrentUserService} from '../../../shared/current-user.service';
 
 @Component({
   selector: 'commander-list',
@@ -18,7 +19,11 @@ export class CommanderListComponent implements OnInit {
 
   @Input() deckEdition:boolean;
 
-  constructor(private cards:CardsService, private races:RacesService, private commanderService:CommanderService, private decks:DecksService) {
+  constructor(private cards:CardsService,
+              private races:RacesService,
+              private commanderService:CommanderService,
+              private decks:DecksService,
+              private currentUser:CurrentUserService) {
   }
 
   ngOnInit() {

@@ -3,6 +3,7 @@ import {DecksService} from '../../shared/decks.service'
 import {RacesService} from '../../shared/races.service'
 import {CurrentUserService} from '../../shared/current-user.service'
 import {SearchDeckComponent} from '../search/search-deck/search-deck.component'
+
 @Component({
   selector: 'deck-list',
   templateUrl: './deck-list.component.html',

@@ -3,6 +3,6 @@
   <div class="" [ngSwitch]="isCommander">
     <commander-detail *ngSwitchCase="true" [edit]="cards.edit"></commander-detail>
     <troop-detail  *ngSwitchCase="false" [edit]="cards.edit"></troop-detail>
-    <a *ngIf="!cards.edit" (click)="cards.edit=true" class="btn-floating btn-small waves-effect waves-light right orange"><i class="material-icons">edit</i></a>
+    <a *ngIf="!cards.edit && currentUser.isAdmin()" (click)="cards.edit=true" class="btn-floating btn-small waves-effect waves-light right orange"><i class="material-icons">edit</i></a>
   </div>
 </div>

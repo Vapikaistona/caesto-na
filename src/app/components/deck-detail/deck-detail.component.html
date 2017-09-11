@@ -75,5 +75,5 @@
     <button
       [ngClass]="{disabled: !form.valid}" [disabled]="!form.valid" (click)="submitFormDeck()" class="btn btn-default right" [class.blue]="decks.deck._id" [class.green]="!decks.deck._id">{{decks.deck._id?"save":"new"}}</button>
   </div>
-  <a *ngIf="!decks.edit" (click)="editDeck()" class="btn-floating btn-small waves-effect waves-light right orange"><i class="material-icons">edit</i></a>
+  <a *ngIf="!decks.edit && (currentUser.getUser().username == decks.deck.created_by || currentUser.isAdmin())" (click)="editDeck()" class="btn-floating btn-small waves-effect waves-light right orange"><i class="material-icons">edit</i></a>
 </form>

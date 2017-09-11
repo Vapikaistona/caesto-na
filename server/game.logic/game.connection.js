@@ -32,7 +32,11 @@ game.onConnect = function (client) {
         var userClient = {clientId:client.userid,username:user.username,active:true};
         clients.push({client:client, id:client.userid});
         var index = users.findIndex(x=>x.username === user.username);
-        users[index]=userClient;
+        if (index <0){
+          users.push(userClient);
+        }else {
+          users[index]=userClient;
+        }
         sio.sockets.emit('userList', users);
     });
     // DISCONNECT

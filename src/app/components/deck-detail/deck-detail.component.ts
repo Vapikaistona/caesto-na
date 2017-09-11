@@ -3,6 +3,7 @@ import {Deck} from '../../classes/deck'
 import {DecksService} from '../../shared/decks.service'
 import {RacesService} from '../../shared/races.service'
 import {TypesService} from '../../shared/types.service'
+import {CurrentUserService} from '../../shared/current-user.service';
 @Component({
   selector: 'deck-detail',
   templateUrl: './deck-detail.component.html',
@@ -10,7 +11,7 @@ import {TypesService} from '../../shared/types.service'
 })
 export class DeckDetailComponent implements OnInit {
   private msg:string="";
-  constructor(private decks:DecksService, private racesService:RacesService, private types:TypesService) { }
+  constructor(private decks:DecksService, private racesService:RacesService, private types:TypesService, private currentUser:CurrentUserService) { }
 
   ngOnInit() {
     this.racesService.getRacesList();
