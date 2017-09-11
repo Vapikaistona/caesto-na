@@ -7,7 +7,7 @@ var clients = [];
 var sio;
 
 function getClient(user) {
-  return clients[clients.findIndex(x=>x.id === users[users.findIndex(x=>x.username === user.username)].clientId)].client;
+  return clients[clients.findIndex(x=>x.id === users[users.findIndex(x=>x.username === user)].clientId)].client;
 }
 function getUser(user) {
   return users[users.findIndex(x=>x.username === user)];
@@ -47,8 +47,8 @@ game.onConnect = function (client) {
     });
     //CHALLENGE USER TO A GAME
     client.on ('challenge', (userA, deckA, userB) =>{
-      sio.sockets.to(getClient(userB).id).emit('challenge',userA.username+" has challenge you");
-      var privateGame = {userA:getUser(userA), deckA:deckA, userB:userB,deckB:{}}
+      sio.sockets.to(getClient(userB).id).emit('challenge',userA+" has challenge you");
+      var privateGame = {userA:userA, deckA:deckA, userB:userB,deckB:{}}
       client.once('challengeCanceled',() =>{
         sio.sockets.to(getClient(userB).id).emit('challengeCanceled');
       });

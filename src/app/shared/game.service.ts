@@ -47,7 +47,7 @@ export class GameService {
     }
   }
   sendChallenge(user){
-    this.socket.emit("challenge", this.currentUser.getUser().username, this.decks.deck, user);
+    this.socket.emit("challenge", this.currentUser.getUser().username, this.decks.deck, user.username);
     this.waitForChallenge = true;
     this.challengeDetails = "Waiting for "+user.username+" to accept the challenge";
     this.socket.once("challengeAccepted", data =>{

@@ -6,16 +6,10 @@
           <label>Users:</label>
           <li *ngFor="let user of game.userList" class="collection-item" [ngClass]="{disconnected:user.active==false, connected:user.active==true}">
             <div>{{user.username}}
-              <a class="secondary-content" *ngIf="user.active">
-                <i class="material-icons green-text">check</i>
-              </a>
-              <a class="secondary-content" *ngIf="!user.active">
-                <i class="material-icons red-text">close</i>
-              </a>
-              <a class="secondary-content" *ngIf="(user.active && !!decks.deck._id) && !game.waitForChallenge" (click)="sendChallenge(user)">
+              <a class="secondary-content" *ngIf="(user.active && !!decks.deck._id) && !game.waitForChallenge && !game.game.id && !(currentUser.getUser().username == user.username)" (click)="sendChallenge(user)">
                 <i class="material-icons">gamepad</i>
               </a>
-              <a class="secondary-content" *ngIf="game.waitForChallenge" (click)="cancelChallenge(user)">
+              <a class="secondary-content" *ngIf="game.waitForChallenge && !game.game.id && userChallenged ==user.username" (click)="cancelChallenge(user)">
                 <i class="material-icons">clear</i>
               </a>
             </div>
