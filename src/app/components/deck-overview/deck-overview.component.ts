@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { DeckDetailComponent } from "../deck-detail/deck-detail.component";
-import { DeckListComponent } from "../deck-list/deck-list.component";
-import {DecksService} from '../../shared/decks.service';
+import { DeckDetailComponent } from "./deck-detail/deck-detail.component";
+import { DeckListComponent } from "./deck-list/deck-list.component";
+import {DecksService} from '../../shared/deck/decks.service';
 @Component({
   selector: 'deck-overview',
   templateUrl: './deck-overview.component.html',

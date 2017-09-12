@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {CommanderService} from '../../../shared/commander.service'
-import {RacesService} from '../../../shared/races.service'
+import {CommanderService} from '../../../shared/card/commander.service'
+import {RacesService} from '../../../shared/card/races.service'
 @Component({
   selector: 'search-commander',
   templateUrl: './search-commander.component.html',

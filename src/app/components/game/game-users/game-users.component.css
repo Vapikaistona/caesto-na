@@ -31,4 +31,8 @@ li button{
 .disconnected{
   color: grey;
   background-color: #e0e0e0;
+  cursor: not-allowed;
+}
+.not-allowed{
+  cursor: not-allowed;
 }

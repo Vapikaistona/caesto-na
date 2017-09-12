@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {GameService} from '../../../shared/game.service'
-import {DecksService} from '../../../shared/decks.service'
+import {GameService} from '../../../shared/game/game.service'
+import {DecksService} from '../../../shared/deck/decks.service'
 @Component({
   selector: 'game-msg',
   templateUrl: './game-msg.component.html',

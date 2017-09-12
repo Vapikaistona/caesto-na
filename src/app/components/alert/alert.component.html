@@ -1,0 +1,9 @@
+<div class="grey darken-3 white-text white-board z-depth-1 center" id="fixed-div" *ngIf="alert.alertActive" >
+  <div class="row no-margin-bottom">
+    <p>{{alert.alertMsg}}</p>
+  </div>
+  <div class="">
+    <button type="button" class="btn green waves-effect waves-light" (click)="goToAlert()"> Go</button>
+    <button type="button" class="btn red waves-effect waves-light" (click)="dismissAlert()"> Dismiss</button>
+  </div>
+</div>

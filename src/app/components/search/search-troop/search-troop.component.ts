@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {TroopService} from '../../../shared/troop.service'
-import {RacesService} from '../../../shared/races.service'
-import {TypesService} from '../../../shared/types.service'
+import {TroopService} from '../../../shared/card/troop.service'
+import {RacesService} from '../../../shared/card/races.service'
+import {TypesService} from '../../../shared/card/types.service'
 
 @Component({
   selector: 'search-troop',

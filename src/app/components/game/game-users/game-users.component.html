@@ -4,17 +4,17 @@
       <div class="">
         <ul class="collection">
           <label>Users:</label>
-          <li *ngFor="let user of game.userList" class="collection-item" [ngClass]="{disconnected:user.active==false, connected:user.active==true}">
+          <li *ngFor="let user of socket.userList" class="collection-item"  [ngClass]="{'disconnected':user.active==false, 'connected':user.active==true, 'not-allowed':currentUser.getUser().username==user.username}" (click)="selectUser(user)">
             <div>{{user.username}}
               <a class="secondary-content" *ngIf="(user.active && !!decks.deck._id) && !game.waitForChallenge && !game.game.id && !(currentUser.getUser().username == user.username)" (click)="sendChallenge(user)">
-                <i class="material-icons">gamepad</i>
+                <i class="material-icons green-text">gamepad</i>
               </a>
               <a class="secondary-content" *ngIf="game.waitForChallenge && !game.game.id && userChallenged ==user.username" (click)="cancelChallenge(user)">
-                <i class="material-icons">clear</i>
+                <i class="material-icons red-text">clear</i>
               </a>
             </div>
           </li>
-          <li *ngIf="game.userList.length==0" class="collection-item blue-text">
+          <li *ngIf="socket.userList.length==0" class="collection-item blue-text">
             <div>No element found</div>
           </li>
         </ul>

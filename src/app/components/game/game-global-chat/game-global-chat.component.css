@@ -1,0 +1,10 @@
+button:focus{
+  background-color: transparent;
+}
+input[type=text]{
+  border-bottom: 0px solid #2196F3 !important;
+  box-shadow: 0 0px 0 0 #2196F3 !important;
+}
+button{
+  top: 5px;
+}

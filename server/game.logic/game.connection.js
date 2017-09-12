@@ -45,6 +45,15 @@ game.onConnect = function (client) {
         }
         sio.sockets.emit('userList', users);
     });
+    // CHATS
+    // GLOBAL
+    client.on('global-msg', (msg) =>{
+      sio.sockets.emit('global-msg',msg);
+    })
+    //PRIVATE
+    client.on('private-msg', ( userA, userB, msg) =>{
+      sio.sockets.to(getClient(userB).id).emit('private-msg',userA, msg);
+    })
     //CHALLENGE USER TO A GAME
     client.on ('challenge', (userA, deckA, userB) =>{
       sio.sockets.to(getClient(userB).id).emit('challenge',userA+" has challenge you");

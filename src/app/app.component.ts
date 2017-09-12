@@ -1,6 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import {AuthenticationService} from './shared/authentication/authentication.service'
 import { Router } from '@angular/router';
+import {AlertComponent} from './components/alert/alert.component'
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

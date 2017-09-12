@@ -1,0 +1,27 @@
+<div class="white-board z-depth-1 ">
+  <div class="" *ngIf="chat.userPrivateChat!=''">
+    <div class="row">
+      <h4>{{chat.userPrivateChat}}</h4>
+    </div>
+    <div class="row">
+      <ul class="collection chat" >
+        <li class="collection-item" *ngFor="let msg of chat.currentPrivateChat">
+          <label >{{msg.user+": "}}</label>
+          <span>{{msg.text}}</span>
+        </li>
+      </ul>
+    </div>
+    <div class="divider"></div>
+    <div class="row no-margin-bottom">
+      <form name="form" (ngSubmit)="f.form.valid && sendMessage()" #f="ngForm" novalidate>
+          <div class="row no-margin-bottom">
+              <input type="text" class="col s10" placeholder="Type your message" name="textToSend" [(ngModel)]="model.textToSend" #textToSend="ngModel" required />
+              <button class="right waves-effect waves-light btn-flat btn-sm col s2">send</button>
+          </div>
+      </form>
+    </div>
+  </div>
+  <div class="" *ngIf="chat.userPrivateChat==''">
+    <h4> Select a user from the list</h4>
+  </div>
+</div>

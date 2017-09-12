@@ -6,20 +6,21 @@ import { HttpModule } from '@angular/http';
 
 //COMPONENTES
 import { AppComponent } from './app.component';
-import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
-import { SingInComponent } from './components/sing-in/sing-in.component'
-import { UserListComponent } from './components/user-list/user-list.component';
-import { UserDetailComponent } from './components/user-detail/user-detail.component';
+import { AlertComponent } from './components/alert/alert.component';
+import { LoginComponent } from './components/user/login/login.component';
+import { RegisterComponent } from './components/user/register/register.component';
+import { SingInComponent } from './components/user/sing-in/sing-in.component'
+import { UserListComponent } from './components/user/user-list/user-list.component';
+import { UserDetailComponent } from './components/user/user-detail/user-detail.component';
 import { CardOverviewComponent } from './components/card-overview/card-overview.component';
-import { CardListComponent } from './components/card-list/card-list.component';
-import { TroopListComponent } from './components/card-list/troop-list/troop-list.component';
-import { CommanderListComponent } from './components/card-list/commander-list/commander-list.component';
-import { CardDetailComponent } from './components/card-detail/card-detail.component';
-import { TroopDetailComponent } from './components/card-detail/troop-detail/troop-detail.component';
-import { CommanderDetailComponent } from './components/card-detail/commander-detail/commander-detail.component';
-import { DeckDetailComponent } from './components/deck-detail/deck-detail.component';
-import { DeckListComponent } from './components/deck-list/deck-list.component';
+import { CardListComponent } from './components/card-overview/card-list/card-list.component';
+import { TroopListComponent } from './components/card-overview/card-list/troop-list/troop-list.component';
+import { CommanderListComponent } from './components/card-overview/card-list/commander-list/commander-list.component';
+import { CardDetailComponent } from './components/card-overview/card-detail/card-detail.component';
+import { TroopDetailComponent } from './components/card-overview/card-detail/troop-detail/troop-detail.component';
+import { CommanderDetailComponent } from './components/card-overview/card-detail/commander-detail/commander-detail.component';
+import { DeckDetailComponent } from './components/deck-overview/deck-detail/deck-detail.component';
+import { DeckListComponent } from './components/deck-overview/deck-list/deck-list.component';
 import { DeckOverviewComponent } from './components/deck-overview/deck-overview.component';
 import { SearchTroopComponent } from './components/search/search-troop/search-troop.component';
 import { SearchCommanderComponent } from './components/search/search-commander/search-commander.component';
@@ -27,20 +28,25 @@ import { SearchDeckComponent } from './components/search/search-deck/search-deck
 import { GameComponent } from './components/game/game.component';
 import { GameUsersComponent } from './components/game/game-users/game-users.component';
 import { GameMsgComponent } from './components/game/game-msg/game-msg.component';
+import { GameGlobalChatComponent } from './components/game/game-global-chat/game-global-chat.component';
+import { GamePrivateChatComponent } from './components/game/game-private-chat/game-private-chat.component';
 
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 //SERVICES
-import  {CurrentUserService} from './shared/current-user.service';
+import  {CurrentUserService} from './shared/user/current-user.service';
 import { AuthenticationService } from './shared/authentication/authentication.service';
-import { UserService } from './shared/user.service';
-import { CardsService } from './shared/cards.service';
-import { RacesService } from './shared/races.service';
-import { CommanderService } from './shared/commander.service';
-import { TroopService } from './shared/troop.service';
-import { DecksService } from './shared/decks.service';
-import { TypesService } from './shared/types.service';
-import { GameService } from './shared/game.service';
+import { UserService } from './shared/user/user.service';
+import { TypesService } from './shared/card/types.service';
+import { RacesService } from './shared/card/races.service';
+import { CardsService } from './shared/card/cards.service';
+import { CommanderService } from './shared/card/commander.service';
+import { TroopService } from './shared/card/troop.service';
+import { DecksService } from './shared/deck/decks.service';
+import { GameService } from './shared/game/game.service';
+import { ChatService } from './shared/game/chat.service';
+import { SocketService } from './shared/game/socket.service';
+import { AlertService } from './shared/alert/alert.service';
 import {AuthGuard,AdminGuard} from './shared/authentication/guard'
 //PIPES
 import {CommanderFilterPipe} from './shared/pipes/commanderFilter'
@@ -93,7 +99,10 @@ import { BaseRequestOptions } from '@angular/http';
     SearchDeckComponent,
     GameComponent,
     GameUsersComponent,
-    GameMsgComponent
+    GameMsgComponent,
+    AlertComponent,
+    GameGlobalChatComponent,
+    GamePrivateChatComponent
   ],
   imports: [
     BrowserModule,
@@ -114,6 +123,9 @@ import { BaseRequestOptions } from '@angular/http';
     DecksService,
     TypesService,
     GameService,
+    SocketService,
+    ChatService,
+    AlertService,
     //fakeBackendProvider,
     MockBackend,
     BaseRequestOptions,

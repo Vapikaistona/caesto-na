@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {DecksService} from '../../../shared/decks.service'
-import {RacesService} from '../../../shared/races.service'
+import {DecksService} from '../../../shared/deck/decks.service'
+import {RacesService} from '../../../shared/card/races.service'
 
 @Component({
   selector: 'search-deck',

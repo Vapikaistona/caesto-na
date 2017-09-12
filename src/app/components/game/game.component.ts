@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {GameUsersComponent} from './game-users/game-users.component'
 
 @Component({
   selector: 'game',
@@ -7,9 +6,12 @@ import {GameUsersComponent} from './game-users/game-users.component'
   styleUrls: ['./game.component.css']
 })
 export class GameComponent implements OnInit {
+  private showGlobal:boolean=true;
   constructor() { }
 
   ngOnInit() {
   }
-
+  privateMsg(user){
+    this.showGlobal=false;
+  }
 }

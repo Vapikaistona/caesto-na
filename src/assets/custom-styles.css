@@ -59,3 +59,10 @@ input {
 .margin-bottom-20{
   margin-bottom: 20px !important;
 }
+.no-margin-bottom{
+  margin-bottom: 0px !important;
+}
+.chat{
+  height: 300px;
+  overflow: auto;
+}
