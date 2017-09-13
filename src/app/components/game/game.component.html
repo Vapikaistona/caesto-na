@@ -1,24 +1,31 @@
-<div class="row">
+<div class="row" *ngIf="!game.gameStart">
   <div class = "col s12 m4">
       <game-users></game-users>
   </div>
   <div class = "col s12 m8">
-    <div class="row">
-      <div class="col s12">
-        <game-msg></game-msg>
+    <div class="white-board z-depth-1 " *ngIf="game.challenge || game.waitForChallenge">
+      <div class="row no-margin-bottom">
+        <div class="col s12">
+          <game-msg></game-msg>
+        </div>
       </div>
     </div>
-    <div class="row no-margin-bottom">
-      <a class="waves-effect waves-light btn blue col s6" [class.darken-3]="chat.showGlobal" (click)="chat.showGlobal=true">Global Chat</a>
-      <a class="waves-effect waves-light btn blue col s6" [class.darken-3]="!chat.showGlobal" (click)="chat.showGlobal=false">Private chat</a>
-    </div>
-    <div class="row">
-      <div class="col s12" *ngIf="chat.showGlobal">
-        <game-global-chat></game-global-chat>
+    <div class="white-board z-depth-1 ">
+      <div class="row no-margin-bottom">
+        <a class="waves-effect waves-light btn blue col s6" [class.darken-3]="chat.showGlobal" (click)="chat.showGlobal=true">Global Chat</a>
+        <a class="waves-effect waves-light btn blue col s6" [class.darken-3]="!chat.showGlobal" (click)="chat.showGlobal=false">Private chat</a>
       </div>
-      <div class="col s12" *ngIf="!chat.showGlobal">
-        <game-private-chat></game-private-chat>
+      <div class="row">
+        <div class="col s12" *ngIf="chat.showGlobal">
+          <game-global-chat></game-global-chat>
+        </div>
+        <div class="col s12" *ngIf="!chat.showGlobal">
+          <game-private-chat></game-private-chat>
+        </div>
       </div>
     </div>
   </div>
+</div>
+<div class="row" *ngIf="game.gameStart">
+  <game-play></game-play>
 </div>

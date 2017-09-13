@@ -30,6 +30,7 @@ import { GameUsersComponent } from './components/game/game-users/game-users.comp
 import { GameMsgComponent } from './components/game/game-msg/game-msg.component';
 import { GameGlobalChatComponent } from './components/game/game-global-chat/game-global-chat.component';
 import { GamePrivateChatComponent } from './components/game/game-private-chat/game-private-chat.component';
+import { GamePlayComponent } from './components/game/game-play/game-play.component';
 
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
@@ -102,7 +103,8 @@ import { BaseRequestOptions } from '@angular/http';
     GameMsgComponent,
     AlertComponent,
     GameGlobalChatComponent,
-    GamePrivateChatComponent
+    GamePrivateChatComponent,
+    GamePlayComponent
   ],
   imports: [
     BrowserModule,

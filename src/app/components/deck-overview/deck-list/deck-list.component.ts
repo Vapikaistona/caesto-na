@@ -2,7 +2,6 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import {DecksService} from '../../../shared/deck/decks.service'
 import {RacesService} from '../../../shared/card/races.service'
 import {CurrentUserService} from '../../../shared/user/current-user.service'
-import {SearchDeckComponent} from '../../search/search-deck/search-deck.component'
 
 @Component({
   selector: 'deck-list',

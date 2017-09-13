@@ -1,5 +1,4 @@
-<div class="white-board z-depth-1" *ngIf="game.challenge || game.waitForChallenge">
-  <div class="row">
+  <div class="row no-margin-bottom">
     <div class="col s4">
       <div *ngIf="game.waitForChallenge" class="preloader-wrapper active center">
         <div class="spinner-layer spinner-red-only">
@@ -17,11 +16,10 @@
       <h6>{{game.getChallengeDetails()}}</h6>
     </div>
   </div>
-  <div class="row" *ngIf="game.challenge">
+  <div class="row no-margin-bottom" *ngIf="game.challenge">
     <button [ngClass]="{disabled: !decks.deck._id}" [disabled]="!decks.deck._id" type="button" (click)="acceptChallenge()" name="button" class="btn btn-default right s4 green"> Accept</button>
     <button type="button" (click)="declineChallenge()" name="button" class="btn btn-default right s4 red"> Decline</button>
   </div>
   <div class="row" *ngIf="game.challenge && !!msg">
     <p class="red-text">{{msg}}</p>
   </div>
-</div>

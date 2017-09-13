@@ -1,9 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-
-
-import {TroopDetailComponent} from './troop-detail/troop-detail.component';
-import {CommanderDetailComponent} from './commander-detail/commander-detail.component'
-
 import {CardsService} from '../../../shared/card/cards.service';
 import {RacesService} from '../../../shared/card/races.service';
 import {CurrentUserService} from '../../../shared/user/current-user.service';

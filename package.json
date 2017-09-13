@@ -26,6 +26,7 @@
     "body-parser": "^1.17.2",
     "connect-flash": "^0.1.1",
     "core-js": "^2.4.1",
+    "createjs-module": "^0.8.2-beta",
     "dateformat": "^2.0.0",
     "directmail": "^0.1.8",
     "express": "^4.15.3",

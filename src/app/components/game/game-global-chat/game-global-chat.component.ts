@@ -1,5 +1,6 @@
 import { Component, OnInit,ViewChild, ElementRef, AfterViewChecked } from '@angular/core';
-import {ChatService} from '../../../shared/game/chat.service'
+import {ChatService} from '../../../shared/game/chat.service';
+import {CurrentUserService} from '../../../shared/user/current-user.service'
 @Component({
   selector: 'game-global-chat',
   templateUrl: './game-global-chat.component.html',
@@ -8,7 +9,7 @@ import {ChatService} from '../../../shared/game/chat.service'
 export class GameGlobalChatComponent implements OnInit, AfterViewChecked {
   private model: any = {textToSend:""};
   @ViewChild('scrollChat') private myScrollContainer: ElementRef;
-  constructor(private chat:ChatService) { }
+  constructor(private chat:ChatService, private currentUser:CurrentUserService) { }
 
   ngOnInit() {
   }
@@ -22,7 +23,7 @@ export class GameGlobalChatComponent implements OnInit, AfterViewChecked {
           this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
       } catch(err) { }
   }
-  
+
   sendMessage(){
     this.chat.sendGlobalMsg(this.model.textToSend);
     this.model.textToSend = "";

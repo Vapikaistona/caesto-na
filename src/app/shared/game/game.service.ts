@@ -8,8 +8,10 @@ import {AlertService} from '../alert/alert.service'
 export class GameService {
   public challenge:boolean = false;
   public waitForChallenge:boolean=false;
+  public gameStart:boolean=false;
   private challengeDetails:any;
   private game:any={};
+
   constructor(private currentUser:CurrentUserService, private decks: DecksService, private socket:SocketService, private alert:AlertService) { }
 
   getChallengeDetails(){
@@ -27,8 +29,8 @@ export class GameService {
       });
     })
     this.socket.getSocket().on("game-join", game=>{
+      this.gameStart = true;
       this.game = game;
-      console.log(game);
     })
   }
   sendChallenge(user){
