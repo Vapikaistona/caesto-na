@@ -6,10 +6,13 @@ import {AlertService} from '../alert/alert.service'
 
 @Injectable()
 export class ChatService {
+  public showGlobal:boolean = true;
   public globalChat:Array<any>=[];
   public privateChat: Array<any>=[];
   public userPrivateChat: string="";
   public currentPrivateChat:Array<any>=[];
+  public pendingMsg:Array<any>=[];
+
   constructor(private currentUser:CurrentUserService, private socket:SocketService, private alert:AlertService) { }
 
   init(){
@@ -23,7 +26,8 @@ export class ChatService {
       }else{
         this.privateChat[index].msgList.push({user:user,text:msg});
       }
-      if (this.userPrivateChat != user){
+      if (this.userPrivateChat != user || this.showGlobal){
+        this.pendingMsg.push(user);
         this.alert.setAlert(user.toUpperCase()+" HAS WROTE YOU!");
       }
     })
@@ -33,6 +37,10 @@ export class ChatService {
       this.privateChat.push({username:user,msgList:[]})
     }
     this.currentPrivateChat = this.privateChat[this.privateChat.findIndex(x=>x.username ==user)].msgList;
+    this.showGlobal = false;
+    if (this.pendingMsg.indexOf(user)>=0){
+      this.pendingMsg.splice(this.pendingMsg.indexOf(user),1)
+    }
   }
   sendGlobalMsg(text){
     this.socket.getSocket().emit("global-msg", {user:this.currentUser.getUser().username,text:text});

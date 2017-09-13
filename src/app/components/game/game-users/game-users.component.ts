@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {GameService} from '../../../shared/game/game.service'
 import {ChatService} from '../../../shared/game/chat.service'
 import {SocketService} from '../../../shared/game/socket.service'
@@ -10,7 +10,6 @@ import {CurrentUserService} from '../../../shared/user/current-user.service'
   styleUrls: ['./game-users.component.css']
 })
 export class GameUsersComponent implements OnInit {
-  @Output () private selectedUser = new EventEmitter();
   private userChallenged:any ="";
   constructor(private game:GameService,
               private chat:ChatService,
@@ -32,7 +31,6 @@ export class GameUsersComponent implements OnInit {
     if(user.username!=this.currentUser.getUser().username && user.active){
       this.chat.userPrivateChat = user.username;
       this.chat.setPrivateChat(user.username);
-      this.selectedUser.emit(user.username);
     }
   }
 }

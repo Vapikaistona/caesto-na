@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ChatService} from '../../shared/game/chat.service'
 
 @Component({
   selector: 'game',
@@ -6,12 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./game.component.css']
 })
 export class GameComponent implements OnInit {
-  private showGlobal:boolean=true;
-  constructor() { }
+  constructor(private chat:ChatService) { }
 
   ngOnInit() {
   }
-  privateMsg(user){
-    this.showGlobal=false;
-  }
+
 }

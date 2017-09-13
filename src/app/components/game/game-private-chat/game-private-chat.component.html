@@ -4,7 +4,7 @@
       <h4>{{chat.userPrivateChat}}</h4>
     </div>
     <div class="row">
-      <ul class="collection chat" >
+      <ul #scrollChat class="collection chat" >
         <li class="collection-item" *ngFor="let msg of chat.currentPrivateChat">
           <label >{{msg.user+": "}}</label>
           <span>{{msg.text}}</span>

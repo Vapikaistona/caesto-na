@@ -4,7 +4,7 @@
       <div class="">
         <ul class="collection">
           <label>Users:</label>
-          <li *ngFor="let user of socket.userList" class="collection-item"  [ngClass]="{'disconnected':user.active==false, 'connected':user.active==true, 'not-allowed':currentUser.getUser().username==user.username}" (click)="selectUser(user)">
+          <li *ngFor="let user of socket.userList" class="collection-item"  [ngClass]="{'disconnected':user.active==false, 'connected':user.active==true, 'not-allowed':currentUser.getUser().username==user.username, 'orange lighten-3':chat.pendingMsg.indexOf(user.username)>=0}" (click)="selectUser(user)">
             <div>{{user.username}}
               <a class="secondary-content" *ngIf="(user.active && !!decks.deck._id) && !game.waitForChallenge && !game.game.id && !(currentUser.getUser().username == user.username)" (click)="sendChallenge(user)">
                 <i class="material-icons green-text">gamepad</i>

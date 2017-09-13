@@ -1,6 +1,6 @@
 <div class="white-board z-depth-1 ">
   <div class="row">
-    <ul class="collection chat">
+    <ul #scrollChat class="collection chat">
       <li class="collection-item" *ngFor="let msg of chat.globalChat">
         <label >{{msg.user+": "}}</label>
         <span>{{msg.text}}</span>

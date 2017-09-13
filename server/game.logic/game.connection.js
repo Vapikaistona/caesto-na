@@ -7,7 +7,12 @@ var clients = [];
 var sio;
 
 function getClient(user) {
-  return clients[clients.findIndex(x=>x.id === users[users.findIndex(x=>x.username === user)].clientId)].client;
+  if (clients.findIndex(x=>x.id === users[users.findIndex(x=>x.username === user)].clientId) >=0) {
+    return clients[clients.findIndex(x=>x.id === users[users.findIndex(x=>x.username === user)].clientId)].client;
+  }else {
+    return {};
+  }
+
 }
 function getUser(user) {
   return users[users.findIndex(x=>x.username === user)];
@@ -52,26 +57,33 @@ game.onConnect = function (client) {
     })
     //PRIVATE
     client.on('private-msg', ( userA, userB, msg) =>{
-      sio.sockets.to(getClient(userB).id).emit('private-msg',userA, msg);
+      var toUser = getClient(userB)
+      if (toUser) {
+        sio.sockets.to(toUser.id).emit('private-msg',userA, msg);
+      }
     })
     //CHALLENGE USER TO A GAME
     client.on ('challenge', (userA, deckA, userB) =>{
-      sio.sockets.to(getClient(userB).id).emit('challenge',userA+" has challenge you");
-      var privateGame = {userA:userA, deckA:deckA, userB:userB,deckB:{}}
-      client.once('challengeCanceled',() =>{
-        sio.sockets.to(getClient(userB).id).emit('challengeCanceled');
-      });
-      getClient(userB).once('challengeDeclined',() =>{
-        sio.sockets.to(getClient(userA).id).emit('challengeDeclined');
-      });
-      getClient(userB).once('challengeAccepted',  (deckB) => {
-        privateGame.deckB = deckB;
-        privateGame.id = UUID();
-        sio.sockets.to(getClient(userA).id).emit('challengeAccepted');
-        getClient(userA).join(privateGame.id);
-        getClient(userB).join(privateGame.id);
-        sio.sockets.to(privateGame.id).emit("game-join",privateGame);
-      })
+      var toUser = getClient(userB);
+      var fromUser = getClient(userA);
+      if (toUser) {
+        sio.sockets.to(toUser.id).emit('challenge',userA+" has challenge you");
+        var privateGame = {userA:userA, deckA:deckA, userB:userB,deckB:{}}
+        client.once('challengeCanceled',() =>{
+          sio.sockets.to(toUser.id).emit('challengeCanceled');
+        });
+        toUser.once('challengeDeclined',() =>{
+          sio.sockets.to(fromUser.id).emit('challengeDeclined');
+        });
+        toUser.once('challengeAccepted',  (deckB) => {
+          privateGame.deckB = deckB;
+          privateGame.id = UUID();
+          sio.sockets.to(fromUser.id).emit('challengeAccepted');
+          fromUser.join(privateGame.id);
+          toUser.join(privateGame.id);
+          sio.sockets.to(privateGame.id).emit("game-join",privateGame);
+        })
+      }
     })
     // DISCONNECT
     client.on('disconnect', function () {
