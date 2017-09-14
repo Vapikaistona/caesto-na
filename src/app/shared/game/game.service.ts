@@ -11,6 +11,7 @@ export class GameService {
   public gameStart:boolean=false;
   private challengeDetails:any;
   private game:any={};
+  public myTurn:boolean=false;
 
   constructor(private currentUser:CurrentUserService, private decks: DecksService, private socket:SocketService, private alert:AlertService) { }
 
@@ -31,6 +32,22 @@ export class GameService {
     this.socket.getSocket().on("game-join", game=>{
       this.gameStart = true;
       this.game = game;
+      this.myTurn = this.currentUser.getUser().username == this.game.userTurn;
+      this.socket.getSocket().on("next-turn",game =>{
+        this.game = game;
+        this.myTurn = this.currentUser.getUser().username == this.game.userTurn;
+      });
+      this.socket.getSocket().on("end-game",game =>{
+        this.game = {};
+        this.gameStart = false;
+      });
+      this.socket.getSocket().on("user-disconnected",user =>{
+        if(user == this.game.userA || user == this.game.userB){
+          this.game = {};
+          this.gameStart = false;
+          this.alert.setAlert("User "+user+ "has just disconnected");
+        }
+      });
     })
   }
   sendChallenge(user){
@@ -73,5 +90,17 @@ export class GameService {
     this.challengeDetails = "Challenge Declined";
     this.waitForChallenge = false;
     this.challenge = false;
+  }
+  endTurn(){
+    this.myTurn = this.currentUser.getUser().username == this.game.userTurn
+    if(this.myTurn){
+      this.socket.getSocket().emit("next-turn",this.game);
+    }
+  }
+  endGame(){
+    this.socket.getSocket().emit("end-game",this.game);
+  }
+  getGame(){
+    return this.game;
   }
 }

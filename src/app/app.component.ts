@@ -1,5 +1,6 @@
 import { Component,OnInit } from '@angular/core';
 import {AuthenticationService} from './shared/authentication/authentication.service'
+import {GameService} from './shared/game/game.service'
 import { Router } from '@angular/router';
 import {AlertComponent} from './components/alert/alert.component'
 @Component({
@@ -10,7 +11,8 @@ import {AlertComponent} from './components/alert/alert.component'
 export class AppComponent implements OnInit {
   title = 'app';
   constructor(private authentication: AuthenticationService,
-              private router: Router
+              private router: Router,
+              private game: GameService
              ){}
   ngOnInit(){
   }

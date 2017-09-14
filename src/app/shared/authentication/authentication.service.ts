@@ -33,7 +33,9 @@ export class AuthenticationService {
             .subscribe((response: Response) => {
                 this.currentUser.removeUser();
                 this.setLogged(false);
-                this.socket.disconnect();
+                if(this.socket.getSocket()){
+                  this.socket.getSocket().emit("disconnect-client",this.game.getGame());
+                }
             });
     }
 

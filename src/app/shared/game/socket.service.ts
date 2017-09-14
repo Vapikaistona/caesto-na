@@ -20,9 +20,11 @@ export class SocketService {
     this.socket.on("userList",list=>{
       this.userList = list;
     })
-    
-  }
-  disconnect(){
+    this.socket.on('disconnect-cient',()=>{
+      this.socket.disconnect();
+    })
+
+  }  disconnect(){
     if (this.socket){
       this.socket.disconnect();
     }

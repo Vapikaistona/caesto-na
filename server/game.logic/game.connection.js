@@ -35,7 +35,30 @@ game.initGameUsers = function (){
     }
   });
 }
+function nextTurn(game) {
+  game.userTurn = game.userTurn == game.userA? game.userB:game.userA;
+  sio.sockets.to(game.id).emit("next-turn",game);
+}
 
+function endGame(game) {
+  if (game) {
+    sio.sockets.to(game.id).emit("end-game");
+    var toUser = getClient(game.userB);
+    var fromUser = getClient(game.userA);
+    if (fromUser) {
+      fromUser.removeAllListeners('next-turn');
+      fromUser.removeAllListeners('end-game');
+      fromUser.removeAllListeners('challengeAccepted');
+      fromUser.leave(game.id);
+    }
+    if (toUser) {
+      toUser.removeAllListeners('next-turn');
+      toUser.removeAllListeners('end-game');
+      toUser.removeAllListeners('challengeAccepted');
+      toUser.leave(game.id);
+    }
+  }
+}
 game.onConnect = function (client) {
     client.userid = UUID();
     // USER CONNECTED
@@ -68,24 +91,41 @@ game.onConnect = function (client) {
       var fromUser = getClient(userA);
       if (toUser) {
         sio.sockets.to(toUser.id).emit('challenge',userA+" has challenge you");
-        var privateGame = {userA:userA, deckA:deckA, userB:userB,deckB:{}}
+        var privateGame = {userA:userA, deckA:deckA, userB:userB,deckB:{},userTurn:userA}
         client.once('challengeCanceled',() =>{
           sio.sockets.to(toUser.id).emit('challengeCanceled');
         });
         toUser.once('challengeDeclined',() =>{
           sio.sockets.to(fromUser.id).emit('challengeDeclined');
         });
-        toUser.once('challengeAccepted',  (deckB) => {
+        toUser.on('challengeAccepted',  (deckB) => {
           privateGame.deckB = deckB;
           privateGame.id = UUID();
           sio.sockets.to(fromUser.id).emit('challengeAccepted');
-          fromUser.join(privateGame.id);
+          client.join(privateGame.id);
           toUser.join(privateGame.id);
           sio.sockets.to(privateGame.id).emit("game-join",privateGame);
+          client.on('next-turn',nextTurn);
+          toUser.on('next-turn',nextTurn);
+          client.on('end-game',endGame);
+          toUser.on('end-game',endGame);
         })
       }
     })
     // DISCONNECT
+    client.on('disconnect-client', function (game) {
+        var userIndex = users.findIndex(x=>x.clientId === client.userid);
+        if(userIndex>=0){
+          endGame(game);
+          sio.sockets.to(clients.find(x=>x.id === users[userIndex].clientId).id).emit('disconnect-client');
+          var clientIndex = clients.findIndex(x=>x.id === users[userIndex].clientId);
+          clients.splice(clientIndex,1);
+          users[userIndex].clientId="";
+          users[userIndex].active=false;
+          sio.sockets.emit('userList', users);
+        }
+
+    });
     client.on('disconnect', function () {
         var userIndex = users.findIndex(x=>x.clientId === client.userid);
         if(userIndex>=0){
@@ -94,7 +134,10 @@ game.onConnect = function (client) {
           users[userIndex].clientId="";
           users[userIndex].active=false;
           sio.sockets.emit('userList', users);
+          sio.sockets.emit('user-disconnected', users[userIndex].username);
         }
+
     });
+
 }
 module.exports = game;
