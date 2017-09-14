@@ -1,5 +1,8 @@
-<div class="col s4">
+<div class="col s3">
   <div class="white-board z-depth-1">
+    <div class="row hand">
+      <p>Card hand</p>
+    </div>
     <div class="row">
       <button [ngClass]="{disabled: !game.myTurn}" [disabled]="!game.myTurn" type="button" name="button" (click)="endTurn()" class="btn waves-effect waves-light btn-sm col s12 orange">End Turn</button>
     </div>
@@ -8,8 +11,8 @@
     </div>
   </div>
 </div>
-<div class="col s8">
+<div class="col s9">
   <div class="white-board z-depth-1 canvas">
-    <canvas width="600" height="900" id="demoCanvas"></canvas>
+    <canvas width="700" height="900" id="demoCanvas"></canvas>
   </div>
 </div>

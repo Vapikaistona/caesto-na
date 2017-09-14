@@ -22,12 +22,14 @@ export class GamePlayComponent implements AfterViewInit {
     var hexList = {};
     var mapStartX = 60;
     var mapStartY = 60;
-    var mapHexSize = 30;
+    var mapHexSize = 60;
     var mapHexGap = 2;
-    var moveDistance = 3;
+    //var moveDistance = 3;
     // calculate hex width and height. We will use these values to offset neighbouring hexes
-    var mapHexWidth = Math.sqrt(3)/2 * 2 * mapHexSize;
-    var mapHexHeight = 3/4 * 2 * mapHexSize;
+    var mapHexWidth = (Math.sqrt(3)/2) * 2 * mapHexSize;
+    var mapHexHeight = (3/4) * 2 * mapHexSize;
+    var logTextField = new createjs.Text("Log text gets shown here", "14px Arial");
+
     stage.enableMouseOver();
     // Call the function to create the hex grid
     createMap(mapWidthHexNo, mapHeightHexNo);
@@ -67,9 +69,14 @@ export class GamePlayComponent implements AfterViewInit {
       hex.addEventListener("mouseover", mouseOverHex);
       hex.addEventListener("mouseout", mouseOutHex);
       stage.addChild(hex);
+      logTextField.x = logTextField.y = 0;
+      stage.addChild(logTextField);
+
+      stage.update();
     }
 
     function mouseOverHex(event) {
+      debugText ("MouseOver hex id is: (" + event.target.id + "). The Stage Index of the hex is [" + stage.getChildIndex(event.target) + "]. The position is: " + event.target.x + "x" + event.target.y +"y");
     	event.target.graphics.clear().beginStroke("#888").beginLinearGradientFill(["#fafafa","#fafafa"], [0, 1], 0, event.target.y-20, 0, event.target.y+30).drawPolyStar(event.target.x,event.target.y,mapHexSize - mapHexGap - 1,6,0,30);
       stage.update();
     }
@@ -77,6 +84,11 @@ export class GamePlayComponent implements AfterViewInit {
     function mouseOutHex(event) {
       event.target.graphics.clear().beginStroke("#aaa").beginLinearGradientFill(["#eee","#fafafa"], [0, 1], 0, event.target.y-20, 0, event.target.y+30).drawPolyStar(event.target.x,event.target.y,mapHexSize - mapHexGap,6,0,30);
       stage.update();
+    }
+    // Simple function to show a text label which tells the id of the hex over which mouse is placed
+    function debugText (textString) {
+        logTextField.text = textString.toString();
+        stage.update();
     }
   }
   endTurn(){
