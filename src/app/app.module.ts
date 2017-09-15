@@ -45,6 +45,7 @@ import { CommanderService } from './shared/card/commander.service';
 import { TroopService } from './shared/card/troop.service';
 import { DecksService } from './shared/deck/decks.service';
 import { GameService } from './shared/game/game.service';
+import { BoardService } from './shared/game/board.service';
 import { ChatService } from './shared/game/chat.service';
 import { SocketService } from './shared/game/socket.service';
 import { AlertService } from './shared/alert/alert.service';
@@ -125,6 +126,7 @@ import { BaseRequestOptions } from '@angular/http';
     DecksService,
     TypesService,
     GameService,
+    BoardService,
     SocketService,
     ChatService,
     AlertService,

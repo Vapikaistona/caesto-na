@@ -1,7 +1,11 @@
 .canvas{
   overflow: auto;
 }
-
+canvas {
+  background:url(/assets/board-bg.png);
+  background-repeat: no-repeat;
+}
 .hand{
   min-height: 400px;
+  overflow: auto;
 }
