@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import {GameService} from '../../../shared/game/game.service'
 import {BoardService} from '../../../shared/game/board.service'
+import {RacesService} from '../../../shared/card/races.service'
 import * as createjs from 'createjs-module';
 
 @Component({
@@ -11,13 +12,13 @@ import * as createjs from 'createjs-module';
 export class GamePlayComponent implements AfterViewInit {
 
 
-  constructor(private game:GameService, private board:BoardService) { }
+  constructor(private game:GameService, private board:BoardService, private races:RacesService) { }
 
   ngOnInit() {
   }
 
   ngAfterViewInit() {
-    this.board.init(new createjs.Stage("demoCanvas"));
+    this.board.init(new createjs.Stage("boardCanvas"));
   }
 
   endTurn(){
@@ -25,5 +26,8 @@ export class GamePlayComponent implements AfterViewInit {
   }
   endGame(){
     this.game.endGame();
+  }
+  getBgColor(race){
+    return this.races.getRaceColor(race);
   }
 }

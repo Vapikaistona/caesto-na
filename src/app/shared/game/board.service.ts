@@ -43,13 +43,14 @@ export class BoardService {
         }
         hexX = this.mapStartX + j * this.mapHexWidth + offX;
         hexY = this.mapStartY + i * this.mapHexHeight;
-        this.createHex (hexX, hexY, this.mapHexSize);
+        this.createHex (hexX, hexY, this.mapHexSize,i,j);
       }
     }
   }
 
-  createHex (x,y,size) {
+  createHex (x,y,size,i,j) {
     var hex = new createjs.Shape();
+    hex.id = i*10+j;
     hex.x = x;
     hex.y = y;
     hex.graphics.beginStroke("#212121").f("#ccff90").drawPolyStar(0,0,size,6,0,30);

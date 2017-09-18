@@ -1,7 +1,30 @@
 <div class="col s3">
   <div class="white-board z-depth-1">
+    <div class="row">
+      <label>Commander:</label>
+      <ul class="collection">
+        <li class="collection-item" [ngClass]="getBgColor(game.currentGame.ownCommander.race)">
+          <div>{{game.currentGame.ownCommander.cardname| truncate}}
+            <button class="secondary-content amber btn btn-small right">
+              {{game.currentGame.ownCommander.resources}}
+            </button>
+            <button class="secondary-content green btn btn-small right">
+              {{game.currentGame.ownCommander.life}}
+            </button>
+          </div>
+        </li>
+      </ul>
+    </div>
     <div class="row hand">
-      <p>Card hand</p>
+      <ul class="collection">
+        <label>Your hand:</label>
+        <li *ngFor="let card of game.hand" class="collection-item" [ngClass]="getBgColor(card.race)" >
+          <div>{{card.cardname}}</div>
+        </li>
+        <li *ngIf="game.hand.length==0" class="collection-item blue-text" >
+          <div>No cards in hand</div>
+        </li>
+      </ul>
     </div>
     <div class="row">
       <button [ngClass]="{disabled: !game.myTurn}" [disabled]="!game.myTurn" type="button" name="button" (click)="endTurn()" class="btn waves-effect waves-light btn-sm col s12 orange">End Turn</button>
@@ -13,6 +36,27 @@
 </div>
 <div class="col s9">
   <div class="white-board z-depth-1 canvas">
-    <canvas width="872" height="639" id="demoCanvas"></canvas>
+    <canvas width="872" height="639" id="boardCanvas"></canvas>
+  </div>
+</div>
+<div class="enemyDetails">
+  <div class="white-board z-depth-1 grey darken-4">
+    <div class="row no-margin-bottom">
+      <label>Oponent:</label>
+      <ul class="collection">
+        <li class="collection-item"  [ngClass]="getBgColor(game.currentGame.enemyCommander.race)">
+          <div>{{game.currentGame.enemyCommander.cardname| truncate}}
+            <button class="secondary-content amber btn btn-small right">
+              {{game.currentGame.enemyCommander.resources}}
+            </button>
+            <button class="secondary-content green btn btn-small right">
+              {{game.currentGame.enemyCommander.life}}
+            </button>
+          </div>
+        </li>
+      </ul>
+      <label>Hand: {{game.currentGame.enemyHand}}</label>
+      <label>Deck: {{game.currentGame.enemyDeck}}</label>
+    </div>
   </div>
 </div>

@@ -20,6 +20,6 @@
     <button [ngClass]="{disabled: !decks.deck._id}" [disabled]="!decks.deck._id" type="button" (click)="acceptChallenge()" name="button" class="btn btn-default right s4 green"> Accept</button>
     <button type="button" (click)="declineChallenge()" name="button" class="btn btn-default right s4 red"> Decline</button>
   </div>
-  <div class="row" *ngIf="game.challenge && !!msg">
-    <p class="red-text">{{msg}}</p>
+  <div class="row" *ngIf="game.challenge && !decks.deck._id">
+    <p class="red-text">You must choose a deck before joining a game</p>
   </div>

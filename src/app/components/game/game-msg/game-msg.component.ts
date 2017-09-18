@@ -18,8 +18,6 @@ export class GameMsgComponent implements OnInit {
       this.msg = ""
       this.game.acceptChallenge();
       this.alert.clearAlert();
-    }else{
-      this.msg = "You must choose a deck before joining a game"
     }
   }
   declineChallenge(){

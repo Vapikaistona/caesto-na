@@ -1,6 +1,8 @@
 var UUID = require('uuid');
 const io = require('socket.io');
 var User = require('../models/user');
+var deck = require('./deck');
+var Deck = require('../models/deck');
 var game = {};
 var users = [];
 var clients = [];
@@ -12,11 +14,12 @@ function getClient(user) {
   }else {
     return {};
   }
-
 }
+
 function getUser(user) {
   return users[users.findIndex(x=>x.username === user)];
 }
+
 game.init = function (server){
   sio = io.listen(server);
   sio.sockets.on('connection', game.onConnect);
@@ -35,10 +38,7 @@ game.initGameUsers = function (){
     }
   });
 }
-function nextTurn(game) {
-  game.userTurn = game.userTurn == game.userA? game.userB:game.userA;
-  sio.sockets.to(game.id).emit("next-turn",game);
-}
+
 
 function endGame(game) {
   if (game) {
@@ -91,7 +91,49 @@ game.onConnect = function (client) {
       var fromUser = getClient(userA);
       if (toUser) {
         sio.sockets.to(toUser.id).emit('challenge',userA+" has challenge you");
-        var privateGame = {userA:userA, deckA:deckA, userB:userB,deckB:{},userTurn:userA}
+        var privateGame = {userA:userA, deckA:{}, userB:userB,deckB:{},userTurn:userA};
+        function nextTurn(game) {
+          privateGame.userTurn = game.userTurn == game.userA? game.userB:game.userA;
+          sio.sockets.to(game.id).emit("next-turn",gameInfo(privateGame));
+        }
+
+        function gameInfo(game){
+          var formattedGame ={}
+          formattedGame.id = game.id;
+          formattedGame.userTurn = game.userTurn;
+          formattedGame.board = game.board;
+          formattedGame.userA = game.userA;
+          formattedGame.userB = game.userB;
+          formattedGame.handA = game.deckA.hand.length;
+          formattedGame.handB = game.deckB.hand.length;
+          formattedGame.deckA = game.deckA.cards.length;
+          formattedGame.deckB = game.deckB.cards.length;
+          formattedGame.commanderA = game.deckA.commander;
+          formattedGame.commanderB = game.deckB.commander;
+          formattedGame.cementeryA = game.deckA.cementery;
+          formattedGame.cementeryB = game.deckB.cementery;
+          return formattedGame;
+        }
+        Deck.findById(deckA,(err,deckItem)=>{
+          if (err){
+            console.log("error "+ err);
+            res.send(JSON.err)
+          }
+          else {
+            var pileOfCards= [];
+            for (card of deckItem.troops) {
+              var number = card.number;
+              delete card.number;
+              for(var i =1;i<=number;i++){
+                pileOfCards.push(card)
+              }
+            }
+            var completeDeck = {commander:deckItem.commander,cementery:[],hand:[]}
+            completeDeck.cards = deck.shuffle(pileOfCards);
+            privateGame.deckA =  completeDeck;
+          }
+        });
+
         client.once('challengeCanceled',() =>{
           sio.sockets.to(toUser.id).emit('challengeCanceled');
         });
@@ -99,16 +141,40 @@ game.onConnect = function (client) {
           sio.sockets.to(fromUser.id).emit('challengeDeclined');
         });
         toUser.on('challengeAccepted',  (deckB) => {
-          privateGame.deckB = deckB;
-          privateGame.id = UUID();
-          sio.sockets.to(fromUser.id).emit('challengeAccepted');
-          client.join(privateGame.id);
-          toUser.join(privateGame.id);
-          sio.sockets.to(privateGame.id).emit("game-join",privateGame);
-          client.on('next-turn',nextTurn);
-          toUser.on('next-turn',nextTurn);
-          client.on('end-game',endGame);
-          toUser.on('end-game',endGame);
+
+          Deck.findById(deckB,(err,deckItem)=>{
+            if (err){
+              console.log("error "+ err);
+              res.send(JSON.err)
+            }
+            else {
+              var pileOfCards= [];
+              for (card of deckItem.troops) {
+                var number = card.number;
+                delete card.number;
+                for(var i =1;i<=number;i++){
+                  pileOfCards.push(card)
+                }
+              }
+              var completeDeck = {commander:deckItem.commander,cementery:[],hand:[]}
+              completeDeck.cards = deck.shuffle(pileOfCards);
+              privateGame.deckB =  completeDeck;
+              privateGame.deckA.hand = deck.draw (2,privateGame.deckA);
+              privateGame.deckB.hand = deck.draw (2,privateGame.deckB)
+              privateGame.id = UUID();
+              sio.sockets.to(fromUser.id).emit('challengeAccepted');
+              client.join(privateGame.id);
+              toUser.join(privateGame.id);
+              deck.initBoard(privateGame);
+              sio.sockets.to(privateGame.id).emit("game-join",gameInfo(privateGame));
+              sio.sockets.to(fromUser.id).emit('game-hand', privateGame.deckA.hand);
+              sio.sockets.to(toUser.id).emit('game-hand', privateGame.deckB.hand);
+              client.on('next-turn',nextTurn);
+              toUser.on('next-turn',nextTurn);
+              client.on('end-game',endGame);
+              toUser.on('end-game',endGame);
+            }
+          });
         })
       }
     })
