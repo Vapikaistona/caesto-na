@@ -63,6 +63,8 @@ import { routing } from './routes/routing';
 
 //SOCKET.IO
 //import {socketConfig} from './socket/config'
+//CANVAS
+import * as createjs from 'createjs-module';
 
 //MOCKS
 import { fakeBackendProvider } from './mocks/mocks';
@@ -112,7 +114,6 @@ import { BaseRequestOptions } from '@angular/http';
     FormsModule,
     HttpModule,
     routing,
-
   ]
   ,
   providers: [

@@ -3,22 +3,33 @@ import {CurrentUserService} from '../user/current-user.service'
 import {DecksService} from '../deck/decks.service'
 import {SocketService} from './socket.service'
 import {AlertService} from '../alert/alert.service'
+import {BoardService} from './board.service'
 
 @Injectable()
 export class GameService {
   public challenge:boolean = false;
   public waitForChallenge:boolean=false;
   public gameStart:boolean=false;
-  private challengeDetails:any;
-  private game:any={};
   public currentGame:any = {};
   public hand:Array<any>=[];
-  public myTurn:boolean=false;
+  public myTurn:boolean = false;
+  private challengeDetails:any;
+  private game:any={};
 
-  constructor(private currentUser:CurrentUserService, private decks: DecksService, private socket:SocketService, private alert:AlertService) { }
+  constructor(private currentUser:CurrentUserService,
+              private decks: DecksService,
+              private socket:SocketService,
+              private alert:AlertService,
+              private board:BoardService
+            ) {
+               board.myTurn=false;
+            }
 
   getChallengeDetails(){
     return this.challengeDetails;
+  }
+  updateBoard(board){
+    this.board.updateBoard(board);
   }
   updateGame(game){
     if(this.currentUser.getUser().username == this.game.userA){
@@ -51,18 +62,20 @@ export class GameService {
       this.gameStart = true;
       this.game = game;
       this.updateGame(game);
-      this.myTurn = this.currentUser.getUser().username == this.game.userTurn;
+      this.board.myTurn = this.myTurn = this.currentUser.getUser().username == this.game.userTurn;
       this.socket.getSocket().on("next-turn",game =>{
         this.game = game;
         this.updateGame(game);
-        this.myTurn = this.currentUser.getUser().username == this.game.userTurn;
+        this.updateBoard(game.board);
+        this.board.myTurn = this.myTurn = this.currentUser.getUser().username == this.game.userTurn;
       });
       this.socket.getSocket().on("game-hand",hand =>{
         this.hand = hand;
       });
       this.socket.getSocket().on("game-info",game =>{
         this.game = game;
-        this.updateGame(game);this.game = game;
+        this.updateGame(game);
+        this.updateBoard(game.board);
       });
       this.socket.getSocket().on("end-game",game =>{
         this.game = {};
@@ -121,7 +134,7 @@ export class GameService {
     this.challenge = false;
   }
   endTurn(){
-    this.myTurn = this.currentUser.getUser().username == this.game.userTurn
+    this.board.myTurn = this.myTurn = this.currentUser.getUser().username == this.game.userTurn
     if(this.myTurn){
       this.socket.getSocket().emit("next-turn",this.game);
     }

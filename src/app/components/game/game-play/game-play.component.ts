@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import {GameService} from '../../../shared/game/game.service'
 import {BoardService} from '../../../shared/game/board.service'
 import {RacesService} from '../../../shared/card/races.service'
+import {TypesService} from '../../../shared/card/types.service'
 import * as createjs from 'createjs-module';
 
 @Component({
@@ -12,13 +13,13 @@ import * as createjs from 'createjs-module';
 export class GamePlayComponent implements AfterViewInit {
 
 
-  constructor(private game:GameService, private board:BoardService, private races:RacesService) { }
+  constructor(private game:GameService, private board:BoardService, private races:RacesService, private types:TypesService) { }
 
   ngOnInit() {
   }
 
   ngAfterViewInit() {
-    this.board.init(new createjs.Stage("boardCanvas"));
+    this.board.init(new createjs.Stage("boardCanvas"),this.game.getGame().board);
   }
 
   endTurn(){

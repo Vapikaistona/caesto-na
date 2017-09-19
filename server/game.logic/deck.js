@@ -15,13 +15,13 @@ deck.shuffle = function (array) {
 }
 
 deck.initBoard = function (game) {
-  game.board = {"11":{commander:game.deckA.commander,user:game.userA},
+  game.board = {"11":{commander:game.deckA.commander,user:"userA"},
                 "21":{},"22":{},
                 "31":{},"32":{},"33":{},
                 "41":{},"42":{},"43":{},"44":{},
                 "51":{},"52":{},"53":{},
                 "61":{},"62":{},
-                "71":{commander:game.deckB.commander, user:game.userB}
+                "71":{commander:game.deckB.commander, user:"userB"}
               }
 }
 

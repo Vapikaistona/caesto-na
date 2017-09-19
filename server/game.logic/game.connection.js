@@ -117,7 +117,6 @@ game.onConnect = function (client) {
         Deck.findById(deckA,(err,deckItem)=>{
           if (err){
             console.log("error "+ err);
-            res.send(JSON.err)
           }
           else {
             var pileOfCards= [];
@@ -145,11 +144,10 @@ game.onConnect = function (client) {
           Deck.findById(deckB,(err,deckItem)=>{
             if (err){
               console.log("error "+ err);
-              res.send(JSON.err)
             }
             else {
               var pileOfCards= [];
-              for (card of deckItem.troops) {
+              for (var card of deckItem.troops) {
                 var number = card.number;
                 delete card.number;
                 for(var i =1;i<=number;i++){

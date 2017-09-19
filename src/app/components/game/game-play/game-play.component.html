@@ -19,7 +19,17 @@
       <ul class="collection">
         <label>Your hand:</label>
         <li *ngFor="let card of game.hand" class="collection-item" [ngClass]="getBgColor(card.race)" >
-          <div>{{card.cardname}}</div>
+          <div>{{card.cardname}}
+            <button class="secondary-content amber btn btn-small right" (click)="nothing()" >
+              {{card.cost}}
+            </button>
+            <button class="secondary-content green btn btn-small right" *ngIf="types.getType(card.type)!='Action'" (click)="nothing()">
+              {{card.life}}
+            </button>
+            <button class="secondary-content  deep-orange darken-1 btn btn-small right" *ngIf="types.getType(card.type)!='Action'" (click)="nothing()">
+              {{card.attack}}
+            </button>
+          </div>
         </li>
         <li *ngIf="game.hand.length==0" class="collection-item blue-text" >
           <div>No cards in hand</div>
