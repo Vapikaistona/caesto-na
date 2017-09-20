@@ -1,8 +1,8 @@
 <div class="col s3">
   <div class="white-board z-depth-1">
-    <div class="row">
+    <div class="row no-margin-bottom">
       <label>Commander:</label>
-      <ul class="collection">
+      <ul class="collection no-margin-bottom">
         <li class="collection-item" [ngClass]="getBgColor(game.currentGame.ownCommander.race)">
           <div>{{game.currentGame.ownCommander.cardname| truncate}}
             <button class="secondary-content amber btn btn-small right">
@@ -16,7 +16,7 @@
       </ul>
     </div>
     <div class="row hand">
-      <ul class="collection">
+      <ul class="collection no-margin-bottom">
         <label>Your hand:</label>
         <li *ngFor="let card of game.hand" class="collection-item" [ngClass]="getBgColor(card.race)" >
           <div>{{card.cardname}}
@@ -45,9 +45,7 @@
   </div>
 </div>
 <div class="col s9">
-  <div class="white-board z-depth-1 canvas">
-    <canvas width="872" height="639" id="boardCanvas"></canvas>
-  </div>
+    <canvas width="672" height="620" id="boardCanvas" class="white-board z-depth-1 canvas"></canvas>
 </div>
 <div class="enemyDetails">
   <div class="white-board z-depth-1 grey darken-4">

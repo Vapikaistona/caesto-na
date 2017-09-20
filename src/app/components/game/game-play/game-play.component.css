@@ -2,8 +2,9 @@
   overflow: auto;
 }
 canvas {
-  background:url(/assets/board-bg.png);
+  //background:url(/assets/board-bg.png);
   background-repeat: no-repeat;
+  padding: 0px;
 }
 .hand{
   min-height: 400px;
