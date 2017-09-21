@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as createjs from 'createjs-module';
+import {ActionService} from './action.service'
 
 @Injectable()
 export class BoardService {
@@ -14,10 +15,11 @@ export class BoardService {
   private offsetTriangleHShort = 15;
   private offsetTriangleHLong = 30;
   private offsetTriangleV = 26;
-  public myTurn;
   private queue = new createjs.LoadQueue(true);
-
-  constructor() { }
+  private startingPos:any = {x:0,y:0,initial:true};
+  public myTurn;
+  public board;
+  constructor(private action:ActionService) { }
 
   getManifest (){
     var server = "."
@@ -32,10 +34,10 @@ export class BoardService {
     return manifest;
   }
 
-  init(stage,board) {
+  init(stage) {
     this.queue.on("complete",(evt)=>{
       console.log("all files loaded");
-      this.updateBoard(board)
+      this.updateBoard()
     },this);
     this.queue.on("fileload",(evt)=>{
       //console.log("fileLoaded: ");
@@ -111,18 +113,21 @@ export class BoardService {
     }
   }
 
-  updateBoard(board){
-    for(let i = 16;i<this.stage.children.length;i++){
-      this.stage.removeChildAt(i);
-    }
+  updateBoard(){
+    this.stage.children.forEach(children => {
+      if (children.id >1){
+        this.stage.removeChild(children);
+      }
+    });
+
     let fillColor = "#ffffff"
     let strokeColor ="#000000";
     let user = "";
-    for (let element in board) {
-      if (board[element].user){
+    for (let element in this.board) {
+      if (this.board[element].user){
         var item = this.stage.getChildByName(element);
         var tile;
-        if (board[element].user=="userA"){
+        if (this.board[element].user=="userA"){
           user = "A";
           fillColor = "#ffffff";
           strokeColor = "#000000";
@@ -135,7 +140,6 @@ export class BoardService {
         matrix.translate(-this.mapHexWidth/2-this.offsetImg, -this.mapHexHeight/2-this.offsetImg);
         var creature = new createjs.Container();
         creature.id = 2;
-        creature.name = item.name +" c";
         creature.x = item.x;
         creature.y = item.y;
         var background = new createjs.Shape();
@@ -144,8 +148,8 @@ export class BoardService {
         var life = new createjs.Shape();
         life.graphics.s(strokeColor).f("#4caf50").dp(this.offsetTriangleHShort,this.offsetTriangleV,this.mapHexSize/2,3,0,0);
         creature.addChild(life);
-        if(board[element].commander){
-          var textLife = new createjs.Text(board[element].commander.life, "15px Arial", "#ffffff");
+        if(this.board[element].commander){
+          var textLife = new createjs.Text(this.board[element].commander.life, "15px Arial", "#ffffff");
           textLife.x = this.offsetTriangleHShort -7;
           textLife.y = this.offsetTriangleV +4;
           textLife.textBaseline = "alphabetic";
@@ -154,14 +158,14 @@ export class BoardService {
           var resources = new createjs.Shape();
           resources.graphics.s(strokeColor).f("#ffc107").dp(this.offsetTriangleHLong,0,this.mapHexSize/2,3,0,60);
           creature.addChild(resources);
-          var textResources = new createjs.Text(board[element].commander.resources, "15px Arial", "#ffffff");
+          var textResources = new createjs.Text(this.board[element].commander.resources, "15px Arial", "#ffffff");
           textResources.x = this.offsetTriangleHLong -7;
           textResources.y = 0+4;
           textResources.textBaseline = "alphabetic";
           creature.addChild(textResources);
-        }else if(board[element].structure){
+        }else if(this.board[element].structure){
           tile = this.queue.getResult("structure"+user)
-        }else if(board[element].troop){
+        }else if(this.board[element].troop){
           tile = this.queue.getResult("troop"+user)
         }
 
@@ -177,24 +181,78 @@ export class BoardService {
     this.stage.update();
   }
   pressMove = (event) =>{
+    if (this.startingPos.initial){
+      this.startingPos.x = event.currentTarget.x
+      this.startingPos.y = event.currentTarget.y
+      this.startingPos.initial = false;
+    }
     event.currentTarget.x = event.stageX;
     event.currentTarget.y = event.stageY;
     this.stage.update();
   }
   pressUp = (event) =>{
     let endTile =this.getTile(event.stageX,event.stageY);
-    console.log("Mouse Coords: x:"+this.stage.mouseX+" y:"+ this.stage.mouseY)
-    if(endTile){
-      console.log("TileName: "+endTile.name)
+    let target:any ={};
+    console.log("Coords: "+ event.stageX+" "+event.stageY)
+    if (endTile){
+      target = this.board[endTile.name];
+      console.log("Target: "+target.user)
+      console.log("EndTile: "+ endTile.name)
     }
+    if(endTile && Object.keys(target).length === 0 && this.myTurn){
+      event.currentTarget.x = endTile.x;
+      event.currentTarget.y = endTile.y;
+      this.startingPos.initial = true;
+      console.log("Starting HEX: "+this.getTile(this.startingPos.x,this.startingPos.y).name+" Ending HEX: "+endTile.name)
+      this.moveCreature(this.getTile(this.startingPos.x,this.startingPos.y).name, endTile.name)
+
+    }else{
+      event.currentTarget.x = this.startingPos.x;
+      event.currentTarget.y = this.startingPos.y;
+      this.startingPos.initial = true;
+    }
+    this.stage.update();
   }
   getTile(x,y){
-    let coords;
     for(let i = 0;i<this.stage.children.length;i++){
-      coords = {x:x,y:y}//this.stage.children[i].globalToLocal(x,y);
-      if (this.stage.children[i].hitTest(coords)){
+      let p = this.stage.children[i].globalToLocal(x, y);
+      if (this.stage.children[i].hitTest(p.x,p.y)){
+        if (this.stage.children[i].id >1){
+          return null;
+        }
         return this.stage.children[i];
       }
     }
+  }
+  getCreature(x,y){
+    for(let i = 0;i<this.stage.children.length;i++){
+      let p = this.stage.children[i].globalToLocal(x, y);
+      if (this.stage.children[i].hitTest(p.x,p.y)){
+        if (this.stage.children[i].id !=1){
+          return this.stage.children[i];
+        }
+      }
+    }
+  }
+  moveCreature(from, to) {
+    let target = this.board[from];
+    this.board[to] = target;
+    this.board[from] = {};
+    this.action.moveCreature(from,to);
+  }
+  updatePosition(from,to){
+    let target = this.board[from];
+    if (Object.keys(target).length !== 0){
+      let oldPos = this.stage.getChildByName(from);
+      let creatureToMove = this.getCreature(oldPos.x,oldPos.y);
+      let newPos = this.stage.getChildByName(to);
+      //createjs.Tween.get(creatureToMove).to({x:newPos.x,y:newPos.y},0);
+      creatureToMove.x = newPos.x;
+      creatureToMove.y = newPos.y;
+      this.stage.update();
+      this.board[to] = target;
+      this.board[from] = {};
+    }
+
   }
 }

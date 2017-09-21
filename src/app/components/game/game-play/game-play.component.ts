@@ -19,7 +19,8 @@ export class GamePlayComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.board.init(new createjs.Stage("boardCanvas"),this.game.getGame().board);
+    this.board.board = this.game.getGame().board;
+    this.board.init(new createjs.Stage("boardCanvas"));
   }
 
   endTurn(){

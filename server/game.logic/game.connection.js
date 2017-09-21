@@ -46,12 +46,14 @@ function endGame(game) {
     var toUser = getClient(game.userB);
     var fromUser = getClient(game.userA);
     if (fromUser) {
+      fromUser.removeAllListeners('creature-move');
       fromUser.removeAllListeners('next-turn');
       fromUser.removeAllListeners('end-game');
       fromUser.removeAllListeners('challengeAccepted');
       fromUser.leave(game.id);
     }
     if (toUser) {
+      toUser.removeAllListeners('creature-move');
       toUser.removeAllListeners('next-turn');
       toUser.removeAllListeners('end-game');
       toUser.removeAllListeners('challengeAccepted');
@@ -92,8 +94,16 @@ game.onConnect = function (client) {
       if (toUser) {
         sio.sockets.to(toUser.id).emit('challenge',userA+" has challenge you");
         var privateGame = {userA:userA, deckA:{}, userB:userB,deckB:{},userTurn:userA};
+
+        function moveCreature(from, to) {
+          let target = privateGame.board[from];
+          privateGame.board[to] = target;
+          privateGame.board[from] = {};
+          sio.sockets.to(privateGame.id).emit("creature-move",from,to);
+        }
         function nextTurn(game) {
           privateGame.userTurn = game.userTurn == game.userA? game.userB:game.userA;
+          privateGame.board = game.board;
           sio.sockets.to(game.id).emit("next-turn",gameInfo(privateGame));
         }
 
@@ -167,6 +177,8 @@ game.onConnect = function (client) {
               sio.sockets.to(privateGame.id).emit("game-join",gameInfo(privateGame));
               sio.sockets.to(fromUser.id).emit('game-hand', privateGame.deckA.hand);
               sio.sockets.to(toUser.id).emit('game-hand', privateGame.deckB.hand);
+              client.on('creature-move',moveCreature);
+              toUser.on('creature-move',moveCreature);
               client.on('next-turn',nextTurn);
               toUser.on('next-turn',nextTurn);
               client.on('end-game',endGame);

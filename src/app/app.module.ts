@@ -47,6 +47,7 @@ import { DecksService } from './shared/deck/decks.service';
 import { GameService } from './shared/game/game.service';
 import { BoardService } from './shared/game/board.service';
 import { ChatService } from './shared/game/chat.service';
+import { ActionService } from './shared/game/action.service';
 import { SocketService } from './shared/game/socket.service';
 import { AlertService } from './shared/alert/alert.service';
 import {AuthGuard,AdminGuard} from './shared/authentication/guard'
@@ -130,6 +131,7 @@ import { BaseRequestOptions } from '@angular/http';
     BoardService,
     SocketService,
     ChatService,
+    ActionService,
     AlertService,
     //fakeBackendProvider,
     MockBackend,

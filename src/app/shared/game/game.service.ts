@@ -28,8 +28,8 @@ export class GameService {
   getChallengeDetails(){
     return this.challengeDetails;
   }
-  updateBoard(board){
-    this.board.updateBoard(board);
+  updateBoard(){
+    this.board.updateBoard();
   }
   updateGame(game){
     if(this.currentUser.getUser().username == this.game.userA){
@@ -66,7 +66,8 @@ export class GameService {
       this.socket.getSocket().on("next-turn",game =>{
         this.game = game;
         this.updateGame(game);
-        this.updateBoard(game.board);
+        // this.board.board = game.board;
+        // this.updateBoard();
         this.board.myTurn = this.myTurn = this.currentUser.getUser().username == this.game.userTurn;
       });
       this.socket.getSocket().on("game-hand",hand =>{
@@ -75,18 +76,31 @@ export class GameService {
       this.socket.getSocket().on("game-info",game =>{
         this.game = game;
         this.updateGame(game);
-        this.updateBoard(game.board);
+        // this.board.board = game.board;
+        // this.updateBoard();
       });
-      this.socket.getSocket().on("end-game",game =>{
+      this.socket.getSocket().on("creature-move",(from,to) =>{
+        this.board.updatePosition(from,to);
+      });
+      this.socket.getSocket().once("end-game",game =>{
+        this.socket.getSocket().off('creature-move');
+        this.socket.getSocket().off('game-hand');
+        this.socket.getSocket().off('game-info');
+        this.socket.getSocket().off('next-turn');
         this.game = {};
         this.updateGame({});
         this.gameStart = false;
       });
-      this.socket.getSocket().on("user-disconnected",user =>{
+      this.socket.getSocket().once("user-disconnected",user =>{
         if(user == this.game.userA || user == this.game.userB){
           this.game = {};
           this.updateGame({});
           this.gameStart = false;
+          this.socket.getSocket().off('creature-move');
+          this.socket.getSocket().off('game-hand');
+          this.socket.getSocket().off('game-info');
+          this.socket.getSocket().off('next-turn');
+          this.socket.getSocket().off('end-game');
           this.alert.setAlert("User "+user+ "has just disconnected");
         }
       });
