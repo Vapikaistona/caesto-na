@@ -49,6 +49,7 @@ export class GameService {
     }
   }
   init(){
+
     this.socket.getSocket().on("challenge",details =>{
       this.challengeDetails = details;
       this.challenge = true;
@@ -62,12 +63,17 @@ export class GameService {
       this.gameStart = true;
       this.game = game;
       this.updateGame(game);
+      if (this.currentUser.getUser().username == this.game.userA){
+        this.board.user = "userA"
+      }else{
+        this.board.user = "userB"
+      }
       this.board.myTurn = this.myTurn = this.currentUser.getUser().username == this.game.userTurn;
       this.socket.getSocket().on("next-turn",game =>{
         this.game = game;
         this.updateGame(game);
-        // this.board.board = game.board;
-        // this.updateBoard();
+        this.board.board = game.board;
+        this.updateBoard();
         this.board.myTurn = this.myTurn = this.currentUser.getUser().username == this.game.userTurn;
       });
       this.socket.getSocket().on("game-hand",hand =>{

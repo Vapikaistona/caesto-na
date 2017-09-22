@@ -17,8 +17,11 @@ export class BoardService {
   private offsetTriangleV = 26;
   private queue = new createjs.LoadQueue(true);
   private startingPos:any = {x:0,y:0,initial:true};
+  private witness:boolean = false;
   public myTurn;
+  public user;
   public board;
+
   constructor(private action:ActionService) { }
 
   getManifest (){
@@ -114,11 +117,14 @@ export class BoardService {
   }
 
   updateBoard(){
-    this.stage.children.forEach(children => {
-      if (children.id >1){
-        this.stage.removeChild(children);
+    let childrenLength = this.stage.children.length;
+    for (let i =16;i <childrenLength;i++){
+      if (this.stage.children[i].id >1){
+        this.stage.removeChildAt(i);
+        i--;
+        childrenLength--;
       }
-    });
+    }
 
     let fillColor = "#ffffff"
     let strokeColor ="#000000";
@@ -181,37 +187,34 @@ export class BoardService {
     this.stage.update();
   }
   pressMove = (event) =>{
-    if (this.startingPos.initial){
-      this.startingPos.x = event.currentTarget.x
-      this.startingPos.y = event.currentTarget.y
-      this.startingPos.initial = false;
-    }
-    event.currentTarget.x = event.stageX;
-    event.currentTarget.y = event.stageY;
-    this.stage.update();
+      if (this.startingPos.initial){
+        this.startingPos.tile = this.getTile(event.currentTarget.x,event.currentTarget.y)
+        this.startingPos.initial = false;
+        this.startingPos.user = this.board[this.startingPos.tile.name].user;
+      }
+      if(this.user === this.startingPos.user){
+        event.currentTarget.x = event.stageX;
+        event.currentTarget.y = event.stageY;
+        this.stage.update();
+      }
+
   }
   pressUp = (event) =>{
-    let endTile =this.getTile(event.stageX,event.stageY);
-    let target:any ={};
-    console.log("Coords: "+ event.stageX+" "+event.stageY)
-    if (endTile){
-      target = this.board[endTile.name];
-      console.log("Target: "+target.user)
-      console.log("EndTile: "+ endTile.name)
+    if(this.user === this.startingPos.user){
+      let endTile =this.getTile(event.stageX,event.stageY);
+      let target:any ={};
+      if (endTile){
+        target = this.board[endTile.name];
+      }
+      if(endTile && Object.keys(target).length === 0 && this.myTurn){
+        this.moveCreature(this.startingPos.tile.name, endTile, event.currentTarget)
+      }else{
+        event.currentTarget.x = this.startingPos.tile.x;
+        event.currentTarget.y = this.startingPos.tile.y;
+      }
+      this.stage.update();
     }
-    if(endTile && Object.keys(target).length === 0 && this.myTurn){
-      event.currentTarget.x = endTile.x;
-      event.currentTarget.y = endTile.y;
-      this.startingPos.initial = true;
-      console.log("Starting HEX: "+this.getTile(this.startingPos.x,this.startingPos.y).name+" Ending HEX: "+endTile.name)
-      this.moveCreature(this.getTile(this.startingPos.x,this.startingPos.y).name, endTile.name)
-
-    }else{
-      event.currentTarget.x = this.startingPos.x;
-      event.currentTarget.y = this.startingPos.y;
-      this.startingPos.initial = true;
-    }
-    this.stage.update();
+    this.startingPos.initial = true;
   }
   getTile(x,y){
     for(let i = 0;i<this.stage.children.length;i++){
@@ -234,25 +237,34 @@ export class BoardService {
       }
     }
   }
-  moveCreature(from, to) {
+  moveCreature(from, tileTo, creature) {
     let target = this.board[from];
-    this.board[to] = target;
+    this.board[tileTo.name] = target;
     this.board[from] = {};
-    this.action.moveCreature(from,to);
+    creature.x = tileTo.x;
+    creature.y = tileTo.y;
+    this.action.moveCreature(from,tileTo.name);
   }
   updatePosition(from,to){
     let target = this.board[from];
+    let newPos = this.stage.getChildByName(to);
+    let creatureMoved = this.getCreature(newPos.x,newPos.y);
+    if(!creatureMoved){
+      let oldPos = this.stage.getChildByName(from);
+      let creatureToMove = this.getCreature(oldPos.x,oldPos.y);
+      creatureToMove.x = newPos.x;
+      creatureToMove.y = newPos.y;
+    }else
     if (Object.keys(target).length !== 0){
       let oldPos = this.stage.getChildByName(from);
       let creatureToMove = this.getCreature(oldPos.x,oldPos.y);
       let newPos = this.stage.getChildByName(to);
-      //createjs.Tween.get(creatureToMove).to({x:newPos.x,y:newPos.y},0);
       creatureToMove.x = newPos.x;
       creatureToMove.y = newPos.y;
-      this.stage.update();
       this.board[to] = target;
       this.board[from] = {};
     }
+    this.stage.update();
 
   }
 }
