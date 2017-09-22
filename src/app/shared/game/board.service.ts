@@ -197,6 +197,9 @@ export class BoardService {
         event.currentTarget.y = event.stageY;
         this.stage.update();
       }
+      else {
+        this.startingPos.initial = true;
+      }
 
   }
   pressUp = (event) =>{
@@ -211,10 +214,11 @@ export class BoardService {
       }else{
         event.currentTarget.x = this.startingPos.tile.x;
         event.currentTarget.y = this.startingPos.tile.y;
+        this.startingPos.initial = true;
       }
       this.stage.update();
     }
-    this.startingPos.initial = true;
+
   }
   getTile(x,y){
     for(let i = 0;i<this.stage.children.length;i++){
@@ -264,6 +268,7 @@ export class BoardService {
       this.board[to] = target;
       this.board[from] = {};
     }
+    this.startingPos.initial = true;
     this.stage.update();
 
   }
