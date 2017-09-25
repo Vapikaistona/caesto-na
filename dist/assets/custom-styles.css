@@ -1,0 +1,68 @@
+input[type=text]:focus:not([readonly]),
+input[type=email]:focus:not([readonly]),
+input[type=password]:focus:not([readonly]),
+input[type=number]:focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]) {
+  border-bottom: 1px solid #2196F3 !important;
+  box-shadow: 0 1px 0 0 #2196F3 !important;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  background-color: #2196F3;
+}
+input[type=range]::-moz-range-thumb {
+  background-color: #2196F3;
+}
+input[type=range]::-ms-thumb {
+  background-color: #2196F3;
+}
+
+/***** These are to edit the thumb and the text inside the thumb *****/
+input[type=range] + .thumb {
+  background-color: #2196F3;
+}
+input[type=range] + .thumb.active .value {
+  color: white;
+}
+.white-board{
+  margin-top: 15px;
+  padding: 10px;
+  background-color: white;
+}
+.collection {
+    border: 1px ;
+    border-radius: 0px;
+}
+.collection .collection-item{
+  border-bottom:1px solid #ffffff;
+}
+/**  SCROLLBAR */
+ul::-webkit-scrollbar-track {
+	background-color: #FFFFFF;
+}
+
+ul::-webkit-scrollbar {
+	width: 3px;
+	background-color: #FFFFFF;
+}
+
+ul::-webkit-scrollbar-thumb {
+	background-color: #2196f3;
+}
+.sort-filter{
+  margin-bottom: 0px;
+  margin-left: 15px;
+}
+input {
+ margin: 0 0 0 0 !important;
+}
+.margin-bottom-20{
+  margin-bottom: 20px !important;
+}
+.no-margin-bottom{
+  margin-bottom: 0px !important;
+}
+.chat{
+  height: 300px;
+  overflow: auto;
+}
