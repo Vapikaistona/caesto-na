@@ -37,7 +37,9 @@ var initPassport = require('./server/passport/init');
 initPassport(passport);
 
 // mongoose
-mongoose.connect('mongodb://localhost/passport_local_mongoose_express4');
+var mongoConnect = 'mongodb://admin:eRobles1@ds161455.mlab.com:61455/caesto-na'
+//var mongoConnect = 'mongodb://localhost/passport_local_mongoose_express4'
+mongoose.connect(mongoConnect);
 
 // Point static path to dist
 app.use(express.static(path.join(__dirname, 'dist')));
