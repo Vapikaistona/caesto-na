@@ -11,7 +11,7 @@ import * as createjs from 'createjs-module';
   styleUrls: ['./game-play.component.css']
 })
 export class GamePlayComponent implements AfterViewInit {
-
+  private cardToPlay;
 
   constructor(private game:GameService, private board:BoardService, private races:RacesService, private types:TypesService) { }
 
@@ -24,12 +24,29 @@ export class GamePlayComponent implements AfterViewInit {
   }
 
   endTurn(){
+    this.cardToPlay = {};
     this.game.endTurn();
+    this.board.resourcesSpent = 0;
   }
   endGame(){
     this.game.endGame();
   }
   getBgColor(race){
     return this.races.getRaceColor(race);
+  }
+  nothing(){}
+
+  setCardSelected(card){
+    if(this.board.myTurn){
+      this.cardToPlay = card;
+    }
+      this.board.cardSelected = card;
+  }
+  playCard(card,index){
+    this.board.playCard(card,this.types.getType(card.type),index)
+  }
+  cancelSelection(){
+    this.cardToPlay = {};
+    this.board.clearTargets()
   }
 }

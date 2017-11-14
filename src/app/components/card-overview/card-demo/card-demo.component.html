@@ -1,0 +1,46 @@
+<div class="center z-depth-1 fixed-width" [ngClass]="getBgColor(card.race)">
+  <div class="row no-margin-bottom white padding-top-5">
+    <h6><b>{{card.cardname}}</b></h6>
+  </div>
+
+  <div class="row margin-top-10 no-margin-bottom inline" *ngIf="!card.resources">
+    <div class="col s6 offset-s3">
+      <div class="amber btn btn-small btn-floating no-action">
+        {{card.cost}}
+      </div>
+    </div>
+    <div class="center">
+      <img src="/assets/images/circle/actionA.png" alt="" *ngIf="types.getType(card.type)=='Action'">
+      <img src="/assets/images/circle/structureA.png" alt="" *ngIf="types.getType(card.type)=='Structure'">
+      <img src="/assets/images/circle/troopA.png" alt="" *ngIf="types.getType(card.type)=='Creature'">
+    </div>
+  </div>
+  <div class="row margin-top-10 no-margin-bottom inline" *ngIf="card.resources">
+    <div class="col s6 offset-s3 ">
+      <div class="amber btn btn-small btn-floating no-action">
+        {{card.resources}}
+      </div>
+    </div>
+    <div class="center">
+      <img src="/assets/images/circle/commanderA.png" alt="">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s10 offset-s1 white habilities">
+      <label><b>{{card.habilities}}</b></label>
+    </div>
+  </div>
+  <div class="row padding-bottom-10" *ngIf="card.life>0">
+    <div class="col s6">
+      <div class="green btn btn-small no-action">
+        {{card.life}}
+      </div>
+    </div>
+    <div class="col s6" *ngIf="!card.resources">
+      <div class="deep-orange btn btn-small no-action">
+        {{card.attack}}
+      </div>
+    </div>
+  </div>
+</div>

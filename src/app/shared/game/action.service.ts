@@ -15,5 +15,13 @@ export class ActionService {
   moveCreature(from, to){
     this.socket.getSocket().emit('creature-move',from,to);
   }
-
+  playCard(card,pos,index){
+    this.socket.getSocket().emit('play-card',card,pos,index);
+  }
+  useActionCard(card,pos){
+    this.socket.getSocket().emit('play-card',card,pos);
+  }
+  attack(attacker,defender){
+    this.socket.getSocket().emit('attack',attacker,defender);
+  }
 }

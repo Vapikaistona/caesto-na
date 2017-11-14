@@ -1,13 +1,10 @@
 <div class="col s3">
-  <div class="white-board z-depth-1">
+  <div class="center board z-depth-1" [ngClass]="{'white': board.user=='userA', 'grey darken-4':board.user!='userA'}">
     <div class="row no-margin-bottom">
       <label>Commander:</label>
       <ul class="collection no-margin-bottom">
-        <li class="collection-item" [ngClass]="getBgColor(game.currentGame.ownCommander.race)">
+        <li class="collection-item" [ngClass]="getBgColor(game.currentGame.ownCommander.race)" (click)="setCardSelected(game.currentGame.ownCommander)">
           <div>{{game.currentGame.ownCommander.cardname| truncate}}
-            <button class="secondary-content amber btn btn-small right">
-              {{game.currentGame.ownCommander.resources}}
-            </button>
             <button class="secondary-content green btn btn-small right">
               {{game.currentGame.ownCommander.life}}
             </button>
@@ -15,11 +12,14 @@
         </li>
       </ul>
     </div>
+    <div class="row amber btn"> RESOURCES LEFT:
+      {{game.currentGame.ownCommander.resources - board.resourcesSpent}}/{{game.currentGame.ownCommander.resources}}
+    </div>
     <div class="row hand">
       <ul class="collection no-margin-bottom">
         <label>Your hand:</label>
-        <li *ngFor="let card of game.hand" class="collection-item" [ngClass]="getBgColor(card.race)" >
-          <div>{{card.cardname}}
+        <li *ngFor="let card of game.hand; let i = index" class="collection-item" [ngClass]="getBgColor(card.race)">
+          <div *ngIf="cardToPlay !=card || game.currentGame.ownCommander.resources -board.resourcesSpent < card.cost" (click)="setCardSelected(card)">{{card.cardname}}
             <button class="secondary-content amber btn btn-small right" (click)="nothing()" >
               {{card.cost}}
             </button>
@@ -29,6 +29,10 @@
             <button class="secondary-content  deep-orange darken-1 btn btn-small right" *ngIf="types.getType(card.type)!='Action'" (click)="nothing()">
               {{card.attack}}
             </button>
+          </div>
+          <div class="row no-margin-bottom" *ngIf="cardToPlay ==card && game.currentGame.ownCommander.resources -board.resourcesSpent >= card.cost">
+            <div class =" col s8 btn green truncate" (click)="playCard(card,i)">Play this card</div>
+            <div class =" col s4 btn red truncate" (click)="cancelSelection()">Cancel</div>
           </div>
         </li>
         <li *ngIf="game.hand.length==0" class="collection-item blue-text" >
@@ -47,12 +51,17 @@
 <div class="col s9">
     <canvas width="672" height="620" id="boardCanvas" class="white-board z-depth-1 canvas"></canvas>
 </div>
+
+<div class="cardDetails" *ngIf="board.cardSelected">
+  <card-demo [card]="board.cardSelected"></card-demo>
+</div>
+
 <div class="enemyDetails">
-  <div class="white-board z-depth-1 grey darken-4">
+  <div class="board z-depth-1" [ngClass]="{'white': board.user!='userA', 'grey darken-4':board.user=='userA'}">
     <div class="row no-margin-bottom">
       <label>Oponent:</label>
       <ul class="collection">
-        <li class="collection-item"  [ngClass]="getBgColor(game.currentGame.enemyCommander.race)">
+        <li class="collection-item"  [ngClass]="getBgColor(game.currentGame.enemyCommander.race)" (click)="setCardSelected(game.currentGame.enemyCommander)">
           <div>{{game.currentGame.enemyCommander.cardname| truncate}}
             <button class="secondary-content amber btn btn-small right">
               {{game.currentGame.enemyCommander.resources}}

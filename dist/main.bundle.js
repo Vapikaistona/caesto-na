@@ -106,47 +106,48 @@ var _a, _b, _c;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_user_user_detail_user_detail_component__ = __webpack_require__("../../../../../src/app/components/user/user-detail/user-detail.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_card_overview_card_overview_component__ = __webpack_require__("../../../../../src/app/components/card-overview/card-overview.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_card_overview_card_list_card_list_component__ = __webpack_require__("../../../../../src/app/components/card-overview/card-list/card-list.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_card_overview_card_list_troop_list_troop_list_component__ = __webpack_require__("../../../../../src/app/components/card-overview/card-list/troop-list/troop-list.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_card_overview_card_list_commander_list_commander_list_component__ = __webpack_require__("../../../../../src/app/components/card-overview/card-list/commander-list/commander-list.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_card_overview_card_detail_card_detail_component__ = __webpack_require__("../../../../../src/app/components/card-overview/card-detail/card-detail.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_card_overview_card_detail_troop_detail_troop_detail_component__ = __webpack_require__("../../../../../src/app/components/card-overview/card-detail/troop-detail/troop-detail.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_card_overview_card_detail_commander_detail_commander_detail_component__ = __webpack_require__("../../../../../src/app/components/card-overview/card-detail/commander-detail/commander-detail.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__components_deck_overview_deck_detail_deck_detail_component__ = __webpack_require__("../../../../../src/app/components/deck-overview/deck-detail/deck-detail.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__components_deck_overview_deck_list_deck_list_component__ = __webpack_require__("../../../../../src/app/components/deck-overview/deck-list/deck-list.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__components_deck_overview_deck_overview_component__ = __webpack_require__("../../../../../src/app/components/deck-overview/deck-overview.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__components_search_search_troop_search_troop_component__ = __webpack_require__("../../../../../src/app/components/search/search-troop/search-troop.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__components_search_search_commander_search_commander_component__ = __webpack_require__("../../../../../src/app/components/search/search-commander/search-commander.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__components_search_search_deck_search_deck_component__ = __webpack_require__("../../../../../src/app/components/search/search-deck/search-deck.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__components_game_game_component__ = __webpack_require__("../../../../../src/app/components/game/game.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__components_game_game_users_game_users_component__ = __webpack_require__("../../../../../src/app/components/game/game-users/game-users.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__components_game_game_msg_game_msg_component__ = __webpack_require__("../../../../../src/app/components/game/game-msg/game-msg.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__components_game_game_global_chat_game_global_chat_component__ = __webpack_require__("../../../../../src/app/components/game/game-global-chat/game-global-chat.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__components_game_game_private_chat_game_private_chat_component__ = __webpack_require__("../../../../../src/app/components/game/game-private-chat/game-private-chat.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__components_game_game_play_game_play_component__ = __webpack_require__("../../../../../src/app/components/game/game-play/game-play.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__components_page_not_found_page_not_found_component__ = __webpack_require__("../../../../../src/app/components/page-not-found/page-not-found.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__shared_user_current_user_service__ = __webpack_require__("../../../../../src/app/shared/user/current-user.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__shared_authentication_authentication_service__ = __webpack_require__("../../../../../src/app/shared/authentication/authentication.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__shared_user_user_service__ = __webpack_require__("../../../../../src/app/shared/user/user.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__shared_card_types_service__ = __webpack_require__("../../../../../src/app/shared/card/types.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__shared_card_races_service__ = __webpack_require__("../../../../../src/app/shared/card/races.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__shared_card_cards_service__ = __webpack_require__("../../../../../src/app/shared/card/cards.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__shared_card_commander_service__ = __webpack_require__("../../../../../src/app/shared/card/commander.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__shared_card_troop_service__ = __webpack_require__("../../../../../src/app/shared/card/troop.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__shared_deck_decks_service__ = __webpack_require__("../../../../../src/app/shared/deck/decks.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__shared_game_game_service__ = __webpack_require__("../../../../../src/app/shared/game/game.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__shared_game_board_service__ = __webpack_require__("../../../../../src/app/shared/game/board.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__shared_game_chat_service__ = __webpack_require__("../../../../../src/app/shared/game/chat.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__shared_game_action_service__ = __webpack_require__("../../../../../src/app/shared/game/action.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__shared_game_socket_service__ = __webpack_require__("../../../../../src/app/shared/game/socket.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_45__shared_alert_alert_service__ = __webpack_require__("../../../../../src/app/shared/alert/alert.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_46__shared_authentication_guard__ = __webpack_require__("../../../../../src/app/shared/authentication/guard.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_47__shared_pipes_commanderFilter__ = __webpack_require__("../../../../../src/app/shared/pipes/commanderFilter.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_48__shared_pipes_troopFilter__ = __webpack_require__("../../../../../src/app/shared/pipes/troopFilter.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_49__shared_pipes_deckFilter__ = __webpack_require__("../../../../../src/app/shared/pipes/deckFilter.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_50__shared_pipes_truncateFilter__ = __webpack_require__("../../../../../src/app/shared/pipes/truncateFilter.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_51__shared_pipes_sort__ = __webpack_require__("../../../../../src/app/shared/pipes/sort.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_52__routes_routing__ = __webpack_require__("../../../../../src/app/routes/routing.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_53__angular_http_testing__ = __webpack_require__("../../../http/@angular/http/testing.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_card_overview_card_demo_card_demo_component__ = __webpack_require__("../../../../../src/app/components/card-overview/card-demo/card-demo.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_card_overview_card_list_troop_list_troop_list_component__ = __webpack_require__("../../../../../src/app/components/card-overview/card-list/troop-list/troop-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_card_overview_card_list_commander_list_commander_list_component__ = __webpack_require__("../../../../../src/app/components/card-overview/card-list/commander-list/commander-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_card_overview_card_detail_card_detail_component__ = __webpack_require__("../../../../../src/app/components/card-overview/card-detail/card-detail.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_card_overview_card_detail_troop_detail_troop_detail_component__ = __webpack_require__("../../../../../src/app/components/card-overview/card-detail/troop-detail/troop-detail.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__components_card_overview_card_detail_commander_detail_commander_detail_component__ = __webpack_require__("../../../../../src/app/components/card-overview/card-detail/commander-detail/commander-detail.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__components_deck_overview_deck_detail_deck_detail_component__ = __webpack_require__("../../../../../src/app/components/deck-overview/deck-detail/deck-detail.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__components_deck_overview_deck_list_deck_list_component__ = __webpack_require__("../../../../../src/app/components/deck-overview/deck-list/deck-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__components_deck_overview_deck_overview_component__ = __webpack_require__("../../../../../src/app/components/deck-overview/deck-overview.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__components_search_search_troop_search_troop_component__ = __webpack_require__("../../../../../src/app/components/search/search-troop/search-troop.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__components_search_search_commander_search_commander_component__ = __webpack_require__("../../../../../src/app/components/search/search-commander/search-commander.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__components_search_search_deck_search_deck_component__ = __webpack_require__("../../../../../src/app/components/search/search-deck/search-deck.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__components_game_game_component__ = __webpack_require__("../../../../../src/app/components/game/game.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__components_game_game_users_game_users_component__ = __webpack_require__("../../../../../src/app/components/game/game-users/game-users.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__components_game_game_msg_game_msg_component__ = __webpack_require__("../../../../../src/app/components/game/game-msg/game-msg.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__components_game_game_global_chat_game_global_chat_component__ = __webpack_require__("../../../../../src/app/components/game/game-global-chat/game-global-chat.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__components_game_game_private_chat_game_private_chat_component__ = __webpack_require__("../../../../../src/app/components/game/game-private-chat/game-private-chat.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__components_game_game_play_game_play_component__ = __webpack_require__("../../../../../src/app/components/game/game-play/game-play.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__components_page_not_found_page_not_found_component__ = __webpack_require__("../../../../../src/app/components/page-not-found/page-not-found.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__shared_user_current_user_service__ = __webpack_require__("../../../../../src/app/shared/user/current-user.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__shared_authentication_authentication_service__ = __webpack_require__("../../../../../src/app/shared/authentication/authentication.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__shared_user_user_service__ = __webpack_require__("../../../../../src/app/shared/user/user.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__shared_card_types_service__ = __webpack_require__("../../../../../src/app/shared/card/types.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__shared_card_races_service__ = __webpack_require__("../../../../../src/app/shared/card/races.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__shared_card_cards_service__ = __webpack_require__("../../../../../src/app/shared/card/cards.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__shared_card_commander_service__ = __webpack_require__("../../../../../src/app/shared/card/commander.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__shared_card_troop_service__ = __webpack_require__("../../../../../src/app/shared/card/troop.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__shared_deck_decks_service__ = __webpack_require__("../../../../../src/app/shared/deck/decks.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__shared_game_game_service__ = __webpack_require__("../../../../../src/app/shared/game/game.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__shared_game_board_service__ = __webpack_require__("../../../../../src/app/shared/game/board.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__shared_game_chat_service__ = __webpack_require__("../../../../../src/app/shared/game/chat.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__shared_game_action_service__ = __webpack_require__("../../../../../src/app/shared/game/action.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_45__shared_game_socket_service__ = __webpack_require__("../../../../../src/app/shared/game/socket.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_46__shared_alert_alert_service__ = __webpack_require__("../../../../../src/app/shared/alert/alert.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_47__shared_authentication_guard__ = __webpack_require__("../../../../../src/app/shared/authentication/guard.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_48__shared_pipes_commanderFilter__ = __webpack_require__("../../../../../src/app/shared/pipes/commanderFilter.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_49__shared_pipes_troopFilter__ = __webpack_require__("../../../../../src/app/shared/pipes/troopFilter.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_50__shared_pipes_deckFilter__ = __webpack_require__("../../../../../src/app/shared/pipes/deckFilter.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_51__shared_pipes_truncateFilter__ = __webpack_require__("../../../../../src/app/shared/pipes/truncateFilter.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_52__shared_pipes_sort__ = __webpack_require__("../../../../../src/app/shared/pipes/sort.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_53__routes_routing__ = __webpack_require__("../../../../../src/app/routes/routing.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_54__angular_http_testing__ = __webpack_require__("../../../http/@angular/http/testing.es5.js");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -159,6 +160,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 //COMPONENTES
+
 
 
 
@@ -221,65 +223,66 @@ AppModule = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["b" /* NgModule */])({
         declarations: [
             __WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* AppComponent */],
-            __WEBPACK_IMPORTED_MODULE_30__components_page_not_found_page_not_found_component__["a" /* PageNotFoundComponent */],
+            __WEBPACK_IMPORTED_MODULE_31__components_page_not_found_page_not_found_component__["a" /* PageNotFoundComponent */],
             __WEBPACK_IMPORTED_MODULE_9__components_user_user_list_user_list_component__["a" /* UserListComponent */],
             __WEBPACK_IMPORTED_MODULE_10__components_user_user_detail_user_detail_component__["a" /* UserDetailComponent */],
             __WEBPACK_IMPORTED_MODULE_6__components_user_login_login_component__["a" /* LoginComponent */],
             __WEBPACK_IMPORTED_MODULE_7__components_user_register_register_component__["a" /* RegisterComponent */],
             __WEBPACK_IMPORTED_MODULE_8__components_user_sing_in_sing_in_component__["a" /* SingInComponent */],
             __WEBPACK_IMPORTED_MODULE_12__components_card_overview_card_list_card_list_component__["a" /* CardListComponent */],
-            __WEBPACK_IMPORTED_MODULE_15__components_card_overview_card_detail_card_detail_component__["a" /* CardDetailComponent */],
+            __WEBPACK_IMPORTED_MODULE_16__components_card_overview_card_detail_card_detail_component__["a" /* CardDetailComponent */],
             __WEBPACK_IMPORTED_MODULE_11__components_card_overview_card_overview_component__["a" /* CardOverviewComponent */],
-            __WEBPACK_IMPORTED_MODULE_17__components_card_overview_card_detail_commander_detail_commander_detail_component__["a" /* CommanderDetailComponent */],
-            __WEBPACK_IMPORTED_MODULE_16__components_card_overview_card_detail_troop_detail_troop_detail_component__["a" /* TroopDetailComponent */],
-            __WEBPACK_IMPORTED_MODULE_14__components_card_overview_card_list_commander_list_commander_list_component__["a" /* CommanderListComponent */],
-            __WEBPACK_IMPORTED_MODULE_13__components_card_overview_card_list_troop_list_troop_list_component__["a" /* TroopListComponent */],
-            __WEBPACK_IMPORTED_MODULE_47__shared_pipes_commanderFilter__["a" /* CommanderFilterPipe */],
-            __WEBPACK_IMPORTED_MODULE_48__shared_pipes_troopFilter__["a" /* TroopFilterPipe */],
-            __WEBPACK_IMPORTED_MODULE_49__shared_pipes_deckFilter__["a" /* DeckFilterPipe */],
-            __WEBPACK_IMPORTED_MODULE_50__shared_pipes_truncateFilter__["a" /* TruncatePipe */],
-            __WEBPACK_IMPORTED_MODULE_51__shared_pipes_sort__["a" /* ArraySortPipe */],
-            __WEBPACK_IMPORTED_MODULE_18__components_deck_overview_deck_detail_deck_detail_component__["a" /* DeckDetailComponent */],
-            __WEBPACK_IMPORTED_MODULE_20__components_deck_overview_deck_overview_component__["a" /* DeckOverviewComponent */],
-            __WEBPACK_IMPORTED_MODULE_19__components_deck_overview_deck_list_deck_list_component__["a" /* DeckListComponent */],
-            __WEBPACK_IMPORTED_MODULE_21__components_search_search_troop_search_troop_component__["a" /* SearchTroopComponent */],
-            __WEBPACK_IMPORTED_MODULE_22__components_search_search_commander_search_commander_component__["a" /* SearchCommanderComponent */],
-            __WEBPACK_IMPORTED_MODULE_23__components_search_search_deck_search_deck_component__["a" /* SearchDeckComponent */],
-            __WEBPACK_IMPORTED_MODULE_24__components_game_game_component__["a" /* GameComponent */],
-            __WEBPACK_IMPORTED_MODULE_25__components_game_game_users_game_users_component__["a" /* GameUsersComponent */],
-            __WEBPACK_IMPORTED_MODULE_26__components_game_game_msg_game_msg_component__["a" /* GameMsgComponent */],
+            __WEBPACK_IMPORTED_MODULE_18__components_card_overview_card_detail_commander_detail_commander_detail_component__["a" /* CommanderDetailComponent */],
+            __WEBPACK_IMPORTED_MODULE_17__components_card_overview_card_detail_troop_detail_troop_detail_component__["a" /* TroopDetailComponent */],
+            __WEBPACK_IMPORTED_MODULE_15__components_card_overview_card_list_commander_list_commander_list_component__["a" /* CommanderListComponent */],
+            __WEBPACK_IMPORTED_MODULE_14__components_card_overview_card_list_troop_list_troop_list_component__["a" /* TroopListComponent */],
+            __WEBPACK_IMPORTED_MODULE_48__shared_pipes_commanderFilter__["a" /* CommanderFilterPipe */],
+            __WEBPACK_IMPORTED_MODULE_49__shared_pipes_troopFilter__["a" /* TroopFilterPipe */],
+            __WEBPACK_IMPORTED_MODULE_50__shared_pipes_deckFilter__["a" /* DeckFilterPipe */],
+            __WEBPACK_IMPORTED_MODULE_51__shared_pipes_truncateFilter__["a" /* TruncatePipe */],
+            __WEBPACK_IMPORTED_MODULE_52__shared_pipes_sort__["a" /* ArraySortPipe */],
+            __WEBPACK_IMPORTED_MODULE_19__components_deck_overview_deck_detail_deck_detail_component__["a" /* DeckDetailComponent */],
+            __WEBPACK_IMPORTED_MODULE_21__components_deck_overview_deck_overview_component__["a" /* DeckOverviewComponent */],
+            __WEBPACK_IMPORTED_MODULE_20__components_deck_overview_deck_list_deck_list_component__["a" /* DeckListComponent */],
+            __WEBPACK_IMPORTED_MODULE_22__components_search_search_troop_search_troop_component__["a" /* SearchTroopComponent */],
+            __WEBPACK_IMPORTED_MODULE_23__components_search_search_commander_search_commander_component__["a" /* SearchCommanderComponent */],
+            __WEBPACK_IMPORTED_MODULE_24__components_search_search_deck_search_deck_component__["a" /* SearchDeckComponent */],
+            __WEBPACK_IMPORTED_MODULE_25__components_game_game_component__["a" /* GameComponent */],
+            __WEBPACK_IMPORTED_MODULE_26__components_game_game_users_game_users_component__["a" /* GameUsersComponent */],
+            __WEBPACK_IMPORTED_MODULE_27__components_game_game_msg_game_msg_component__["a" /* GameMsgComponent */],
             __WEBPACK_IMPORTED_MODULE_5__components_alert_alert_component__["a" /* AlertComponent */],
-            __WEBPACK_IMPORTED_MODULE_27__components_game_game_global_chat_game_global_chat_component__["a" /* GameGlobalChatComponent */],
-            __WEBPACK_IMPORTED_MODULE_28__components_game_game_private_chat_game_private_chat_component__["a" /* GamePrivateChatComponent */],
-            __WEBPACK_IMPORTED_MODULE_29__components_game_game_play_game_play_component__["a" /* GamePlayComponent */]
+            __WEBPACK_IMPORTED_MODULE_28__components_game_game_global_chat_game_global_chat_component__["a" /* GameGlobalChatComponent */],
+            __WEBPACK_IMPORTED_MODULE_29__components_game_game_private_chat_game_private_chat_component__["a" /* GamePrivateChatComponent */],
+            __WEBPACK_IMPORTED_MODULE_30__components_game_game_play_game_play_component__["a" /* GamePlayComponent */],
+            __WEBPACK_IMPORTED_MODULE_13__components_card_overview_card_demo_card_demo_component__["a" /* CardDemoComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
             __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormsModule */],
             __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* HttpModule */],
-            __WEBPACK_IMPORTED_MODULE_52__routes_routing__["a" /* routing */],
+            __WEBPACK_IMPORTED_MODULE_53__routes_routing__["a" /* routing */],
         ],
         providers: [
-            __WEBPACK_IMPORTED_MODULE_31__shared_user_current_user_service__["a" /* CurrentUserService */],
-            __WEBPACK_IMPORTED_MODULE_32__shared_authentication_authentication_service__["a" /* AuthenticationService */],
-            __WEBPACK_IMPORTED_MODULE_33__shared_user_user_service__["a" /* UserService */],
-            __WEBPACK_IMPORTED_MODULE_36__shared_card_cards_service__["a" /* CardsService */],
-            __WEBPACK_IMPORTED_MODULE_35__shared_card_races_service__["a" /* RacesService */],
-            __WEBPACK_IMPORTED_MODULE_37__shared_card_commander_service__["a" /* CommanderService */],
-            __WEBPACK_IMPORTED_MODULE_38__shared_card_troop_service__["a" /* TroopService */],
-            __WEBPACK_IMPORTED_MODULE_39__shared_deck_decks_service__["a" /* DecksService */],
-            __WEBPACK_IMPORTED_MODULE_34__shared_card_types_service__["a" /* TypesService */],
-            __WEBPACK_IMPORTED_MODULE_40__shared_game_game_service__["a" /* GameService */],
-            __WEBPACK_IMPORTED_MODULE_41__shared_game_board_service__["a" /* BoardService */],
-            __WEBPACK_IMPORTED_MODULE_44__shared_game_socket_service__["a" /* SocketService */],
-            __WEBPACK_IMPORTED_MODULE_42__shared_game_chat_service__["a" /* ChatService */],
-            __WEBPACK_IMPORTED_MODULE_43__shared_game_action_service__["a" /* ActionService */],
-            __WEBPACK_IMPORTED_MODULE_45__shared_alert_alert_service__["a" /* AlertService */],
+            __WEBPACK_IMPORTED_MODULE_32__shared_user_current_user_service__["a" /* CurrentUserService */],
+            __WEBPACK_IMPORTED_MODULE_33__shared_authentication_authentication_service__["a" /* AuthenticationService */],
+            __WEBPACK_IMPORTED_MODULE_34__shared_user_user_service__["a" /* UserService */],
+            __WEBPACK_IMPORTED_MODULE_37__shared_card_cards_service__["a" /* CardsService */],
+            __WEBPACK_IMPORTED_MODULE_36__shared_card_races_service__["a" /* RacesService */],
+            __WEBPACK_IMPORTED_MODULE_38__shared_card_commander_service__["a" /* CommanderService */],
+            __WEBPACK_IMPORTED_MODULE_39__shared_card_troop_service__["a" /* TroopService */],
+            __WEBPACK_IMPORTED_MODULE_40__shared_deck_decks_service__["a" /* DecksService */],
+            __WEBPACK_IMPORTED_MODULE_35__shared_card_types_service__["a" /* TypesService */],
+            __WEBPACK_IMPORTED_MODULE_41__shared_game_game_service__["a" /* GameService */],
+            __WEBPACK_IMPORTED_MODULE_42__shared_game_board_service__["a" /* BoardService */],
+            __WEBPACK_IMPORTED_MODULE_45__shared_game_socket_service__["a" /* SocketService */],
+            __WEBPACK_IMPORTED_MODULE_43__shared_game_chat_service__["a" /* ChatService */],
+            __WEBPACK_IMPORTED_MODULE_44__shared_game_action_service__["a" /* ActionService */],
+            __WEBPACK_IMPORTED_MODULE_46__shared_alert_alert_service__["a" /* AlertService */],
             //fakeBackendProvider,
-            __WEBPACK_IMPORTED_MODULE_53__angular_http_testing__["a" /* MockBackend */],
+            __WEBPACK_IMPORTED_MODULE_54__angular_http_testing__["a" /* MockBackend */],
             __WEBPACK_IMPORTED_MODULE_3__angular_http__["b" /* BaseRequestOptions */],
-            __WEBPACK_IMPORTED_MODULE_46__shared_authentication_guard__["a" /* AuthGuard */],
-            __WEBPACK_IMPORTED_MODULE_46__shared_authentication_guard__["b" /* AdminGuard */]
+            __WEBPACK_IMPORTED_MODULE_47__shared_authentication_guard__["a" /* AuthGuard */],
+            __WEBPACK_IMPORTED_MODULE_47__shared_authentication_guard__["b" /* AdminGuard */]
         ],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* AppComponent */]]
     })
@@ -361,6 +364,81 @@ AlertComponent = __decorate([
 
 var _a, _b;
 //# sourceMappingURL=alert.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/card-overview/card-demo/card-demo.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".card-demo{\r\n  background-color: #212121;\r\n}\r\n.habilities{\r\n      min-height: 100px;\r\n}\r\n.icon-image{\r\n  position: absolute;\r\n  top: 40px;\r\n  right: 20px;\r\n}\r\nlabel{\r\n  color: black;\r\n}\r\n.no-action{\r\n  cursor: default;\r\n}\r\n.fixed-width{\r\n  width: 250px;\r\n}\r\n.inline{\r\n  display: -webkit-inline-box;\r\n  display: -ms-inline-flexbox;\r\n  display: inline-flex\r\n}\r\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/card-overview/card-demo/card-demo.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"center z-depth-1 fixed-width\" [ngClass]=\"getBgColor(card.race)\">\n  <div class=\"row no-margin-bottom white padding-top-5\">\n    <h6><b>{{card.cardname}}</b></h6>\n  </div>\n\n  <div class=\"row margin-top-10 no-margin-bottom inline\" *ngIf=\"!card.resources\">\n    <div class=\"col s6 offset-s3\">\n      <div class=\"amber btn btn-small btn-floating no-action\">\n        {{card.cost}}\n      </div>\n    </div>\n    <div class=\"center\">\n      <img src=\"/assets/images/circle/actionA.png\" alt=\"\" *ngIf=\"types.getType(card.type)=='Action'\">\n      <img src=\"/assets/images/circle/structureA.png\" alt=\"\" *ngIf=\"types.getType(card.type)=='Structure'\">\n      <img src=\"/assets/images/circle/troopA.png\" alt=\"\" *ngIf=\"types.getType(card.type)=='Creature'\">\n    </div>\n  </div>\n  <div class=\"row margin-top-10 no-margin-bottom inline\" *ngIf=\"card.resources\">\n    <div class=\"col s6 offset-s3 \">\n      <div class=\"amber btn btn-small btn-floating no-action\">\n        {{card.resources}}\n      </div>\n    </div>\n    <div class=\"center\">\n      <img src=\"/assets/images/circle/commanderA.png\" alt=\"\">\n    </div>\n  </div>\n\n  <div class=\"row\">\n    <div class=\"col s10 offset-s1 white habilities\">\n      <label><b>{{card.habilities}}</b></label>\n    </div>\n  </div>\n  <div class=\"row padding-bottom-10\" *ngIf=\"card.life>0\">\n    <div class=\"col s6\">\n      <div class=\"green btn btn-small no-action\">\n        {{card.life}}\n      </div>\n    </div>\n    <div class=\"col s6\" *ngIf=\"!card.resources\">\n      <div class=\"deep-orange btn btn-small no-action\">\n        {{card.attack}}\n      </div>\n    </div>\n  </div>\n</div>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/card-overview/card-demo/card-demo.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_card_types_service__ = __webpack_require__("../../../../../src/app/shared/card/types.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_card_races_service__ = __webpack_require__("../../../../../src/app/shared/card/races.service.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CardDemoComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var CardDemoComponent = (function () {
+    function CardDemoComponent(types, races) {
+        this.types = types;
+        this.races = races;
+    }
+    CardDemoComponent.prototype.ngOnInit = function () {
+    };
+    CardDemoComponent.prototype.getBgColor = function (race) {
+        return this.races.getRaceColor(race);
+    };
+    return CardDemoComponent;
+}());
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Input */])(),
+    __metadata("design:type", Object)
+], CardDemoComponent.prototype, "card", void 0);
+CardDemoComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_14" /* Component */])({
+        selector: 'card-demo',
+        template: __webpack_require__("../../../../../src/app/components/card-overview/card-demo/card-demo.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/components/card-overview/card-demo/card-demo.component.css")]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__shared_card_types_service__["a" /* TypesService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__shared_card_types_service__["a" /* TypesService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__shared_card_races_service__["a" /* RacesService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__shared_card_races_service__["a" /* RacesService */]) === "function" && _b || Object])
+], CardDemoComponent);
+
+var _a, _b;
+//# sourceMappingURL=card-demo.component.js.map
 
 /***/ }),
 
@@ -461,7 +539,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/card-overview/card-detail/commander-detail/commander-detail.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<form #form=\"ngForm\" (ngSubmit)=\"submitFormCommander(form)\" class=\"col s12\">\r\n  <div class=\"row\">\r\n    <div class=\"form-group col s6\">\r\n      <label for=\"cardname\">Commander Name</label>\r\n      <input  id=\"cardname\" type=\"text\" class=\"validate form-control\" name=\"cardname\" [disabled]=\"!cards.edit\" [(ngModel)]=\"commanderService.commander.cardname\" required>\r\n    </div>\r\n    <div class=\"form-group col s6\">\r\n      <label for=\"race\">Race</label>\r\n      <select id=\"race\" name=\"race\" [(ngModel)]=\"commanderService.commander.race\" [disabled]=\"!cards.edit\">\r\n        <option *ngFor=\"let race of racesService.races\" [ngValue]=\"race._id\">{{race.name}}</option>\r\n      </select>\r\n    </div>\r\n  </div>\r\n  <div class=\"row\">\r\n    <div class=\"form-group col s4\">\r\n      <label>Life: {{commanderService.commander.life}}</label>\r\n      <p class=\"range-field\">\r\n        <input type=\"range\" id=\"life\" min=\"1\" max=\"20\" name=\"life\" [disabled]=\"!cards.edit\" [(ngModel)]=\"commanderService.commander.life\" />\r\n      </p>\r\n    </div>\r\n    <div class=\"form-group col s4\">\r\n      <label>Movement: {{commanderService.commander.movement}}</label>\r\n      <p class=\"range-field\">\r\n        <input type=\"range\" id=\"movement\" min=\"1\" max=\"5\" name=\"movement\" [disabled]=\"!cards.edit\" [(ngModel)]=\"commanderService.commander.movement\" />\r\n      </p>\r\n    </div>\r\n    <div class=\"form-group col s4\">\r\n      <label>Resources: {{commanderService.commander.resources}}</label>\r\n      <p class=\"range-field\">\r\n        <input type=\"range\" id=\"resources\" min=\"1\" max=\"5\" name=\"resources\" [disabled]=\"!cards.edit\" [(ngModel)]=\"commanderService.commander.resources\" />\r\n      </p>\r\n    </div>\r\n  </div>\r\n   <div class=\"row\">\r\n     <div class=\"form-group col s12\">\r\n       <label for=\"habilities\">Habilities</label>\r\n       <textarea id=\"habilities\" class=\"materialize-textarea\" name=\"habilities\" [disabled]=\"!cards.edit\" [(ngModel)]=\"commanderService.commander.habilities\"></textarea>\r\n     </div>\r\n   </div>\r\n   <div class=\"row\" *ngIf=\"commanderService.commander._id\">\r\n     <div class=\"form-group col s6\" *ngIf=\"commanderService.commander.modified_by\">\r\n       <label>Modified {{commanderService.commander.modified}} by {{commanderService.commander.modified_by}}</label>\r\n     </div>\r\n     <div class=\"form-group col s6\">\r\n       <label>Created {{commanderService.commander.created}} by {{commanderService.commander.created_by}}</label>\r\n     </div>\r\n   </div>\r\n   <div class=\"form-group col right\"  *ngIf=\"cards.edit\">\r\n     <button\r\n       class=\"btn btn-default left red\" (click)=\"cancelEdition()\">Cancel</button>\r\n    <button\r\n      [ngClass]=\"{disabled: !form.valid}\" [disabled]=\"!form.valid\" type=\"submit\" class=\"btn btn-default right s4\" [class.blue]=\"commanderService.commander._id\" [class.green]=\"!commanderService.commander._id\">{{commanderService.commander._id?\"save\":\"new\"}}</button>\r\n  </div>\r\n</form>\r\n"
+module.exports = "<div class=\"row\" *ngIf=\"commanderService.commander.cardname\">\r\n  <div class=\"col s6 offset-s3\">\r\n    <card-demo [card]=\"commanderService.commander\"></card-demo>\r\n  </div>\r\n</div>\r\n<div class=\"row\">\r\n  <form #form=\"ngForm\" (ngSubmit)=\"submitFormCommander(form)\" class=\"col s12\">\r\n    <div class=\"row\">\r\n      <div class=\"form-group col s6\">\r\n        <label for=\"cardname\">Commander Name</label>\r\n        <input  id=\"cardname\" type=\"text\" class=\"validate form-control\" name=\"cardname\" [disabled]=\"!cards.edit\" [(ngModel)]=\"commanderService.commander.cardname\" required>\r\n      </div>\r\n      <div class=\"form-group col s6\">\r\n        <label for=\"race\">Race</label>\r\n        <select id=\"race\" name=\"race\" [(ngModel)]=\"commanderService.commander.race\" [disabled]=\"!cards.edit\">\r\n          <option *ngFor=\"let race of racesService.races\" [ngValue]=\"race._id\">{{race.name}}</option>\r\n        </select>\r\n      </div>\r\n    </div>\r\n    <div class=\"row\">\r\n      <div class=\"form-group col s4\">\r\n        <label>Life: {{commanderService.commander.life}}</label>\r\n        <p class=\"range-field\">\r\n          <input type=\"range\" id=\"life\" min=\"1\" max=\"20\" name=\"life\" [disabled]=\"!cards.edit\" [(ngModel)]=\"commanderService.commander.life\" />\r\n        </p>\r\n      </div>\r\n      <div class=\"form-group col s4\">\r\n        <label>Movement: {{commanderService.commander.movement}}</label>\r\n        <p class=\"range-field\">\r\n          <input type=\"range\" id=\"movement\" min=\"1\" max=\"5\" name=\"movement\" [disabled]=\"!cards.edit\" [(ngModel)]=\"commanderService.commander.movement\" />\r\n        </p>\r\n      </div>\r\n      <div class=\"form-group col s4\">\r\n        <label>Resources: {{commanderService.commander.resources}}</label>\r\n        <p class=\"range-field\">\r\n          <input type=\"range\" id=\"resources\" min=\"1\" max=\"5\" name=\"resources\" [disabled]=\"!cards.edit\" [(ngModel)]=\"commanderService.commander.resources\" />\r\n        </p>\r\n      </div>\r\n    </div>\r\n     <div class=\"row\">\r\n       <div class=\"form-group col s12\">\r\n         <label for=\"habilities\">Habilities</label>\r\n         <textarea id=\"habilities\" class=\"materialize-textarea\" name=\"habilities\" [disabled]=\"!cards.edit\" [(ngModel)]=\"commanderService.commander.habilities\"></textarea>\r\n       </div>\r\n     </div>\r\n     <div class=\"row\" *ngIf=\"commanderService.commander._id\">\r\n       <div class=\"form-group col s6\" *ngIf=\"commanderService.commander.modified_by\">\r\n         <label>Modified {{commanderService.commander.modified}} by {{commanderService.commander.modified_by}}</label>\r\n       </div>\r\n       <div class=\"form-group col s6\">\r\n         <label>Created {{commanderService.commander.created}} by {{commanderService.commander.created_by}}</label>\r\n       </div>\r\n     </div>\r\n     <div class=\"form-group col right\"  *ngIf=\"cards.edit\">\r\n       <button\r\n         class=\"btn btn-default left red\" (click)=\"cancelEdition()\">Cancel</button>\r\n      <button\r\n        [ngClass]=\"{disabled: !form.valid}\" [disabled]=\"!form.valid\" type=\"submit\" class=\"btn btn-default right s4\" [class.blue]=\"commanderService.commander._id\" [class.green]=\"!commanderService.commander._id\">{{commanderService.commander._id?\"save\":\"new\"}}</button>\r\n    </div>\r\n  </form>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -550,7 +628,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/card-overview/card-detail/troop-detail/troop-detail.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<form #form=\"ngForm\" (ngSubmit)=\"submitFormTroop(form)\" class=\"col s12\" >\r\n  <div class=\"row\">\r\n    <div class=\"form-group col s6\">\r\n      <label for=\"cardname\">Troop Name</label>\r\n      <input id=\"cardname\" type=\"text\" class=\"validate form-control\" name=\"cardname\" [disabled]=\"!cards.edit\" [(ngModel)]=\"troopService.troop.cardname\" required>\r\n    </div>\r\n    <div class=\"form-group col s6\">\r\n      <label for=\"race\">Race</label>\r\n      <select id=\"race\" name=\"race\" [(ngModel)]=\"troopService.troop.race\" [disabled]=\"!cards.edit\">\r\n        <option *ngFor=\"let race of racesService.races\" [ngValue]=\"race._id\">{{race.name}}</option>\r\n      </select>\r\n    </div>\r\n  </div>\r\n  <div class=\"row\">\r\n    <div class=\"form-group col s6\">\r\n      <label for=\"race\">Type</label>\r\n      <select id=\"type\" name=\"type\" [(ngModel)]=\"troopService.troop.type\" [disabled]=\"!cards.edit\">\r\n        <option *ngFor=\"let type of typesService.types\" [ngValue]=\"type._id\">{{type.name}}</option>\r\n      </select>\r\n    </div>\r\n    <div class=\"form-group col s6\" *ngIf=\"typesService.getType(troopService.troop.type)=='Action'\">\r\n      <label>Cost: {{troopService.troop.cost}}</label>\r\n      <p class=\"range-field\">\r\n        <input type=\"range\" id=\"cost\" min=\"0\" max=\"15\" name=\"cost\" [disabled]=\"!cards.edit\" [(ngModel)]=\"troopService.troop.cost\" />\r\n      </p>\r\n    </div>\r\n    <div class=\"form-group col s6\" *ngIf=\"typesService.getType(troopService.troop.type)!='Action'\">\r\n      <label>Attack: {{troopService.troop.attack}}</label>\r\n      <p class=\"range-field\">\r\n        <input type=\"range\" id=\"attack\" min=\"0\" max=\"8\" name=\"attack\" [disabled]=\"!cards.edit\" [(ngModel)]=\"troopService.troop.attack\" />\r\n      </p>\r\n    </div>\r\n  </div>\r\n  <div class=\"row\" *ngIf=\"typesService.getType(troopService.troop.type)!=='Action'\">\r\n    <div class=\"form-group col s4\">\r\n      <label>Life: {{troopService.troop.life}}</label>\r\n      <p class=\"range-field\">\r\n        <input  type=\"range\" id=\"life\" min=\"0\" max=\"10\" name=\"life\" [disabled]=\"!cards.edit\" [(ngModel)]=\"troopService.troop.life\" />\r\n      </p>\r\n    </div>\r\n    <div class=\"form-group col s4\">\r\n      <label>Movement: {{troopService.troop.movement}}</label>\r\n      <p class=\"range-field\">\r\n        <input type=\"range\" id=\"movement\" min=\"0\" max=\"5\" name=\"movement\" [disabled]=\"!cards.edit\" [(ngModel)]=\"troopService.troop.movement\" />\r\n      </p>\r\n    </div>\r\n    <div class=\"form-group col s4\">\r\n      <label>Cost: {{troopService.troop.cost}}</label>\r\n      <p class=\"range-field\">\r\n        <input type=\"range\" id=\"cost\" min=\"0\" max=\"15\" name=\"cost\" [disabled]=\"!cards.edit\" [(ngModel)]=\"troopService.troop.cost\" />\r\n      </p>\r\n    </div>\r\n  </div>\r\n  <div class=\"row\">\r\n    <div class=\"form-group col s12\">\r\n      <label for=\"habilities\">Habilities</label>\r\n      <textarea id=\"habilities\" class=\"materialize-textarea\" name=\"habilities\" [disabled]=\"!cards.edit\" [(ngModel)]=\"troopService.troop.habilities\"></textarea>\r\n    </div>\r\n  </div>\r\n  <div class=\"row\" *ngIf=\"troopService.troop._id\">\r\n    <div class=\"form-group col s6\" *ngIf=\"troopService.troop.modified_by\">\r\n      <label>Modified {{troopService.troop.modified}} by {{troopService.troop.modified_by}}</label>\r\n    </div>\r\n    <div class=\"form-group col s6\">\r\n      <label>Created {{troopService.troop.created}} by {{troopService.troop.created_by}}</label>\r\n    </div>\r\n  </div>\r\n  <div class=\"form-group col right\"  *ngIf=\"cards.edit\">\r\n    <button\r\n      class=\"btn btn-default left red\" (click)=\"cancelEdition()\">Cancel</button>\r\n    <button\r\n      [ngClass]=\"{disabled: !form.valid}\" [disabled]=\"!form.valid\" type=\"submit\" class=\"btn btn-default right s4\" [class.blue]=\"troopService.troop._id\" [class.green]=\"!troopService.troop._id\">{{troopService.troop._id?\"save\":\"new\"}}</button>\r\n  </div>\r\n</form>\r\n"
+module.exports = "<div class=\"row\" *ngIf=\"troopService.troop.cardname\">\r\n  <div class=\"col s6 offset-s3\">\r\n    <card-demo [card]=\"troopService.troop\"></card-demo>\r\n  </div>\r\n</div>\r\n<div class=\"row\">\r\n  <form #form=\"ngForm\" (ngSubmit)=\"submitFormTroop(form)\" class=\"col s12\" >\r\n    <div class=\"row\">\r\n      <div class=\"form-group col s6\">\r\n        <label for=\"cardname\">Troop Name</label>\r\n        <input id=\"cardname\" type=\"text\" class=\"validate form-control\" name=\"cardname\" [disabled]=\"!cards.edit\" [(ngModel)]=\"troopService.troop.cardname\" required>\r\n      </div>\r\n      <div class=\"form-group col s6\">\r\n        <label for=\"race\">Race</label>\r\n        <select id=\"race\" name=\"race\" [(ngModel)]=\"troopService.troop.race\" [disabled]=\"!cards.edit\">\r\n          <option *ngFor=\"let race of racesService.races\" [ngValue]=\"race._id\">{{race.name}}</option>\r\n        </select>\r\n      </div>\r\n    </div>\r\n    <div class=\"row\">\r\n      <div class=\"form-group col s6\">\r\n        <label for=\"race\">Type</label>\r\n        <select id=\"type\" name=\"type\" [(ngModel)]=\"troopService.troop.type\" [disabled]=\"!cards.edit\">\r\n          <option *ngFor=\"let type of typesService.types\" [ngValue]=\"type._id\">{{type.name}}</option>\r\n        </select>\r\n      </div>\r\n      <div class=\"form-group col s6\" *ngIf=\"typesService.getType(troopService.troop.type)=='Action'\">\r\n        <label>Cost: {{troopService.troop.cost}}</label>\r\n        <p class=\"range-field\">\r\n          <input type=\"range\" id=\"cost\" min=\"0\" max=\"15\" name=\"cost\" [disabled]=\"!cards.edit\" [(ngModel)]=\"troopService.troop.cost\" />\r\n        </p>\r\n      </div>\r\n      <div class=\"form-group col s6\" *ngIf=\"typesService.getType(troopService.troop.type)!='Action'\">\r\n        <label>Attack: {{troopService.troop.attack}}</label>\r\n        <p class=\"range-field\">\r\n          <input type=\"range\" id=\"attack\" min=\"0\" max=\"8\" name=\"attack\" [disabled]=\"!cards.edit\" [(ngModel)]=\"troopService.troop.attack\" />\r\n        </p>\r\n      </div>\r\n    </div>\r\n    <div class=\"row\" *ngIf=\"typesService.getType(troopService.troop.type)!=='Action'\">\r\n      <div class=\"form-group col s4\">\r\n        <label>Life: {{troopService.troop.life}}</label>\r\n        <p class=\"range-field\">\r\n          <input  type=\"range\" id=\"life\" min=\"0\" max=\"10\" name=\"life\" [disabled]=\"!cards.edit\" [(ngModel)]=\"troopService.troop.life\" />\r\n        </p>\r\n      </div>\r\n      <div class=\"form-group col s4\">\r\n        <label>Movement: {{troopService.troop.movement}}</label>\r\n        <p class=\"range-field\">\r\n          <input type=\"range\" id=\"movement\" min=\"0\" max=\"5\" name=\"movement\" [disabled]=\"!cards.edit\" [(ngModel)]=\"troopService.troop.movement\" />\r\n        </p>\r\n      </div>\r\n      <div class=\"form-group col s4\">\r\n        <label>Cost: {{troopService.troop.cost}}</label>\r\n        <p class=\"range-field\">\r\n          <input type=\"range\" id=\"cost\" min=\"0\" max=\"15\" name=\"cost\" [disabled]=\"!cards.edit\" [(ngModel)]=\"troopService.troop.cost\" />\r\n        </p>\r\n      </div>\r\n    </div>\r\n    <div class=\"row\">\r\n      <div class=\"form-group col s12\">\r\n        <label for=\"habilities\">Habilities</label>\r\n        <textarea id=\"habilities\" class=\"materialize-textarea\" name=\"habilities\" [disabled]=\"!cards.edit\" [(ngModel)]=\"troopService.troop.habilities\"></textarea>\r\n      </div>\r\n    </div>\r\n    <div class=\"row\" *ngIf=\"troopService.troop._id\">\r\n      <div class=\"form-group col s6\" *ngIf=\"troopService.troop.modified_by\">\r\n        <label>Modified {{troopService.troop.modified}} by {{troopService.troop.modified_by}}</label>\r\n      </div>\r\n      <div class=\"form-group col s6\">\r\n        <label>Created {{troopService.troop.created}} by {{troopService.troop.created_by}}</label>\r\n      </div>\r\n    </div>\r\n    <div class=\"form-group col right\"  *ngIf=\"cards.edit\">\r\n      <button\r\n        class=\"btn btn-default left red\" (click)=\"cancelEdition()\">Cancel</button>\r\n      <button\r\n        [ngClass]=\"{disabled: !form.valid}\" [disabled]=\"!form.valid\" type=\"submit\" class=\"btn btn-default right s4\" [class.blue]=\"troopService.troop._id\" [class.green]=\"!troopService.troop._id\">{{troopService.troop._id?\"save\":\"new\"}}</button>\r\n    </div>\r\n  </form>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -1437,7 +1515,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".canvas{\r\n  overflow: auto;\r\n}\r\ncanvas {\r\n  //background:url(/assets/board-bg.png);\r\n  background-repeat: no-repeat;\r\n  padding: 0px;\r\n}\r\n.hand{\r\n  min-height: 400px;\r\n  overflow: auto;\r\n}\r\n\r\nli{\r\n  cursor: pointer;\r\n}\r\nul{\r\n  max-height: 400px;\r\n  overflow: auto;\r\n}\r\n\r\nli button{\r\n  padding-right: 3px;\r\n  padding-left: 3px;\r\n  top: -7px;\r\n  position: relative;\r\n  margin-right: 1px;\r\n}\r\n.btn-floating {\r\n  top: 60px;\r\n  left: -15px;\r\n}\r\n  .active{\r\n    color:white !important;\r\n    background-color: #2196F3 !important\r\n  }\r\n  button:focus{\r\n    background-color: transparent;\r\n  }\r\n.enemyDetails{\r\n  position: absolute;\r\n  top: 0px;\r\n  right: 0px;\r\n}\r\n.not-allowed{\r\n  cursor: not-allowed;\r\n}\r\n", ""]);
+exports.push([module.i, ".canvas{\r\n  overflow: auto;\r\n}\r\ncanvas {\r\n  //background:url(/assets/board-bg.png);\r\n  background-repeat: no-repeat;\r\n  padding: 0px;\r\n}\r\n.hand{\r\n  min-height: 400px;\r\n  overflow: auto;\r\n}\r\n\r\nli{\r\n  cursor: pointer;\r\n}\r\nul{\r\n  max-height: 400px;\r\n  overflow: auto;\r\n}\r\n\r\nli button{\r\n  padding-right: 3px;\r\n  padding-left: 3px;\r\n  top: -7px;\r\n  position: relative;\r\n  margin-right: 1px;\r\n}\r\n.btn-floating {\r\n  top: 60px;\r\n  left: -15px;\r\n}\r\n  .active{\r\n    color:white !important;\r\n    background-color: #2196F3 !important\r\n  }\r\n  button:focus{\r\n    background-color: transparent;\r\n  }\r\n.enemyDetails{\r\n  position: absolute;\r\n  top: 10px;\r\n  right: 10px;\r\n}\r\n.cardDetails{\r\n  position: absolute;\r\n  bottom: 0px;\r\n  right: 10px;\r\n}\r\n.not-allowed{\r\n  cursor: not-allowed;\r\n}\r\n", ""]);
 
 // exports
 
@@ -1450,7 +1528,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/game/game-play/game-play.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"col s3\">\n  <div class=\"white-board z-depth-1\">\n    <div class=\"row no-margin-bottom\">\n      <label>Commander:</label>\n      <ul class=\"collection no-margin-bottom\">\n        <li class=\"collection-item\" [ngClass]=\"getBgColor(game.currentGame.ownCommander.race)\">\n          <div>{{game.currentGame.ownCommander.cardname| truncate}}\n            <button class=\"secondary-content amber btn btn-small right\">\n              {{game.currentGame.ownCommander.resources}}\n            </button>\n            <button class=\"secondary-content green btn btn-small right\">\n              {{game.currentGame.ownCommander.life}}\n            </button>\n          </div>\n        </li>\n      </ul>\n    </div>\n    <div class=\"row hand\">\n      <ul class=\"collection no-margin-bottom\">\n        <label>Your hand:</label>\n        <li *ngFor=\"let card of game.hand\" class=\"collection-item\" [ngClass]=\"getBgColor(card.race)\" >\n          <div>{{card.cardname}}\n            <button class=\"secondary-content amber btn btn-small right\" (click)=\"nothing()\" >\n              {{card.cost}}\n            </button>\n            <button class=\"secondary-content green btn btn-small right\" *ngIf=\"types.getType(card.type)!='Action'\" (click)=\"nothing()\">\n              {{card.life}}\n            </button>\n            <button class=\"secondary-content  deep-orange darken-1 btn btn-small right\" *ngIf=\"types.getType(card.type)!='Action'\" (click)=\"nothing()\">\n              {{card.attack}}\n            </button>\n          </div>\n        </li>\n        <li *ngIf=\"game.hand.length==0\" class=\"collection-item blue-text\" >\n          <div>No cards in hand</div>\n        </li>\n      </ul>\n    </div>\n    <div class=\"row\">\n      <button [ngClass]=\"{disabled: !game.myTurn}\" [disabled]=\"!game.myTurn\" type=\"button\" name=\"button\" (click)=\"endTurn()\" class=\"btn waves-effect waves-light btn-sm col s12 orange\">End Turn</button>\n    </div>\n    <div class=\"row\">\n      <button type=\"button\" name=\"button\" (click)=\"endGame()\" class=\"btn waves-effect waves-light btn-sm col s12 red\">End Game</button>\n    </div>\n  </div>\n</div>\n<div class=\"col s9\">\n    <canvas width=\"672\" height=\"620\" id=\"boardCanvas\" class=\"white-board z-depth-1 canvas\"></canvas>\n</div>\n<div class=\"enemyDetails\">\n  <div class=\"white-board z-depth-1 grey darken-4\">\n    <div class=\"row no-margin-bottom\">\n      <label>Oponent:</label>\n      <ul class=\"collection\">\n        <li class=\"collection-item\"  [ngClass]=\"getBgColor(game.currentGame.enemyCommander.race)\">\n          <div>{{game.currentGame.enemyCommander.cardname| truncate}}\n            <button class=\"secondary-content amber btn btn-small right\">\n              {{game.currentGame.enemyCommander.resources}}\n            </button>\n            <button class=\"secondary-content green btn btn-small right\">\n              {{game.currentGame.enemyCommander.life}}\n            </button>\n          </div>\n        </li>\n      </ul>\n      <label>Hand: {{game.currentGame.enemyHand}}</label>\n      <label>Deck: {{game.currentGame.enemyDeck}}</label>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"col s3\">\n  <div class=\"center board z-depth-1\" [ngClass]=\"{'white': board.user=='userA', 'grey darken-4':board.user!='userA'}\">\n    <div class=\"row no-margin-bottom\">\n      <label>Commander:</label>\n      <ul class=\"collection no-margin-bottom\">\n        <li class=\"collection-item\" [ngClass]=\"getBgColor(game.currentGame.ownCommander.race)\" (click)=\"setCardSelected(game.currentGame.ownCommander)\">\n          <div>{{game.currentGame.ownCommander.cardname| truncate}}\n            <button class=\"secondary-content green btn btn-small right\">\n              {{game.currentGame.ownCommander.life}}\n            </button>\n          </div>\n        </li>\n      </ul>\n    </div>\n    <div class=\"row amber btn\"> RESOURCES LEFT:\n      {{game.currentGame.ownCommander.resources - board.resourcesSpent}}/{{game.currentGame.ownCommander.resources}}\n    </div>\n    <div class=\"row hand\">\n      <ul class=\"collection no-margin-bottom\">\n        <label>Your hand:</label>\n        <li *ngFor=\"let card of game.hand; let i = index\" class=\"collection-item\" [ngClass]=\"getBgColor(card.race)\">\n          <div *ngIf=\"cardToPlay !=card || game.currentGame.ownCommander.resources -board.resourcesSpent < card.cost\" (click)=\"setCardSelected(card)\">{{card.cardname}}\n            <button class=\"secondary-content amber btn btn-small right\" (click)=\"nothing()\" >\n              {{card.cost}}\n            </button>\n            <button class=\"secondary-content green btn btn-small right\" *ngIf=\"types.getType(card.type)!='Action'\" (click)=\"nothing()\">\n              {{card.life}}\n            </button>\n            <button class=\"secondary-content  deep-orange darken-1 btn btn-small right\" *ngIf=\"types.getType(card.type)!='Action'\" (click)=\"nothing()\">\n              {{card.attack}}\n            </button>\n          </div>\n          <div class=\"row no-margin-bottom\" *ngIf=\"cardToPlay ==card && game.currentGame.ownCommander.resources -board.resourcesSpent >= card.cost\">\n            <div class =\" col s8 btn green truncate\" (click)=\"playCard(card,i)\">Play this card</div>\n            <div class =\" col s4 btn red truncate\" (click)=\"cancelSelection()\">Cancel</div>\n          </div>\n        </li>\n        <li *ngIf=\"game.hand.length==0\" class=\"collection-item blue-text\" >\n          <div>No cards in hand</div>\n        </li>\n      </ul>\n    </div>\n    <div class=\"row\">\n      <button [ngClass]=\"{disabled: !game.myTurn}\" [disabled]=\"!game.myTurn\" type=\"button\" name=\"button\" (click)=\"endTurn()\" class=\"btn waves-effect waves-light btn-sm col s12 orange\">End Turn</button>\n    </div>\n    <div class=\"row\">\n      <button type=\"button\" name=\"button\" (click)=\"endGame()\" class=\"btn waves-effect waves-light btn-sm col s12 red\">End Game</button>\n    </div>\n  </div>\n</div>\n<div class=\"col s9\">\n    <canvas width=\"672\" height=\"620\" id=\"boardCanvas\" class=\"white-board z-depth-1 canvas\"></canvas>\n</div>\n\n<div class=\"cardDetails\" *ngIf=\"board.cardSelected\">\n  <card-demo [card]=\"board.cardSelected\"></card-demo>\n</div>\n\n<div class=\"enemyDetails\">\n  <div class=\"board z-depth-1\" [ngClass]=\"{'white': board.user!='userA', 'grey darken-4':board.user=='userA'}\">\n    <div class=\"row no-margin-bottom\">\n      <label>Oponent:</label>\n      <ul class=\"collection\">\n        <li class=\"collection-item\"  [ngClass]=\"getBgColor(game.currentGame.enemyCommander.race)\" (click)=\"setCardSelected(game.currentGame.enemyCommander)\">\n          <div>{{game.currentGame.enemyCommander.cardname| truncate}}\n            <button class=\"secondary-content amber btn btn-small right\">\n              {{game.currentGame.enemyCommander.resources}}\n            </button>\n            <button class=\"secondary-content green btn btn-small right\">\n              {{game.currentGame.enemyCommander.life}}\n            </button>\n          </div>\n        </li>\n      </ul>\n      <label>Hand: {{game.currentGame.enemyHand}}</label>\n      <label>Deck: {{game.currentGame.enemyDeck}}</label>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -1495,13 +1573,29 @@ var GamePlayComponent = (function () {
         this.board.init(new __WEBPACK_IMPORTED_MODULE_5_createjs_module__["Stage"]("boardCanvas"));
     };
     GamePlayComponent.prototype.endTurn = function () {
+        this.cardToPlay = {};
         this.game.endTurn();
+        this.board.resourcesSpent = 0;
     };
     GamePlayComponent.prototype.endGame = function () {
         this.game.endGame();
     };
     GamePlayComponent.prototype.getBgColor = function (race) {
         return this.races.getRaceColor(race);
+    };
+    GamePlayComponent.prototype.nothing = function () { };
+    GamePlayComponent.prototype.setCardSelected = function (card) {
+        if (this.board.myTurn) {
+            this.cardToPlay = card;
+        }
+        this.board.cardSelected = card;
+    };
+    GamePlayComponent.prototype.playCard = function (card, index) {
+        this.board.playCard(card, this.types.getType(card.type), index);
+    };
+    GamePlayComponent.prototype.cancelSelection = function () {
+        this.cardToPlay = {};
+        this.board.clearTargets();
     };
     return GamePlayComponent;
 }());
@@ -3307,6 +3401,15 @@ var ActionService = (function () {
     ActionService.prototype.moveCreature = function (from, to) {
         this.socket.getSocket().emit('creature-move', from, to);
     };
+    ActionService.prototype.playCard = function (card, pos, index) {
+        this.socket.getSocket().emit('play-card', card, pos, index);
+    };
+    ActionService.prototype.useActionCard = function (card, pos) {
+        this.socket.getSocket().emit('play-card', card, pos);
+    };
+    ActionService.prototype.attack = function (attacker, defender) {
+        this.socket.getSocket().emit('attack', attacker, defender);
+    };
     return ActionService;
 }());
 ActionService = __decorate([
@@ -3344,9 +3447,10 @@ var BoardService = (function () {
     function BoardService(action) {
         var _this = this;
         this.action = action;
-        this.boardHeightSize = 7;
-        this.mapStartX = 195;
-        this.mapStartY = 63;
+        this.boardFromSize = 3;
+        this.boardToSize = 5;
+        this.mapStartX = 245;
+        this.mapStartY = 143;
         this.mapHexSize = 55;
         this.mapHexWidth = Math.sqrt(3) / 2 * 2 * this.mapHexSize;
         this.mapHexHeight = 3 / 4 * 2 * this.mapHexSize;
@@ -3355,52 +3459,85 @@ var BoardService = (function () {
         this.offsetTriangleHLong = 30;
         this.offsetTriangleV = 26;
         this.queue = new __WEBPACK_IMPORTED_MODULE_1_createjs_module__["LoadQueue"](true);
-        this.startingPos = { x: 0, y: 0, initial: true };
-        this.witness = false;
-        this.mouseOverHex = function (event) {
-            if (_this.myTurn) {
-                event.target.graphics.clear().beginStroke("#f5f5f5").f("#64dd17").drawPolyStar(0, 0, _this.mapHexSize - 1, 6, 0, 30);
-                _this.stage.update();
+        this.targetNeigbors = [];
+        this.targetNeigborsTiles = [];
+        this.moveNeigbors = [];
+        this.moveNeigborsTiles = [];
+        this.resourcesSpent = 0;
+        this.posibleTilesToPlay = [];
+        this.playActionCardSelected = function (event) {
+            var targetTile = _this.getTile(event.currentTarget.x, event.currentTarget.y);
+            var index = _this.cardToBePlayed.index;
+            delete _this.cardToBePlayed.index;
+            _this.action.playCard(_this.cardToBePlayed, targetTile.name, index);
+            var card = _this.cardToBePlayed.structure || _this.cardToBePlayed.troop || _this.cardToBePlayed.action;
+            _this.resourcesSpent += card.cost;
+            _this.cardToBePlayed = {};
+            _this.clearTargets();
+        };
+        this.useHabilityCardSelected = function (event) {
+            var targetTile = _this.getTile(event.currentTarget.x, event.currentTarget.y);
+            _this.action.useActionCard(_this.cardUsingHability, targetTile.name);
+            _this.cardUsingHability = {};
+            _this.clearTargets();
+        };
+        this.playCardSelected = function (event) {
+            var targetTile = _this.getTile(event.currentTarget.x, event.currentTarget.y);
+            var index = _this.cardToBePlayed.index;
+            delete _this.cardToBePlayed.index;
+            _this.action.playCard(_this.cardToBePlayed, targetTile.name, index);
+            var card = _this.cardToBePlayed.structure || _this.cardToBePlayed.troop || _this.cardToBePlayed.action;
+            _this.resourcesSpent += card.cost;
+            _this.cardToBePlayed = {};
+            _this.clearTargets();
+        };
+        //CARD OPTIONS AND DETAILS
+        this.creatureClicked = function (event) {
+            _this.clearSelectedCard();
+            var tileHitted = _this.getTile(event.currentTarget.x, event.currentTarget.y);
+            _this.setDetails(tileHitted.name);
+            if (_this.myTurn && _this.board[tileHitted.name].user == _this.user && _this.board[tileHitted.name].active) {
+                _this.setCardOptions(tileHitted.name, tileHitted.x, tileHitted.y);
             }
         };
-        this.mouseOutHex = function (event) {
-            if (_this.myTurn) {
-                event.target.graphics.clear().beginStroke("#212121").f("#ccff90").drawPolyStar(0, 0, _this.mapHexSize, 6, 0, 30);
-                _this.stage.update();
-            }
+        //MOVEMENT
+        this.creatureMoves = function (event) {
+            _this.getMovement(_this.cardOptions.tile.x, _this.cardOptions.tile.y);
         };
-        this.pressMove = function (event) {
-            if (_this.startingPos.initial) {
-                _this.startingPos.tile = _this.getTile(event.currentTarget.x, event.currentTarget.y);
-                _this.startingPos.initial = false;
-                _this.startingPos.user = _this.board[_this.startingPos.tile.name].user;
-            }
-            if (_this.user === _this.startingPos.user) {
-                event.currentTarget.x = event.stageX;
-                event.currentTarget.y = event.stageY;
-                _this.stage.update();
+        this.moveCreatureSelected = function (event) {
+            var targetTile = _this.getTile(event.currentTarget.x, event.currentTarget.y);
+            if (!_this.isOccupied(targetTile.name)) {
+                _this.creatureToMove.x = targetTile.x;
+                _this.creatureToMove.y = targetTile.y;
+                var target = _this.board[_this.startingTile.name];
+                _this.board[targetTile.name] = target;
+                _this.board[_this.startingTile.name] = {};
+                _this.clearSelectedCard();
+                _this.creatureToMove = {};
+                _this.action.moveCreature(_this.startingTile.name, targetTile.name);
+                _this.startingTile = {};
             }
             else {
-                _this.startingPos.initial = true;
+                _this.action.attack(_this.getTile(_this.creatureToMove.x, _this.creatureToMove.y).name, targetTile.name);
             }
         };
-        this.pressUp = function (event) {
-            if (_this.user === _this.startingPos.user) {
-                var endTile = _this.getTile(event.stageX, event.stageY);
-                var target = {};
-                if (endTile) {
-                    target = _this.board[endTile.name];
-                }
-                if (endTile && Object.keys(target).length === 0 && _this.myTurn) {
-                    _this.moveCreature(_this.startingPos.tile.name, endTile, event.currentTarget);
-                }
-                else {
-                    event.currentTarget.x = _this.startingPos.tile.x;
-                    event.currentTarget.y = _this.startingPos.tile.y;
-                    _this.startingPos.initial = true;
-                }
-                _this.stage.update();
-            }
+        this.cancelSelection = function (event) {
+            _this.clearSelectedCard();
+        };
+        this.clearMoves = function () {
+            _this.moveNeigborsTiles.forEach(function (tile) {
+                _this.stage.removeChild(tile);
+            });
+            _this.stage.update();
+            _this.moveNeigbors = [];
+            _this.moveNeigborsTiles = [];
+        };
+        this.clearTargets = function () {
+            _this.targetNeigborsTiles.forEach(function (tile) {
+                _this.stage.removeChild(tile);
+            });
+            _this.stage.update();
+            _this.targetNeigbors = [];
         };
     }
     BoardService.prototype.getManifest = function () {
@@ -3408,8 +3545,8 @@ var BoardService = (function () {
         var manifest = [
             { src: server + "/assets/images/circle/commanderAt.png", id: "commanderA" },
             { src: server + "/assets/images/circle/commanderBt.png", id: "commanderB" },
-            { src: server + "/assets/images/circle/structureA.png", id: "structureA" },
-            { src: server + "/assets/images/circle/structureB.png", id: "structureB" },
+            { src: server + "/assets/images/circle/structureAt.png", id: "structureA" },
+            { src: server + "/assets/images/circle/structureBt.png", id: "structureB" },
             { src: server + "/assets/images/circle/troopAt.png", id: "troopA" },
             { src: server + "/assets/images/circle/troopBt.png", id: "troopB" },
         ];
@@ -3418,50 +3555,40 @@ var BoardService = (function () {
     BoardService.prototype.init = function (stage) {
         var _this = this;
         this.queue.on("complete", function (evt) {
-            console.log("all files loaded");
             _this.updateBoard();
-        }, this);
-        this.queue.on("fileload", function (evt) {
-            //console.log("fileLoaded: ");
-            //console.log(evt)
-        }, this);
-        this.queue.on("error", function (evt) {
-            console.log(evt);
-        }, this);
-        this.queue.on("progress", function (evt) {
-            //console.log(evt);
         }, this);
         var manifest = this.getManifest();
         this.queue.loadManifest(manifest);
         this.stage = stage;
-        this.stage.enableMouseOver();
+        //this.stage.enableMouseOver();
         __WEBPACK_IMPORTED_MODULE_1_createjs_module__["Touch"].enable(this.stage);
         this.createMap();
         this.stage.update();
     };
+    //PAINT THE BOARD
     BoardService.prototype.createMap = function () {
         var hexX = 0;
         var hexY = 0;
         var hexY = 0;
-        var itemsInRow = 0;
-        for (var i = 1; i <= this.boardHeightSize; i++) {
-            if (i > (this.boardHeightSize / 2 + 1)) {
+        var itemsInRow = this.boardFromSize;
+        var offX = 1 / 2 * this.mapHexWidth;
+        for (var i = 1; i <= this.boardToSize; i++) {
+            if (i > (Math.floor(this.boardToSize / 2) + 1)) {
+                offX += 1 / 2 * this.mapHexWidth;
+            }
+            else {
+                offX -= 1 / 2 * this.mapHexWidth;
+            }
+            for (var j = 1; j <= itemsInRow; j++) {
+                hexX = this.mapStartX + (j - 1) * this.mapHexWidth + offX;
+                hexY = this.mapStartY + (i - 1) * this.mapHexHeight;
+                this.createHex(hexX, hexY, this.mapHexSize, i, j);
+            }
+            if (i >= (Math.floor(this.boardToSize / 2) + 1)) {
                 itemsInRow--;
             }
             else {
                 itemsInRow++;
-            }
-            for (var j = 1; j <= itemsInRow; j++) {
-                var offX = 0;
-                if (i % 2 != 0) {
-                    offX = 1 / 2 * this.mapHexWidth;
-                }
-                if (itemsInRow < Math.floor(this.boardHeightSize / 2)) {
-                    offX += this.mapHexWidth;
-                }
-                hexX = this.mapStartX + (j - 1) * this.mapHexWidth + offX;
-                hexY = this.mapStartY + (i - 1) * this.mapHexHeight;
-                this.createHex(hexX, hexY, this.mapHexSize, i, j);
             }
         }
     };
@@ -3472,9 +3599,6 @@ var BoardService = (function () {
         hex.x = x;
         hex.y = y;
         hex.graphics.beginStroke("#212121").f("#ccff90").drawPolyStar(0, 0, size, 6, 0, 30);
-        // add events for mouse hover on any hex
-        hex.addEventListener("mouseover", this.mouseOverHex);
-        hex.addEventListener("mouseout", this.mouseOutHex);
         this.stage.addChild(hex);
     };
     BoardService.prototype.updateBoard = function () {
@@ -3532,21 +3656,254 @@ var BoardService = (function () {
                     creature.addChild(textResources);
                 }
                 else if (this.board[element].structure) {
+                    var textLife = new __WEBPACK_IMPORTED_MODULE_1_createjs_module__["Text"](this.board[element].structure.life, "15px Arial", "#ffffff");
+                    textLife.x = this.offsetTriangleHShort - 7;
+                    textLife.y = this.offsetTriangleV + 4;
+                    textLife.textBaseline = "alphabetic";
+                    creature.addChild(textLife);
                     tile = this.queue.getResult("structure" + user);
+                    var attack = new __WEBPACK_IMPORTED_MODULE_1_createjs_module__["Shape"]();
+                    attack.graphics.s(strokeColor).f("#ff5722").dp(this.offsetTriangleHLong, 0, this.mapHexSize / 2, 3, 0, 60);
+                    creature.addChild(attack);
+                    var textAttack = new __WEBPACK_IMPORTED_MODULE_1_createjs_module__["Text"](this.board[element].structure.attack, "15px Arial", "#ffffff");
+                    textAttack.x = this.offsetTriangleHLong - 7;
+                    textAttack.y = 0 + 4;
+                    textAttack.textBaseline = "alphabetic";
+                    creature.addChild(textAttack);
                 }
                 else if (this.board[element].troop) {
+                    var textLife = new __WEBPACK_IMPORTED_MODULE_1_createjs_module__["Text"](this.board[element].troop.life, "15px Arial", "#ffffff");
+                    textLife.x = this.offsetTriangleHShort - 7;
+                    textLife.y = this.offsetTriangleV + 4;
+                    textLife.textBaseline = "alphabetic";
+                    creature.addChild(textLife);
                     tile = this.queue.getResult("troop" + user);
+                    var attack = new __WEBPACK_IMPORTED_MODULE_1_createjs_module__["Shape"]();
+                    attack.graphics.s(strokeColor).f("#ff5722").dp(this.offsetTriangleHLong, 0, this.mapHexSize / 2, 3, 0, 60);
+                    creature.addChild(attack);
+                    var textAttack = new __WEBPACK_IMPORTED_MODULE_1_createjs_module__["Text"](this.board[element].troop.attack, "15px Arial", "#ffffff");
+                    textAttack.x = this.offsetTriangleHLong - 7;
+                    textAttack.y = 0 + 4;
+                    textAttack.textBaseline = "alphabetic";
+                    creature.addChild(textAttack);
                 }
                 var circle = new __WEBPACK_IMPORTED_MODULE_1_createjs_module__["Shape"]();
                 circle.graphics.bf(tile, "no-repeat", matrix).drawCircle(0, 0, (this.mapHexSize * Math.sqrt(3) / 2));
                 creature.addChild(circle);
-                creature.on("pressmove", this.pressMove);
-                creature.on("pressup", this.pressUp);
+                creature.on("click", this.creatureClicked);
                 this.stage.addChild(creature);
+                if (!this.board[element].active) {
+                    this.disableCard(element);
+                }
             }
         }
         this.stage.update();
     };
+    //PLAY CARDS
+    BoardService.prototype.playCard = function (card, type, index) {
+        if (type == 'Structure') {
+            this.cardToBePlayed = { structure: card, user: this.user, index: index };
+            this.showPlayRange();
+        }
+        else if (type == 'Creature') {
+            this.cardToBePlayed = { troop: card, user: this.user, index: index };
+            this.showPlayRange();
+        }
+        else {
+            this.cardToBePlayed = { action: card, user: this.user, index: index };
+            this.showActionRange(null);
+        }
+    };
+    BoardService.prototype.showPlayRange = function () {
+        this.targetNeigbors = [];
+        for (var key in this.board) {
+            var item = this.board[key];
+            //TODO ADD structure habilities
+            if (item.user == this.user && item.commander) {
+                var originTile = this.stage.getChildByName(key);
+                var posibleTargets = this.getSurroundingTiles(originTile.x, originTile.y, item.commander.habs.range);
+                for (var i = 0; i < posibleTargets.length; i++) {
+                    if (!this.board[posibleTargets[i]].user) {
+                        this.targetNeigbors.push(posibleTargets[i]);
+                    }
+                }
+                this.paintTilesToPlay();
+                break;
+            }
+        }
+    };
+    BoardService.prototype.showActionRange = function (card) {
+        if (card) {
+            this.targetNeigbors = [];
+            var posibleTargets = this.getSurroundingTiles(card.x, card.y, card.habs.range);
+            //TODO: Range
+            this.cardUsingHability = card;
+            this.paintActionTilesToPlay(false);
+        }
+        else {
+            this.targetNeigbors = [];
+            for (var key in this.board) {
+                var item = this.board[key];
+                //TODO ADD structure habilities
+                if (item.user == this.user && item.commander) {
+                    var originTile = this.stage.getChildByName(key);
+                    var distance = item.commander.habs.range >= this.cardToBePlayed.action.habs.range ? item.commander.habs.range : this.cardToBePlayed.action.habs.range;
+                    this.targetNeigbors = this.getSurroundingTiles(originTile.x, originTile.y, distance);
+                    //TODO: Range
+                    this.paintActionTilesToPlay(true);
+                    break;
+                }
+            }
+        }
+    };
+    BoardService.prototype.paintActionTilesToPlay = function (fromHand) {
+        var _this = this;
+        this.targetNeigbors.forEach(function (tile) {
+            var target = _this.stage.getChildByName(tile);
+            var playable = new __WEBPACK_IMPORTED_MODULE_1_createjs_module__["Shape"]();
+            playable.id = 4;
+            playable.x = target.x;
+            playable.y = target.y;
+            playable.alpha = 0.25;
+            playable.graphics.ss(10, "round").s("#ffeb3b").f("#ccff90").drawPolyStar(0, 0, _this.mapHexSize, 6, 0, 30);
+            if (fromHand) {
+                playable.on("click", _this.playActionCardSelected);
+            }
+            else {
+                playable.on("click", _this.useHabilityCardSelected);
+            }
+            _this.targetNeigborsTiles.push(_this.stage.addChild(playable));
+            _this.stage.update();
+        });
+        this.stage.update();
+    };
+    BoardService.prototype.paintTilesToPlay = function () {
+        var _this = this;
+        this.targetNeigbors.forEach(function (tile) {
+            var target = _this.stage.getChildByName(tile);
+            var playable = new __WEBPACK_IMPORTED_MODULE_1_createjs_module__["Shape"]();
+            playable.id = 4;
+            playable.x = target.x;
+            playable.y = target.y;
+            playable.alpha = 0.25;
+            playable.graphics.ss(10, "round").s("#76ff03").f("#ccff90").drawPolyStar(0, 0, _this.mapHexSize, 6, 0, 30);
+            playable.on("click", _this.playCardSelected);
+            _this.targetNeigborsTiles.push(_this.stage.addChild(playable));
+            _this.stage.update();
+        });
+        this.stage.update();
+    };
+    BoardService.prototype.setDetails = function (pos) {
+        var card = this.board[pos];
+        if (card.troop) {
+            this.cardSelected = card.troop;
+        }
+        else if (card.commander) {
+            this.cardSelected = card.commander;
+        }
+        else if (card.structure) {
+            this.cardSelected = card.structure;
+        }
+    };
+    BoardService.prototype.setCardOptions = function (pos, x, y) {
+        this.cardOptions.pos = pos;
+        var targetTile = this.getTile(x, y);
+        var cardOptions = new __WEBPACK_IMPORTED_MODULE_1_createjs_module__["Container"]();
+        cardOptions.id = 3;
+        cardOptions.x = targetTile.x;
+        cardOptions.y = targetTile.y;
+        var background = new __WEBPACK_IMPORTED_MODULE_1_createjs_module__["Shape"]();
+        background.graphics.s("#ffffff").f("#ccff90").drawPolyStar(0, 0, this.mapHexSize, 6, 0, 30);
+        background.alpha = 0.25;
+        cardOptions.addChild(background);
+        //MOVE
+        if (!this.board[pos].structure) {
+            var move = new __WEBPACK_IMPORTED_MODULE_1_createjs_module__["Shape"]();
+            move.graphics.s("#ffffff").f("#4caf50").dp(this.offsetTriangleHShort, this.offsetTriangleV, this.mapHexSize / 2, 3, 0, 0);
+            cardOptions.addChild(move);
+            move.on("click", this.creatureMoves);
+            var moveText = new __WEBPACK_IMPORTED_MODULE_1_createjs_module__["Text"]("move", "15px Arial", "#ffffff");
+            moveText.x = this.offsetTriangleHShort - 7;
+            moveText.y = this.offsetTriangleV + 4;
+            moveText.textBaseline = "alphabetic";
+            cardOptions.addChild(moveText);
+        }
+        //CANCEL
+        var cancel = new __WEBPACK_IMPORTED_MODULE_1_createjs_module__["Shape"]();
+        cancel.graphics.s("#ffffff").f("#ff5722").dp(this.offsetTriangleHLong, 0, this.mapHexSize / 2, 3, 0, 60);
+        cardOptions.addChild(cancel);
+        cancel.on("click", this.cancelSelection);
+        var cancelText = new __WEBPACK_IMPORTED_MODULE_1_createjs_module__["Text"]("cancel", "15px Arial", "#ffffff");
+        cancelText.x = this.offsetTriangleHShort - 7;
+        cancelText.y = 0 + 4;
+        cancelText.textBaseline = "alphabetic";
+        cardOptions.addChild(cancelText);
+        this.cardOptions.tile = this.stage.addChild(cardOptions);
+        this.stage.update();
+    };
+    BoardService.prototype.deleteCardOptions = function () {
+        if (this.cardOptions && this.cardOptions.tile) {
+            this.stage.removeChild(this.cardOptions.tile);
+            this.stage.update();
+        }
+        this.cardOptions = {};
+    };
+    BoardService.prototype.cardUsed = function (cardName) {
+        this.board[cardName].active = false;
+        this.disableCard(cardName);
+    };
+    BoardService.prototype.disableCard = function (cardName) {
+        //Paint disabled cloack
+        var tile = this.stage.getChildByName(cardName);
+        var disabled = new __WEBPACK_IMPORTED_MODULE_1_createjs_module__["Shape"]();
+        disabled.id = 4;
+        disabled.x = tile.x;
+        disabled.y = tile.y;
+        disabled.alpha = 0.50;
+        disabled.graphics.s("#ffffff").f("#d50000").drawPolyStar(0, 0, this.mapHexSize, 6, 0, 30);
+        this.stage.addChild(disabled);
+        this.stage.update();
+    };
+    BoardService.prototype.getMovement = function (x, y) {
+        this.creatureToMove = this.getCreature(x, y);
+        this.moveNeigbors = this.getSurroundingTiles(x, y, 1);
+        for (var i = 0; i < this.moveNeigbors.length; i++) {
+            var oc = this.isOccupied(this.moveNeigbors[i]);
+            if (oc && oc == this.user) {
+                this.moveNeigbors.splice(i, 1);
+                i--;
+            }
+        }
+        this.startingTile = this.getTile(x, y);
+        this.showMovementTiles();
+    };
+    BoardService.prototype.showMovementTiles = function () {
+        var _this = this;
+        this.moveNeigbors.forEach(function (tile) {
+            var target = _this.stage.getChildByName(tile);
+            var playable = new __WEBPACK_IMPORTED_MODULE_1_createjs_module__["Shape"]();
+            playable.id = 4;
+            playable.x = target.x;
+            playable.y = target.y;
+            playable.alpha = 0.25;
+            playable.graphics.ss(10, "round").s("#76ff03").f("#ccff90").drawPolyStar(0, 0, _this.mapHexSize, 6, 0, 30);
+            playable.on("click", _this.moveCreatureSelected);
+            _this.moveNeigborsTiles.push(_this.stage.addChild(playable));
+            _this.stage.update();
+        });
+        this.stage.update();
+    };
+    //CLEAN
+    BoardService.prototype.creatureKilled = function (creaturePos) {
+        this.board[creaturePos] = {};
+        //update stage
+    };
+    BoardService.prototype.clearSelectedCard = function () {
+        this.clearMoves();
+        this.clearTargets();
+        this.deleteCardOptions();
+    };
+    //UTILS
     BoardService.prototype.getTile = function (x, y) {
         for (var i = 0; i < this.stage.children.length; i++) {
             var p = this.stage.children[i].globalToLocal(x, y);
@@ -3568,13 +3925,78 @@ var BoardService = (function () {
             }
         }
     };
-    BoardService.prototype.moveCreature = function (from, tileTo, creature) {
-        var target = this.board[from];
-        this.board[tileTo.name] = target;
-        this.board[from] = {};
-        creature.x = tileTo.x;
-        creature.y = tileTo.y;
-        this.action.moveCreature(from, tileTo.name);
+    BoardService.prototype.getSurroundingTiles = function (x, y, distance) {
+        var tileList = [];
+        for (var i = 0; i < distance; i++) {
+            var tileListAux = [];
+            if (tileList.length == 0) {
+                tileListAux = this.getNearestTiles(x, y);
+            }
+            else {
+                for (var i = 0; i < tileList.length; i++) {
+                    var element = this.stage.getChildByName(tileList[i]);
+                    var tilesAux = this.getNearestTiles(element.x, element.y);
+                    tileListAux = this.join(tileListAux, tilesAux);
+                }
+            }
+            tileList = this.join(tileList, tileListAux);
+        }
+        return tileList;
+    };
+    BoardService.prototype.join = function (list1, list2) {
+        var list3 = [];
+        list3 = list1;
+        list2.forEach(function (element) {
+            if (list3.indexOf(element) < 0) {
+                list3.push(element);
+            }
+        });
+        return list3;
+    };
+    BoardService.prototype.getNearestTiles = function (x, y) {
+        var tileList = [];
+        var offsetX = this.mapHexWidth;
+        var offsetY = this.mapHexHeight;
+        var tryTile;
+        //NE
+        tryTile = this.getTile(x + offsetX / 2, y + offsetY);
+        if (tryTile) {
+            tileList.push(tryTile.name);
+        }
+        //E
+        tryTile = this.getTile(x + offsetX, y);
+        if (tryTile) {
+            tileList.push(tryTile.name);
+        }
+        //SE
+        tryTile = this.getTile(x + offsetX / 2, y - offsetY);
+        if (tryTile) {
+            tileList.push(tryTile.name);
+        }
+        //SW
+        tryTile = this.getTile(x - offsetX / 2, y - offsetY);
+        if (tryTile) {
+            tileList.push(tryTile.name);
+        }
+        //W
+        tryTile = this.getTile(x - offsetX, y);
+        if (tryTile) {
+            tileList.push(tryTile.name);
+        }
+        //NW
+        tryTile = this.getTile(x - offsetX / 2, y + offsetY);
+        if (tryTile) {
+            tileList.push(tryTile.name);
+        }
+        return tileList;
+    };
+    BoardService.prototype.isOccupied = function (pos) {
+        return this.board[pos].user;
+    };
+    //BOARD UPDATE ACTIONS
+    BoardService.prototype.attack = function (board) {
+        this.board = board;
+        this.updateBoard();
     };
     BoardService.prototype.updatePosition = function (from, to) {
         var target = this.board[from];
@@ -3595,8 +4017,31 @@ var BoardService = (function () {
             this.board[to] = target;
             this.board[from] = {};
         }
-        this.startingPos.initial = true;
+        this.cardUsed(to);
         this.stage.update();
+    };
+    BoardService.prototype.actionCardPlayed = function (card, pos) {
+        this.actionCardToPlay = card;
+        var target = this.stage.getChildByName(pos);
+        //TODO: apply modifiers
+        this.updateBoard();
+        var playable = new __WEBPACK_IMPORTED_MODULE_1_createjs_module__["Shape"]();
+        playable.id = 4;
+        playable.x = target.x;
+        playable.y = target.y;
+        playable.alpha = 0.25;
+        playable.graphics.ss(10, "round").s("#ff9800").f("#ccff90").drawPolyStar(0, 0, this.mapHexSize, 6, 0, 30);
+        this.stage.addChild(playable);
+        this.stage.update();
+    };
+    BoardService.prototype.cardPlayed = function (card, pos) {
+        if (card.action) {
+            this.actionCardPlayed(card.action, pos);
+        }
+        else {
+            this.board[pos] = card;
+            this.updateBoard();
+        }
     };
     return BoardService;
 }());
@@ -3806,8 +4251,20 @@ var GameService = (function () {
             _this.socket.getSocket().on("creature-move", function (from, to) {
                 _this.board.updatePosition(from, to);
             });
+            _this.socket.getSocket().on("attack", function (board) {
+                _this.game.board = board;
+                _this.board.attack(board);
+            });
+            _this.socket.getSocket().on("play-card", function (card, pos, user) {
+                _this.board.cardPlayed(card, pos);
+                var userPlays = _this.currentUser.getUser().username == _this.game.userA ? "userA" : "userB";
+                if (userPlays != user) {
+                    _this.currentGame.enemyHand -= 1;
+                }
+            });
             _this.socket.getSocket().once("end-game", function (game) {
                 _this.socket.getSocket().off('creature-move');
+                _this.socket.getSocket().off('attack');
                 _this.socket.getSocket().off('game-hand');
                 _this.socket.getSocket().off('game-info');
                 _this.socket.getSocket().off('next-turn');
@@ -3821,6 +4278,7 @@ var GameService = (function () {
                     _this.updateGame({});
                     _this.gameStart = false;
                     _this.socket.getSocket().off('creature-move');
+                    _this.socket.getSocket().off('attack');
                     _this.socket.getSocket().off('game-hand');
                     _this.socket.getSocket().off('game-info');
                     _this.socket.getSocket().off('next-turn');

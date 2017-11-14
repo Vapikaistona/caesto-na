@@ -14,6 +14,7 @@ import { UserListComponent } from './components/user/user-list/user-list.compone
 import { UserDetailComponent } from './components/user/user-detail/user-detail.component';
 import { CardOverviewComponent } from './components/card-overview/card-overview.component';
 import { CardListComponent } from './components/card-overview/card-list/card-list.component';
+import { CardDemoComponent } from './components/card-overview/card-demo/card-demo.component';
 import { TroopListComponent } from './components/card-overview/card-list/troop-list/troop-list.component';
 import { CommanderListComponent } from './components/card-overview/card-list/commander-list/commander-list.component';
 import { CardDetailComponent } from './components/card-overview/card-detail/card-detail.component';
@@ -108,7 +109,8 @@ import { BaseRequestOptions } from '@angular/http';
     AlertComponent,
     GameGlobalChatComponent,
     GamePrivateChatComponent,
-    GamePlayComponent
+    GamePlayComponent,
+    CardDemoComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,23 @@
+.card-demo{
+  background-color: #212121;
+}
+.habilities{
+      min-height: 100px;
+}
+.icon-image{
+  position: absolute;
+  top: 40px;
+  right: 20px;
+}
+label{
+  color: black;
+}
+.no-action{
+  cursor: default;
+}
+.fixed-width{
+  width: 250px;
+}
+.inline{
+  display: inline-flex
+}

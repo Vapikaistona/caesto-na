@@ -39,8 +39,13 @@ li button{
   }
 .enemyDetails{
   position: absolute;
-  top: 0px;
-  right: 0px;
+  top: 10px;
+  right: 10px;
+}
+.cardDetails{
+  position: absolute;
+  bottom: 0px;
+  right: 10px;
 }
 .not-allowed{
   cursor: not-allowed;

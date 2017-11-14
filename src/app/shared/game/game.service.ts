@@ -88,8 +88,20 @@ export class GameService {
       this.socket.getSocket().on("creature-move",(from,to) =>{
         this.board.updatePosition(from,to);
       });
+      this.socket.getSocket().on("attack",(board) =>{
+        this.game.board = board;
+        this.board.attack(board);
+      });
+      this.socket.getSocket().on("play-card",(card,pos,user) =>{
+        this.board.cardPlayed(card,pos);
+        let userPlays = this.currentUser.getUser().username == this.game.userA ?"userA":"userB"
+        if(userPlays != user){
+          this.currentGame.enemyHand -= 1;
+        }
+      });
       this.socket.getSocket().once("end-game",game =>{
         this.socket.getSocket().off('creature-move');
+        this.socket.getSocket().off('attack');
         this.socket.getSocket().off('game-hand');
         this.socket.getSocket().off('game-info');
         this.socket.getSocket().off('next-turn');
@@ -103,6 +115,7 @@ export class GameService {
           this.updateGame({});
           this.gameStart = false;
           this.socket.getSocket().off('creature-move');
+          this.socket.getSocket().off('attack');
           this.socket.getSocket().off('game-hand');
           this.socket.getSocket().off('game-info');
           this.socket.getSocket().off('next-turn');

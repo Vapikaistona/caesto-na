@@ -11,7 +11,6 @@ import {TypesService} from '../../shared/card/types.service';
 })
 export class CardOverviewComponent implements OnInit {
   private showCommanders:boolean=false;
-  private card:any;
   constructor(private commanderService:CommanderService, private troopService:TroopService, private racesService:RacesService, private typesService:TypesService) { }
 
   ngOnInit() {

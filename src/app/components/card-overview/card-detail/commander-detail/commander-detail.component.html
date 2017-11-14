@@ -1,54 +1,61 @@
-<form #form="ngForm" (ngSubmit)="submitFormCommander(form)" class="col s12">
-  <div class="row">
-    <div class="form-group col s6">
-      <label for="cardname">Commander Name</label>
-      <input  id="cardname" type="text" class="validate form-control" name="cardname" [disabled]="!cards.edit" [(ngModel)]="commanderService.commander.cardname" required>
-    </div>
-    <div class="form-group col s6">
-      <label for="race">Race</label>
-      <select id="race" name="race" [(ngModel)]="commanderService.commander.race" [disabled]="!cards.edit">
-        <option *ngFor="let race of racesService.races" [ngValue]="race._id">{{race.name}}</option>
-      </select>
-    </div>
+<div class="row" *ngIf="commanderService.commander.cardname">
+  <div class="col s6 offset-s3">
+    <card-demo [card]="commanderService.commander"></card-demo>
   </div>
-  <div class="row">
-    <div class="form-group col s4">
-      <label>Life: {{commanderService.commander.life}}</label>
-      <p class="range-field">
-        <input type="range" id="life" min="1" max="20" name="life" [disabled]="!cards.edit" [(ngModel)]="commanderService.commander.life" />
-      </p>
+</div>
+<div class="row">
+  <form #form="ngForm" (ngSubmit)="submitFormCommander(form)" class="col s12">
+    <div class="row">
+      <div class="form-group col s6">
+        <label for="cardname">Commander Name</label>
+        <input  id="cardname" type="text" class="validate form-control" name="cardname" [disabled]="!cards.edit" [(ngModel)]="commanderService.commander.cardname" required>
+      </div>
+      <div class="form-group col s6">
+        <label for="race">Race</label>
+        <select id="race" name="race" [(ngModel)]="commanderService.commander.race" [disabled]="!cards.edit">
+          <option *ngFor="let race of racesService.races" [ngValue]="race._id">{{race.name}}</option>
+        </select>
+      </div>
     </div>
-    <div class="form-group col s4">
-      <label>Movement: {{commanderService.commander.movement}}</label>
-      <p class="range-field">
-        <input type="range" id="movement" min="1" max="5" name="movement" [disabled]="!cards.edit" [(ngModel)]="commanderService.commander.movement" />
-      </p>
+    <div class="row">
+      <div class="form-group col s4">
+        <label>Life: {{commanderService.commander.life}}</label>
+        <p class="range-field">
+          <input type="range" id="life" min="1" max="20" name="life" [disabled]="!cards.edit" [(ngModel)]="commanderService.commander.life" />
+        </p>
+      </div>
+      <div class="form-group col s4">
+        <label>Movement: {{commanderService.commander.movement}}</label>
+        <p class="range-field">
+          <input type="range" id="movement" min="1" max="5" name="movement" [disabled]="!cards.edit" [(ngModel)]="commanderService.commander.movement" />
+        </p>
+      </div>
+      <div class="form-group col s4">
+        <label>Resources: {{commanderService.commander.resources}}</label>
+        <p class="range-field">
+          <input type="range" id="resources" min="1" max="5" name="resources" [disabled]="!cards.edit" [(ngModel)]="commanderService.commander.resources" />
+        </p>
+      </div>
     </div>
-    <div class="form-group col s4">
-      <label>Resources: {{commanderService.commander.resources}}</label>
-      <p class="range-field">
-        <input type="range" id="resources" min="1" max="5" name="resources" [disabled]="!cards.edit" [(ngModel)]="commanderService.commander.resources" />
-      </p>
+     <div class="row">
+       <div class="form-group col s12">
+         <label for="habilities">Habilities</label>
+         <textarea id="habilities" class="materialize-textarea" name="habilities" [disabled]="!cards.edit" [(ngModel)]="commanderService.commander.habilities"></textarea>
+       </div>
+     </div>
+     <div class="row" *ngIf="commanderService.commander._id">
+       <div class="form-group col s6" *ngIf="commanderService.commander.modified_by">
+         <label>Modified {{commanderService.commander.modified}} by {{commanderService.commander.modified_by}}</label>
+       </div>
+       <div class="form-group col s6">
+         <label>Created {{commanderService.commander.created}} by {{commanderService.commander.created_by}}</label>
+       </div>
+     </div>
+     <div class="form-group col right"  *ngIf="cards.edit">
+       <button
+         class="btn btn-default left red" (click)="cancelEdition()">Cancel</button>
+      <button
+        [ngClass]="{disabled: !form.valid}" [disabled]="!form.valid" type="submit" class="btn btn-default right s4" [class.blue]="commanderService.commander._id" [class.green]="!commanderService.commander._id">{{commanderService.commander._id?"save":"new"}}</button>
     </div>
-  </div>
-   <div class="row">
-     <div class="form-group col s12">
-       <label for="habilities">Habilities</label>
-       <textarea id="habilities" class="materialize-textarea" name="habilities" [disabled]="!cards.edit" [(ngModel)]="commanderService.commander.habilities"></textarea>
-     </div>
-   </div>
-   <div class="row" *ngIf="commanderService.commander._id">
-     <div class="form-group col s6" *ngIf="commanderService.commander.modified_by">
-       <label>Modified {{commanderService.commander.modified}} by {{commanderService.commander.modified_by}}</label>
-     </div>
-     <div class="form-group col s6">
-       <label>Created {{commanderService.commander.created}} by {{commanderService.commander.created_by}}</label>
-     </div>
-   </div>
-   <div class="form-group col right"  *ngIf="cards.edit">
-     <button
-       class="btn btn-default left red" (click)="cancelEdition()">Cancel</button>
-    <button
-      [ngClass]="{disabled: !form.valid}" [disabled]="!form.valid" type="submit" class="btn btn-default right s4" [class.blue]="commanderService.commander._id" [class.green]="!commanderService.commander._id">{{commanderService.commander._id?"save":"new"}}</button>
-  </div>
-</form>
+  </form>
+</div>

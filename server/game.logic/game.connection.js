@@ -95,15 +95,134 @@ game.onConnect = function (client) {
         sio.sockets.to(toUser.id).emit('challenge',userA+" has challenge you");
         var privateGame = {userA:userA, deckA:{}, userB:userB,deckB:{},userTurn:userA};
 
+        function playCardA(card, pos, index) {
+          privateGame.deckA.hand.splice(index,1)
+          if (card.troop) {
+            card.troop.modifiers= {life:0,attack:0,shield:0}
+            privateGame.board[pos]=card;
+          }else if (card.structure){
+            card.structure.modifiers= {life:0,attack:0,shield:0}
+            privateGame.board[pos]=card;
+          }
+          sio.sockets.to(privateGame.id).emit("play-card",card,pos,"userA");
+          sio.sockets.to(fromUser.id).emit('game-hand', privateGame.deckA.hand);
+        }
+        function playCardB(card, pos, index) {
+          privateGame.deckB.hand.splice(index,1)
+          if (card.troop) {
+            card.troop.modifiers= {life:0,attack:0,shield:0}
+            privateGame.board[pos]=card;
+          }else if (card.structure){
+            card.structure.modifiers= {life:0,attack:0,shield:0}
+            privateGame.board[pos]=card;
+          }
+          sio.sockets.to(privateGame.id).emit("play-card",card,pos,"userB");
+          sio.sockets.to(toUser.id).emit('game-hand', privateGame.deckB.hand)
+        }
         function moveCreature(from, to) {
           let target = privateGame.board[from];
-          privateGame.board[to] = target;
-          privateGame.board[from] = {};
-          sio.sockets.to(privateGame.id).emit("creature-move",from,to);
+          if (!target.structure) {
+            privateGame.board[to] = target;
+            privateGame.board[from] = {};
+            sio.sockets.to(privateGame.id).emit("creature-move",from,to);
+          }
+        }
+        function attack(origin,target) {
+          //get the attacker
+          privateGame.board[origin].active = false;
+          let attacker = privateGame.board[origin].troop||privateGame.board[origin].commander;
+          let attackerDmg = attacker.attack||0;
+          let attackerShield = attacker.modifiers["shield"]||0;
+          let attackerLife = attacker.life;
+          if (attacker.modifiers["attack"]!=0){
+            attackerDmg +=attacker.modifiers["attack"];
+          }
+          if (attacker.modifiers["life"]!=0){
+            attackerLife +=attacker.modifiers["life"];
+          }
+          //and get the defender
+          let defender = privateGame.board[target].troop||privateGame.board[target].commander||privateGame.board[target].structure;
+          let defenderDmg = defender.attack||0;
+          let defenderLife = defender.life;
+          let defenderShield = defender.modifiers["shield"]||0;
+          if (defender.modifiers["attack"]!=0){
+            defenderDmg +=defender.modifiers["attack"];
+          }
+          if (defender.modifiers["life"]!=0){
+            defenderLife +=defender.modifiers["life"];
+          }
+          //both deal damage
+          if(attackerDmg >=defenderShield){
+            attackerDmg -= defenderShield;
+            defenderShield = 0;
+          }else{
+            defenderShield -=attackerDmg;
+          }
+          if(defenderDmg >=attackerShield){
+            defenderDmg -= attackerShield;
+            attackerShield = 0;
+          }else{
+            attackerShield -=defenderDmg;
+          }
+          defenderLife -= attackerDmg<0?0:attackerDmg;
+          attackerLife -= defenderDmg<0?0:defenderDmg;
+          //check the results
+          if (attackerLife<=0) {
+            privateGame.board[origin] ={}
+          }else{
+            if (privateGame.board[origin].commander){
+              privateGame.board[origin].commander.life = attackerLife;
+              privateGame.board[origin].commander.modifiers.shield = attackerShield;
+              privateGame.board[origin].commander.active = false;
+            }else{
+              privateGame.board[origin].troop.life = attackerLife;
+              privateGame.board[origin].troop.modifiers.shield = attackerShield;
+              privateGame.board[origin].troop.active = false;
+            }
+          }
+          if(defenderLife <=0){
+              privateGame.board[target] ={}
+            }
+          else{
+            let def = privateGame.board[target]
+            if (def.commander){
+              privateGame.board[target].commander.life = defenderLife;
+              privateGame.board[target].commander.modifiers.shield = defenderShield;
+            }else if(def.troop){
+              privateGame.board[target].troop.life = defenderLife;
+              privateGame.board[target].troop.modifiers.shield = defenderShield;
+            }else{
+                privateGame.board[target].structure.life = defenderLife;
+                privateGame.board[target].structure.modifiers.shield = defenderShield;
+            }
+          }
+          if (!privateGame.board[target].user){
+            if (privateGame.board[origin].user){
+              privateGame.board[target] = privateGame.board[origin];
+              privateGame.board[origin] = {}
+            }
+          }
+          sio.sockets.to(privateGame.id).emit("attack",privateGame.board);
         }
         function nextTurn(game) {
+          //clear temporalValues
+          let cardOwner =game.userTurn == game.userA? "userA":"userB"
+          for (let element in privateGame.board) {
+              if (privateGame.board[element].user == cardOwner){
+                privateGame.board[element].active = true;
+              }
+          }
           privateGame.userTurn = game.userTurn == game.userA? game.userB:game.userA;
-          privateGame.board = game.board;
+          if(privateGame.userTurn == game.userA){
+            privateGame.deckA.hand = deck.draw (1,privateGame.deckA);
+            privateGame.deckA.commander.resources ++
+            sio.sockets.to(fromUser.id).emit('game-hand', privateGame.deckA.hand);
+          }else {
+            privateGame.deckB.hand = deck.draw (1,privateGame.deckB);
+            privateGame.deckB.commander.resources ++
+            sio.sockets.to(toUser.id).emit('game-hand', privateGame.deckB.hand);
+          }
+          //privateGame.board = game.board;
           sio.sockets.to(game.id).emit("next-turn",gameInfo(privateGame));
         }
 
@@ -177,8 +296,12 @@ game.onConnect = function (client) {
               sio.sockets.to(privateGame.id).emit("game-join",gameInfo(privateGame));
               sio.sockets.to(fromUser.id).emit('game-hand', privateGame.deckA.hand);
               sio.sockets.to(toUser.id).emit('game-hand', privateGame.deckB.hand);
+              client.on('play-card',playCardA);
+              toUser.on('play-card',playCardB);
               client.on('creature-move',moveCreature);
               toUser.on('creature-move',moveCreature);
+              client.on('attack',attack);
+              toUser.on('attack',attack);
               client.on('next-turn',nextTurn);
               toUser.on('next-turn',nextTurn);
               client.on('end-game',endGame);
